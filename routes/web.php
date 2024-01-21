@@ -42,7 +42,7 @@ Auth::routes(['register' => false]);
 Route::get('products/product-terms/{product}', 'App\Http\Controllers\Admin\ProductsController@showTerms' )->name('product.terms');
 
 
-Route::redirect('/', '/landing');
+Route::redirect('/', '/login');
 // Route::redirect('/login', '/login');
 Route::get('/home', function () {
     if (session('status')) {

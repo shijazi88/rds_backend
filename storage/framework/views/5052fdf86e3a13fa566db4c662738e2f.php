@@ -10,6 +10,53 @@
                 <?php echo csrf_field(); ?>
                 <div class="row">
                     <div class="col-md-6">
+                        <!-- New fields: serial_number, color, and size -->
+                        <div class="form-group">
+                            <label for="serial_number"><?php echo e(trans('cruds.box.fields.serial_number')); ?></label>
+                            <input class="form-control <?php echo e($errors->has('serial_number') ? 'is-invalid' : ''); ?>"
+                                type="text" name="serial_number" id="serial_number" value="<?php echo e(old('serial_number')); ?>">
+                            <?php if($errors->has('serial_number')): ?>
+                                <div class="invalid-feedback">
+                                    <?php echo e($errors->first('serial_number')); ?>
+
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="required" for="price"><?php echo e(trans('cruds.box.fields.price')); ?></label>
+                            <input class="form-control <?php echo e($errors->has('price') ? 'is-invalid' : ''); ?>" type="number"
+                                name="price" id="price" value="<?php echo e(old('price', '')); ?>" step="0.01" required>
+                            <?php if($errors->has('price')): ?>
+                                <div class="invalid-feedback">
+                                    <?php echo e($errors->first('price')); ?>
+
+                                </div>
+                            <?php endif; ?>
+                            <span class="help-block"><?php echo e(trans('cruds.box.fields.price_helper')); ?></span>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="expiry_date"><?php echo e(trans('cruds.box.fields.expiry_date')); ?></label>
+                            <input class="form-control date <?php echo e($errors->has('expiry_date') ? 'is-invalid' : ''); ?>"
+                                type="text" name="expiry_date" id="expiry_date" value="<?php echo e(old('expiry_date')); ?>">
+                            <?php if($errors->has('expiry_date')): ?>
+                                <div class="invalid-feedback">
+                                    <?php echo e($errors->first('expiry_date')); ?>
+
+                                </div>
+                            <?php endif; ?>
+                            <span class="help-block"><?php echo e(trans('cruds.box.fields.expiry_date_helper')); ?></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="required"><?php echo e(trans('cruds.box.fields.status')); ?></label>
                             <select class="form-control <?php echo e($errors->has('status') ? 'is-invalid' : ''); ?>" name="status"
@@ -33,20 +80,7 @@
                             <span class="help-block"><?php echo e(trans('cruds.box.fields.status_helper')); ?></span>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="required" for="price"><?php echo e(trans('cruds.box.fields.price')); ?></label>
-                            <input class="form-control <?php echo e($errors->has('price') ? 'is-invalid' : ''); ?>" type="number"
-                                name="price" id="price" value="<?php echo e(old('price', '')); ?>" step="0.01" required>
-                            <?php if($errors->has('price')): ?>
-                                <div class="invalid-feedback">
-                                    <?php echo e($errors->first('price')); ?>
 
-                                </div>
-                            <?php endif; ?>
-                            <span class="help-block"><?php echo e(trans('cruds.box.fields.price_helper')); ?></span>
-                        </div>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -78,37 +112,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="expiry_date"><?php echo e(trans('cruds.box.fields.expiry_date')); ?></label>
-                            <input class="form-control date <?php echo e($errors->has('expiry_date') ? 'is-invalid' : ''); ?>"
-                                type="text" name="expiry_date" id="expiry_date" value="<?php echo e(old('expiry_date')); ?>">
-                            <?php if($errors->has('expiry_date')): ?>
-                                <div class="invalid-feedback">
-                                    <?php echo e($errors->first('expiry_date')); ?>
 
-                                </div>
-                            <?php endif; ?>
-                            <span class="help-block"><?php echo e(trans('cruds.box.fields.expiry_date_helper')); ?></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <!-- New fields: serial_number, color, and size -->
-                        <div class="form-group">
-                            <label for="serial_number"><?php echo e(trans('cruds.box.fields.serial_number')); ?></label>
-                            <input class="form-control <?php echo e($errors->has('serial_number') ? 'is-invalid' : ''); ?>"
-                                type="text" name="serial_number" id="serial_number" value="<?php echo e(old('serial_number')); ?>">
-                            <?php if($errors->has('serial_number')): ?>
-                                <div class="invalid-feedback">
-                                    <?php echo e($errors->first('serial_number')); ?>
-
-                                </div>
-                            <?php endif; ?>
-                        </div>
-
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

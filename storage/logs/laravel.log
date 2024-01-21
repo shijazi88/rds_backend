@@ -1659,3 +1659,14 @@ Stack trace:
 [2024-01-20 21:06:16] local.INFO: GET /_debugbar/open - {"op":"get","id":"Xa9142b043959112dd33d030ac5b31159"}  
 [2024-01-20 21:06:18] local.INFO: GET /_debugbar/open - {"op":"get","id":"X2d744ffe4a2f6c2a75089e3bed1019a6"}  
 [2024-01-20 21:06:21] local.INFO: GET /_debugbar/open - {"op":"get","id":"Xd99acdd2837a52c4d5dfd506dd5366e7"}  
+[2024-01-21 18:54:00] local.INFO: GET /dashboard - []  
+[2024-01-21 18:54:00] local.INFO: GET /login - []  
+[2024-01-21 18:54:00] local.INFO: GET /_debugbar/assets/stylesheets - {"v":"1676989262","theme":"auto"}  
+[2024-01-21 18:54:00] local.INFO: GET /_debugbar/assets/javascript - {"v":"1676989262"}  
+[2024-01-21 18:54:02] local.INFO: POST /login - {"_token":"l9FuqaNyXjsJoWpCkZJ5fUovbVbmR8cDBUlJbkmf","email":"admin@admin.com"}  
+[2024-01-21 18:54:03] local.INFO: GET /dashboard - []  
+[2024-01-21 18:54:06] local.INFO: GET /_debugbar/open - {"op":"get","id":"X3be17bd2185c6ea567c8cd77ccc65ece"}  
+[2024-01-21 18:54:42] local.INFO: GET / - []  
+[2024-01-21 18:54:42] local.INFO: GET /login - []  
+[2024-01-21 18:54:42] local.INFO: GET /dashboard - []  
+[2024-01-21 18:55:58] local.INFO: GET /_debugbar/open - {"op":"get","id":"X19d722cbadb7572b70975714fe06686d"}  
