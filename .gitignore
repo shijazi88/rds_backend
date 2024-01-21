@@ -22,4 +22,4 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
-storage/logs
+storage/logs/laravel.log
