@@ -112,6 +112,12 @@
                                         </li>
                                     @endif
                                 @endcan
+                                @can('command_log_access')
+                                    <li class="nav-item">
+                                        <a href="{{ url('admin/command-logs') }}" class="nav-link">
+                                            <i class="ri-map-pin-line"></i> @lang('cruds.commandLog.title')</a>
+                                    </li>
+                                @endcan
                             </ul>
                         </div>
                     </li>

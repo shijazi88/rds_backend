@@ -108,7 +108,7 @@
                         <a class="dropdown-item " href="javascript:void();"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                 class="bx bx-power-off font-size-16 align-middle me-1"></i> <span
-                                key="t-logout"><?php echo app('translator')->get('translation.logout'); ?></span></a>
+                                key="t-logout"><?php echo app('translator')->get('global.logout'); ?></span></a>
                         <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
                             <?php echo csrf_field(); ?>
                         </form>

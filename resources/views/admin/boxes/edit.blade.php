@@ -90,7 +90,53 @@
                             <span class="help-block">{{ trans('cruds.box.fields.expiry_date_helper') }}</span>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <!-- New fields: serial_number, color, and size -->
+                        <div class="form-group">
+                            <label for="serial_number">{{ trans('cruds.box.fields.serial_number') }}</label>
+                            <input class="form-control {{ $errors->has('serial_number') ? 'is-invalid' : '' }}"
+                                type="text" name="serial_number" id="serial_number"
+                                value="{{ old('serial_number', $box->serial_number) }}">
+                            @if ($errors->has('serial_number'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('serial_number') }}
+                                </div>
+                            @endif
+                        </div>
+
+                    </div>
                 </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="color">{{ trans('cruds.box.fields.color') }}</label>
+                            <input class="form-control {{ $errors->has('color') ? 'is-invalid' : '' }}" type="text"
+                                name="color" id="color" value="{{ old('color', $box->color) }}">
+                            @if ($errors->has('color'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('color') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="size">{{ trans('cruds.box.fields.size') }}</label>
+                            <input class="form-control {{ $errors->has('size') ? 'is-invalid' : '' }}" type="text"
+                                name="size" id="size" value="{{ old('size', $box->size) }}">
+                            @if ($errors->has('size'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('size') }}
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <div class="form-group mt-2">
                     <button class="btn btn-danger" type="submit">
                         {{ trans('global.save') }}

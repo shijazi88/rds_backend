@@ -95,6 +95,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'App\Http\Co
    Route::delete('boxes/destroy', 'BoxController@massDestroy')->name('boxes.massDestroy');
    Route::resource('boxes', 'BoxController');
 
+   Route::get('boxes/{box}/unlock', 'BoxController@unlock')->name('boxes.unlock');
+   Route::post('boxes/{box}/send-command/{slug}', 'BoxController@sendCommand')->name('boxes.send-command');
+
+
+
    // Company
    Route::delete('companies/destroy', 'CompanyController@massDestroy')->name('companies.massDestroy');
    Route::resource('companies', 'CompanyController');
@@ -110,7 +115,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'App\Http\Co
    // Client Address
    Route::delete('client-addresses/destroy', 'ClientAddressController@massDestroy')->name('client-addresses.massDestroy');
    Route::resource('client-addresses', 'ClientAddressController');
-
+    // Command Logs
+    Route::delete('command-logs/destroy', 'CommandLogsController@massDestroy')->name('command-logs.massDestroy');
+    Route::resource('command-logs', 'CommandLogsController');
 
 });
 

@@ -112,6 +112,12 @@
                                         </li>
                                     <?php endif; ?>
                                 <?php endif; ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('command_log_access')): ?>
+                                    <li class="nav-item">
+                                        <a href="<?php echo e(url('admin/command-logs')); ?>" class="nav-link">
+                                            <i class="ri-map-pin-line"></i> <?php echo app('translator')->get('cruds.commandLog.title'); ?></a>
+                                    </li>
+                                <?php endif; ?>
                             </ul>
                         </div>
                     </li>

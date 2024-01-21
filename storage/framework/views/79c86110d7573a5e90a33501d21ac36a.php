@@ -1,17 +1,18 @@
-@extends('layouts.master')
-@section('content')
-    @can('box_create')
+<?php $__env->startSection('content'); ?>
+    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('box_create')): ?>
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
-                <a class="btn btn-success" href="{{ route('admin.boxes.create') }}">
-                    {{ trans('global.add') }} {{ trans('cruds.box.title_singular') }}
+                <a class="btn btn-success" href="<?php echo e(route('admin.boxes.create')); ?>">
+                    <?php echo e(trans('global.add')); ?> <?php echo e(trans('cruds.box.title_singular')); ?>
+
                 </a>
             </div>
         </div>
-    @endcan
+    <?php endif; ?>
     <div class="card">
         <div class="card-header">
-            {{ trans('cruds.box.title_singular') }} {{ trans('global.list') }}
+            <?php echo e(trans('cruds.box.title_singular')); ?> <?php echo e(trans('global.list')); ?>
+
         </div>
 
         <div class="card-body">
@@ -22,32 +23,41 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.box.fields.id') }}
+                            <?php echo e(trans('cruds.box.fields.id')); ?>
+
                         </th>
 
                         <th>
-                            {{ trans('cruds.box.fields.serial_number') }}
+                            <?php echo e(trans('cruds.box.fields.serial_number')); ?>
+
                         </th>
                         <th>
-                            {{ trans('cruds.box.fields.price') }}
+                            <?php echo e(trans('cruds.box.fields.price')); ?>
+
                         </th>
                         <th>
-                            {{ trans('cruds.box.fields.color') }}
+                            <?php echo e(trans('cruds.box.fields.color')); ?>
+
                         </th>
                         <th>
-                            {{ trans('cruds.box.fields.size') }}
+                            <?php echo e(trans('cruds.box.fields.size')); ?>
+
                         </th>
                         <th>
-                            {{ trans('cruds.box.fields.lat') }}
+                            <?php echo e(trans('cruds.box.fields.lat')); ?>
+
                         </th>
                         <th>
-                            {{ trans('cruds.box.fields.lng') }}
+                            <?php echo e(trans('cruds.box.fields.lng')); ?>
+
                         </th>
                         <th>
-                            {{ trans('cruds.box.fields.status') }}
+                            <?php echo e(trans('cruds.box.fields.status')); ?>
+
                         </th>
                         <th>
-                            {{ trans('cruds.box.fields.expiry_date') }}
+                            <?php echo e(trans('cruds.box.fields.expiry_date')); ?>
+
                         </th>
                         <th>
                             &nbsp;
@@ -57,17 +67,17 @@
             </table>
         </div>
     </div>
-@endsection
-@section('scripts')
-    @parent
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
+    <?php echo \Illuminate\View\Factory::parentPlaceholder('scripts'); ?>
     <script>
         $(function() {
             let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-            @can('box_delete')
-                let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('box_delete')): ?>
+                let deleteButtonTrans = '<?php echo e(trans('global.datatables.delete')); ?>';
                 let deleteButton = {
                     text: deleteButtonTrans,
-                    url: "{{ route('admin.boxes.massDestroy') }}",
+                    url: "<?php echo e(route('admin.boxes.massDestroy')); ?>",
                     className: 'btn-danger',
                     action: function(e, dt, node, config) {
                         var ids = $.map(dt.rows({
@@ -77,12 +87,12 @@
                         });
 
                         if (ids.length === 0) {
-                            alert('{{ trans('global.datatables.zero_selected') }}')
+                            alert('<?php echo e(trans('global.datatables.zero_selected')); ?>')
 
                             return
                         }
 
-                        if (confirm('{{ trans('global.areYouSure') }}')) {
+                        if (confirm('<?php echo e(trans('global.areYouSure')); ?>')) {
                             $.ajax({
                                     headers: {
                                         'x-csrf-token': _token
@@ -101,7 +111,7 @@
                     }
                 }
                 // dtButtons.push(deleteButton)
-            @endcan
+            <?php endif; ?>
 
             let dtOverrideGlobals = {
                 buttons: dtButtons,
@@ -109,7 +119,7 @@
                 serverSide: true,
                 retrieve: true,
                 aaSorting: [],
-                ajax: "{{ route('admin.boxes.index') }}",
+                ajax: "<?php echo e(route('admin.boxes.index')); ?>",
                 columns: [{
                         data: 'placeholder',
                         name: 'placeholder'
@@ -153,7 +163,7 @@
                     },
                     {
                         data: 'actions',
-                        name: '{{ trans('global.actions') }}'
+                        name: '<?php echo e(trans('global.actions')); ?>'
                     }
                 ],
                 orderCellsTop: true,
@@ -170,4 +180,6 @@
 
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/shijazi/Documents/mywork/rds/default/resources/views/admin/boxes/index.blade.php ENDPATH**/ ?>

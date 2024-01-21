@@ -304,5 +304,33 @@ class Controller extends BaseController
         }
     }
 
+    protected function generateRandomPassCodes($count = 10, $length = 6)
+    {
+        $passCodes = [];
+    
+        for ($i = 0; $i < $count; $i++) {
+            // Generate a random numeric pass code of the specified length
+            $randomPassCode = '';
+    
+            for ($j = 0; $j < $length; $j++) {
+                $randomPassCode .= mt_rand(0, 9); // Append a random digit (0-9)
+            }
+    
+            // Make sure the generated pass code is unique
+            while (in_array($randomPassCode, $passCodes)) {
+                $randomPassCode = '';
+    
+                for ($j = 0; $j < $length; $j++) {
+                    $randomPassCode .= mt_rand(0, 9); // Append a random digit (0-9)
+                }
+            }
+    
+            $passCodes[] = $randomPassCode;
+        }
+    
+        return $passCodes;
+    }
+    
+
 
 }

@@ -1,53 +1,25 @@
 @extends('layouts.master')
 @section('content')
-    @can('box_create')
-        <div style="margin-bottom: 10px;" class="row">
-            <div class="col-lg-12">
-                <a class="btn btn-success" href="{{ route('admin.boxes.create') }}">
-                    {{ trans('global.add') }} {{ trans('cruds.box.title_singular') }}
-                </a>
-            </div>
-        </div>
-    @endcan
     <div class="card">
         <div class="card-header">
-            {{ trans('cruds.box.title_singular') }} {{ trans('global.list') }}
+            {{ trans('cruds.commandLog.title_singular') }} {{ trans('global.list') }}
         </div>
 
         <div class="card-body">
-            <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Box w-100">
+            <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-CommandLog w-100">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.box.fields.id') }}
-                        </th>
-
-                        <th>
-                            {{ trans('cruds.box.fields.serial_number') }}
+                            {{ trans('cruds.commandLog.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.box.fields.price') }}
+                            {{ trans('cruds.commandLog.fields.box') }}
                         </th>
                         <th>
-                            {{ trans('cruds.box.fields.color') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.box.fields.size') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.box.fields.lat') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.box.fields.lng') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.box.fields.status') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.box.fields.expiry_date') }}
+                            {{ trans('cruds.commandLog.fields.command') }}
                         </th>
                         <th>
                             &nbsp;
@@ -63,11 +35,11 @@
     <script>
         $(function() {
             let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-            @can('box_delete')
+            @can('command_log_delete')
                 let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
                 let deleteButton = {
                     text: deleteButtonTrans,
-                    url: "{{ route('admin.boxes.massDestroy') }}",
+                    url: "{{ route('admin.command-logs.massDestroy') }}",
                     className: 'btn-danger',
                     action: function(e, dt, node, config) {
                         var ids = $.map(dt.rows({
@@ -100,7 +72,7 @@
                         }
                     }
                 }
-                // dtButtons.push(deleteButton)
+                //    dtButtons.push(deleteButton)
             @endcan
 
             let dtOverrideGlobals = {
@@ -109,7 +81,7 @@
                 serverSide: true,
                 retrieve: true,
                 aaSorting: [],
-                ajax: "{{ route('admin.boxes.index') }}",
+                ajax: "{{ route('admin.command-logs.index') }}",
                 columns: [{
                         data: 'placeholder',
                         name: 'placeholder'
@@ -118,38 +90,13 @@
                         data: 'id',
                         name: 'id'
                     },
-
                     {
-                        data: 'serial_number',
-                        name: 'serial_number'
+                        data: 'box_price',
+                        name: 'box.price'
                     },
                     {
-                        data: 'price',
-                        name: 'price'
-                    },
-                    {
-                        data: 'color',
-                        name: 'color'
-                    },
-                    {
-                        data: 'size',
-                        name: 'size'
-                    },
-                    {
-                        data: 'lat',
-                        name: 'lat'
-                    },
-                    {
-                        data: 'lng',
-                        name: 'lng'
-                    },
-                    {
-                        data: 'status',
-                        name: 'status'
-                    },
-                    {
-                        data: 'expiry_date',
-                        name: 'expiry_date'
+                        data: 'command',
+                        name: 'command'
                     },
                     {
                         data: 'actions',
@@ -162,7 +109,7 @@
                 ],
                 pageLength: 100,
             };
-            let table = $('.datatable-Box').DataTable(dtOverrideGlobals);
+            let table = $('.datatable-CommandLog').DataTable(dtOverrideGlobals);
             $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e) {
                 $($.fn.dataTable.tables(true)).DataTable()
                     .columns.adjust();

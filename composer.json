@@ -21,6 +21,7 @@
         "league/flysystem-aws-s3-v3": "^3.13",
         "maatwebsite/excel": "^3.1",
         "nuovo/spreadsheet-reader": "^0.5.11",
+        "php-mqtt/laravel-client": "^1.4",
         "prgayman/laravel-zatca": "^1.0",
         "salla/zatca": "^2.0",
         "spatie/laravel-http-logger": "^1.10",

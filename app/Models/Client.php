@@ -6,11 +6,13 @@ use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Client extends Model
+class Client extends Authenticatable
 {
     use SoftDeletes, HasFactory;
-
+    use HasApiTokens;
     public $table = 'clients';
 
     protected $dates = [
@@ -25,8 +27,8 @@ class Client extends Model
     ];
 
     public const STATUS_SELECT = [
-        '1' => 'enabled',
-        '2' => 'not enabled',
+        'enabled' => 'enabled',
+        'not_enabled' => 'not enabled',
     ];
 
     protected $fillable = [

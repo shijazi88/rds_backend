@@ -29,6 +29,10 @@ class Box extends Model
 
     protected $fillable = [
         'status',
+        'pass_codes',
+        'serial_number',
+        'size',
+        'color',
         'price',
         'lat',
         'lng',

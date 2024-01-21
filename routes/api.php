@@ -19,6 +19,7 @@ use App\Http\Controllers\API\V1\TrainerController;
 use App\Http\Controllers\API\V1\ClientController;
 use App\Http\Controllers\API\V1\TrainerLoginController;
 use App\Http\Controllers\API\V1\TamaraController;
+use App\Http\Controllers\MqttController;
 
 
 /*
@@ -35,6 +36,14 @@ use App\Http\Controllers\API\V1\TamaraController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('send-command', [MqttController::class, 'receiveCommands'] )->name('mqtt.receiveCommands');
+Route::post('client/register', [LoginController::class, 'registerClient'] )->name('client.register');
+Route::post('otp/verify', [LoginController::class, 'verifyRegistrationOTP'] )->name('client.verifyRegistrationOTP');
+Route::post('mobile/verify', [LoginController::class, 'verifyMobile'] )->name('client.verifyMobile');
+
+
+
 Route::middleware('apiauth')->group(function () {
 
     // Route::post('/member-bookings', [MemberBookingController::class, 'getAllBookings'])->name('member.old-bookings');

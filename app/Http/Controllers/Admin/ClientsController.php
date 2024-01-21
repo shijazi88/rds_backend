@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 
+
 class ClientsController extends Controller
 {
     public function index(Request $request)
@@ -70,6 +71,8 @@ class ClientsController extends Controller
     public function create()
     {
         abort_if(Gate::denies('client_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+
 
         return view('admin.clients.create');
     }

@@ -226,6 +226,27 @@ class PermissionSeeder extends Seeder
                 'guard_name'    => 'web',
                 'name' => 'client_address_access',
             ],
+
+            [
+                'guard_name'    => 'web',
+                'name' => 'command_log_create',
+            ],
+            [
+                'guard_name'    => 'web',
+                'name' => 'command_log_edit',
+            ],
+            [
+                'guard_name'    => 'web',
+                'name' => 'command_log_show',
+            ],
+            [
+                'guard_name'    => 'web',
+                'name' => 'command_log_delete',
+            ],
+            [
+                'guard_name'    => 'web',
+                'name' => 'command_log_access',
+            ],
             [
                 'guard_name'    => 'web',
                 'name' => 'profile_password_edit',

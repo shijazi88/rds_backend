@@ -4,6 +4,19 @@
         <div class="card-header">
             {{ trans('global.show') }} {{ trans('cruds.box.title') }}
         </div>
+        {{-- 
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif --}}
+
 
         <div class="card-body">
             <div class="form-group">
@@ -62,6 +75,30 @@
                                 {{ $box->expiry_date }}
                             </td>
                         </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.box.fields.serial_number') }}
+                            </th>
+                            <td>
+                                {{ $box->serial_number }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.box.fields.color') }}
+                            </th>
+                            <td>
+                                {{ $box->color }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                {{ trans('cruds.box.fields.size') }}
+                            </th>
+                            <td>
+                                {{ $box->size }}
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="form-group">
@@ -69,6 +106,9 @@
                         {{ trans('global.back_to_list') }}
                     </a>
                 </div>
+
+                @include('admin.boxes.commands', ['commands' => $commands])
+
             </div>
         </div>
     </div>
