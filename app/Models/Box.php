@@ -16,7 +16,9 @@ class Box extends Model
     public $table = 'boxes';
 
     public const STATUS_SELECT = [
+        'available'  => 'available',
         'enabled'  => 'enabled',
+        'assigned'  => 'assigned',
         'disabled' => 'disabled',
     ];
 
@@ -29,6 +31,7 @@ class Box extends Model
 
     protected $fillable = [
         'status',
+        'client_id',
         'pass_codes',
         'serial_number',
         'size',
@@ -55,5 +58,10 @@ class Box extends Model
     public function setExpiryDateAttribute($value)
     {
         $this->attributes['expiry_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
     }
 }

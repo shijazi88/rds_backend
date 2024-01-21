@@ -18,7 +18,9 @@ use App\Http\Controllers\API\V1\TermsAndConditionsController;
 use App\Http\Controllers\API\V1\TrainerController;
 use App\Http\Controllers\API\V1\ClientController;
 use App\Http\Controllers\API\V1\TrainerLoginController;
+use App\Http\Controllers\API\V1\AddressController;
 use App\Http\Controllers\API\V1\TamaraController;
+use App\Http\Controllers\API\V1\BoxController;
 use App\Http\Controllers\MqttController;
 
 
@@ -45,6 +47,14 @@ Route::post('mobile/verify', [LoginController::class, 'verifyMobile'] )->name('c
 
 
 Route::middleware('apiauth')->group(function () {
+
+    Route::post('client/address/create', [AddressController::class, 'store'] )->name('client.address.create');
+    Route::post('client/address/list', [AddressController::class, 'index'] )->name('client.address.list');
+    Route::post('boxes/list', [BoxController::class, 'groupByPrice'] )->name('boxes.list');
+    Route::post('boxes/buy', [BoxController::class, 'buyBox'] )->name('boxes.buy');
+
+    Route::post('member/boxes', [BoxController::class, 'memberBoxes'] )->name('member.boxes');
+
 
     // Route::post('/member-bookings', [MemberBookingController::class, 'getAllBookings'])->name('member.old-bookings');
     // Route::post('/available-bookings',[MemberBookingController::class, 'getAvailableBookings'])->name('member.available-bookings');
