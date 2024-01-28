@@ -39,19 +39,34 @@ class BoxController extends Controller
     public function buyBox(Request $request)
     {
 
-        $client = Auth::guard('api')->user();
-        // Find an available box (assuming 'available' is a valid status)
-        $availableBox = Box::where('status', 'enabled')->first();
-
-        if (!$availableBox) {
-            return $this->response(false,'No available boxes found',$availableBox);
-            // return response()->json(['message' => 'No available boxes found'], 404);
+        try {
+            $data = $request->only(['address_id']);
+            $rules = [
+                'address_id' => 'required|numeric',
+            ];
+            $validator = Validator::make($data, $rules);
+            if ($validator->fails()) {
+                return $this->response(false,$this->validationHandle($validator->messages()));
+            } else{
+                $client = Auth::guard('api')->user();
+                // Find an available box (assuming 'available' is a valid status)
+                $availableBox = Box::where('status', 'enabled')->first();
+        
+                if (!$availableBox) {
+                    return $this->response(false,'No available boxes found',$availableBox);
+                    // return response()->json(['message' => 'No available boxes found'], 404);
+                }
+        
+                // Assign the box to the client and update its status
+                // $availableBox->address_id = $request->address_id;
+                $availableBox->client_id = $client->id;
+                $availableBox->status = 'assigned';
+                $availableBox->save();
+                return $this->response(true,'success',$availableBox);
+            }
+        } catch (Exception $e) {
+            return $this->response(false,'system error');
         }
-
-        // Assign the box to the client and update its status
-        $availableBox->client_id = $client->id;
-        $availableBox->status = 'assigned';
-        $availableBox->save();
-        return $this->response(true,'success',$availableBox);
+       
     }
 }
