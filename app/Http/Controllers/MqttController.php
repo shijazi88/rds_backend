@@ -19,14 +19,16 @@ class MqttController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => 'Invalid data'], 400);
+            return $this->response(false,'error');
+            // return response()->json(['error' => 'Invalid data'], 400);
         }
 
         // Retrieve the Box based on the box_id
         $box = Box::find($request->box_id);
 
         if (!$box) {
-            return response()->json(['error' => 'Box not found'], 404);
+            return $this->response(false,'Box not found');
+            // return response()->json(['error' => 'Box not found'], 404);
         }
 
         // Extract the MQTT command from the request
@@ -75,13 +77,14 @@ class MqttController extends Controller
             }
 
             // Respond with a success message
-            return response()->json(['message' => 'MQTT command sent and logged successfully']);
+            return $this->response(true,'MQTT command sent and logged successfully');
+            // return response()->json(['message' => 'MQTT command sent and logged successfully']);
         } catch (\Exception $e) {
             return $e;
             // Handle any exceptions or errors
             Log::error('Error sending MQTT command: ' . $e->getMessage());
-
-            return response()->json(['error' => 'Failed to send MQTT command'], 500);
+            return $this->response(false,'Failed to send MQTT command');
+            // return response()->json(['error' => 'Failed to send MQTT command'], 500);
         }
     }
 
