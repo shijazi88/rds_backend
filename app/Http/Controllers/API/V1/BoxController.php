@@ -24,7 +24,7 @@ class BoxController extends Controller
     public function groupByPrice()
     {
         $boxesGroupedByPrice = Box::select('price', \DB::raw('count(*) as count'))
-            ->where('status','available')
+            ->where('status','enabled')
             ->groupBy('price')
             ->orderBy('price')
             ->get();
@@ -41,10 +41,11 @@ class BoxController extends Controller
 
         $client = Auth::guard('api')->user();
         // Find an available box (assuming 'available' is a valid status)
-        $availableBox = Box::where('status', 'available')->first();
+        $availableBox = Box::where('status', 'enabled')->first();
 
         if (!$availableBox) {
-            return response()->json(['message' => 'No available boxes found'], 404);
+            return $this->response(false,'No available boxes found',$availableBox);
+            // return response()->json(['message' => 'No available boxes found'], 404);
         }
 
         // Assign the box to the client and update its status
