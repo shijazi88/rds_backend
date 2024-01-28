@@ -69,4 +69,29 @@ class BoxController extends Controller
         }
        
     }
+
+    public function verify(Request $request)
+    {
+
+        try {
+            $data = $request->only(['box_id']);
+            $rules = [
+                'box_id' => 'required|numeric',
+            ];
+            $validator = Validator::make($data, $rules);
+            if ($validator->fails()) {
+                return $this->response(false,$this->validationHandle($validator->messages()));
+            } else{
+                $client = Auth::guard('api')->user();
+                
+                $reference_number = 'ssskhflasd';
+                $availableBox->status = 'paid';
+                $availableBox->save();
+                return $this->response(true,'success',$reference_number);
+            }
+        } catch (Exception $e) {
+            return $this->response(false,'system error');
+        }
+       
+    }
 }
