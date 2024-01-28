@@ -20,6 +20,7 @@ class Box extends Model
         'enabled'  => 'enabled',
         'assigned'  => 'assigned',
         'disabled' => 'disabled',
+        'paid' => 'Paid',
     ];
 
     protected $dates = [
