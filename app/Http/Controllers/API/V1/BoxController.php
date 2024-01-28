@@ -83,7 +83,7 @@ class BoxController extends Controller
                 return $this->response(false,$this->validationHandle($validator->messages()));
             } else{
                 $client = Auth::guard('api')->user();
-                
+                $availableBox = Box::find( $request->box_id);
                 $reference_number = 'ssskhflasd';
                 $availableBox->status = 'paid';
                 $availableBox->save();
