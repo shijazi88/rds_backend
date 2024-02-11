@@ -15,8 +15,8 @@
             <nav class="navbar navbar-expand-lg navbar-landing fixed-top" id="navbar">
                 <div class="container">
                     <a class="navbar-brand" href="index">
-                        <img src="{{ URL::asset('build/images/logo-dark.png') }}" class="card-logo card-logo-dark"
-                            alt="logo dark" height="17">
+                        <img src="{{ URL::asset('build/images/logo-light.png') }}" class="card-logo card-logo-dark"
+                            alt="logo dark" height="120">
                         <img src="{{ URL::asset('build/images/logo-light.png') }}" class="card-logo card-logo-light"
                             alt="logo light" height="17">
                     </a>
@@ -32,15 +32,15 @@
                                 <a class="nav-link active" href="#hero">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#services">Services</a>
+                                <a class="nav-link" href="#services">About Us</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#features">Features</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#plans">Plans</a>
+                                <a class="nav-link" href="#plans">Find Us</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="#reviews">Reviews</a>
                             </li>
                             <li class="nav-item">
@@ -48,7 +48,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#contact">Contact</a>
-                            </li>
+                            </li> --}}
                         </ul>
 
                         <div class="">
@@ -70,11 +70,10 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8 col-sm-10">
                             <div class="text-center mt-lg-5 pt-5">
-                                <h1 class="display-6 fw-semibold mb-3 lh-base">The better way to manage your website with
-                                    <span class="text-secondary">RDS </span>
+                                <h1 class="display-6 fw-semibold mb-3 lh-base">Keep Your Shipments Safe with
+                                    <span class="text-secondary">RDS </span>Box
                                 </h1>
-                                <p class="lead text-muted lh-base">RDS is a fully responsive, multipurpose and premium
-                                    Bootstrap 5 Admin & Dashboard Template built in multiple frameworks.</p>
+                                <p class="lead text-muted lh-base">The best Selling Product.</p>
 
                                 <div class="d-flex gap-2 justify-content-center mt-4">
                                     <a href="auth-signup-basic" class="btn btn-primary">Get Started <i
@@ -84,7 +83,7 @@
                                 </div>
                             </div>
 
-                            <div class="mt-4 mt-sm-5 pt-sm-5 mb-sm-n5 demo-carousel">
+                            {{-- <div class="mt-4 mt-sm-5 pt-sm-5 mb-sm-n5 demo-carousel">
                                 <div class="demo-img-patten-top d-none d-sm-block">
                                     <img src="{{ URL::asset('build/images/landing/img-pattern.png') }}"
                                         class="d-block img-fluid" alt="...">
@@ -125,13 +124,13 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <!-- end row -->
                 </div>
                 <!-- end container -->
-                <div class="position-absolute start-0 end-0 bottom-0 hero-shape-svg">
+                {{-- <div class="position-absolute start-0 end-0 bottom-0 hero-shape-svg">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
                         viewBox="0 0 1440 120">
                         <g mask="url(&quot;#SvgjsMask1003&quot;)" fill="none">
@@ -139,13 +138,13 @@
                             </path>
                         </g>
                     </svg>
-                </div>
+                </div> --}}
                 <!-- end shape -->
             </section>
             <!-- end hero section -->
 
             <!-- start client section -->
-            <div class="pt-5 mt-5">
+            {{-- <div class="pt-5 mt-5">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
@@ -202,7 +201,7 @@
                     <!-- end row -->
                 </div>
                 <!-- end container -->
-            </div>
+            </div> --}}
             <!-- end client section -->
 
             <!-- start services -->
@@ -232,13 +231,10 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h5 class="fs-18">Creative Design</h5>
-                                    <p class="text-muted my-3 ff-secondary">The creative design includes designs that are
-                                        unique, effective and memorable.</p>
-                                    <div>
-                                        <a href="#" class="fs-13 fw-medium">Learn More <i
-                                                class="ri-arrow-right-s-line align-bottom"></i></a>
-                                    </div>
+                                    <h5 class="fs-18">Product's Durability</h5>
+                                    <p class="text-muted my-3 ff-secondary">Details about the robustness and longevity of
+                                        the RDS Box, emphasizing its quality and reliability</p>
+
                                 </div>
                             </div>
                         </div>
@@ -253,13 +249,9 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h5 class="fs-18">Unlimited Colors</h5>
-                                    <p class="text-muted my-3 ff-secondary">The collection of rules and guidelines which
-                                        designers use to communicate with users through appealing.</p>
-                                    <div>
-                                        <a href="#" class="fs-13 fw-medium">Learn More <i
-                                                class="ri-arrow-right-s-line align-bottom"></i></a>
-                                    </div>
+                                    <h5 class="fs-18">Security Aspects</h5>
+                                    <p class="text-muted my-3 ff-secondary">Information on how the product ensures safety
+                                        and security, possibly highlighting any advanced security features.</p>
                                 </div>
                             </div>
                         </div>
@@ -274,123 +266,16 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h5 class="fs-18">Strategy Solutions</h5>
-                                    <p class="text-muted my-3 ff-secondary">Business development firm that provides
-                                        strategic planning, market research services and project.</p>
-                                    <div>
-                                        <a href="#" class="fs-13 fw-medium">Learn More <i
-                                                class="ri-arrow-right-s-line align-bottom"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end col -->
-                        <div class="col-lg-4">
-                            <div class="d-flex p-3">
-                                <div class="flex-shrink-0 me-3">
-                                    <div class="avatar-sm icon-effect">
-                                        <div class="avatar-title bg-transparent text-success rounded-circle">
-                                            <i class="ri-customer-service-line fs-36"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h5 class="fs-18">Awesome Support</h5>
-                                    <p class="text-muted my-3 ff-secondary">Awesome Support is the most versatile and
-                                        feature-rich support plugin for all version.</p>
-                                    <div>
-                                        <a href="#" class="fs-13 fw-medium">Learn More <i
-                                                class="ri-arrow-right-s-line align-bottom"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end col -->
-                        <div class="col-lg-4">
-                            <div class="d-flex p-3">
-                                <div class="flex-shrink-0 me-3">
-                                    <div class="avatar-sm icon-effect">
-                                        <div class="avatar-title bg-transparent text-success rounded-circle">
-                                            <i class="ri-stack-line fs-36"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h5 class="fs-18">Truly Multipurpose</h5>
-                                    <p class="text-muted my-3 ff-secondary">You usually get a broad range of options to
-                                        play with. This enables you to use a single theme across multiple.</p>
-                                    <div>
-                                        <a href="#" class="fs-13 fw-medium">Learn More <i
-                                                class="ri-arrow-right-s-line align-bottom"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end col -->
-                        <div class="col-lg-4">
-                            <div class="d-flex p-3">
-                                <div class="flex-shrink-0 me-3">
-                                    <div class="avatar-sm icon-effect">
-                                        <div class="avatar-title bg-transparent text-success rounded-circle">
-                                            <i class="ri-settings-2-line fs-36"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h5 class="fs-18">Easy to customize</h5>
-                                    <p class="text-muted my-3 ff-secondary">Personalise your own website, no matter what
-                                        theme and what customization options.</p>
-                                    <div>
-                                        <a href="#" class="fs-13 fw-medium">Learn More <i
-                                                class="ri-arrow-right-s-line align-bottom"></i></a>
-                                    </div>
+                                    <h5 class="fs-18">Ease of Installation</h5>
+                                    <p class="text-muted my-3 ff-secondary">BDescription of how the RDS Box can be easily
+                                        set up and used, emphasizing user-friendliness.</p>
+
                                 </div>
                             </div>
                         </div>
                         <!-- end col -->
 
-                        <div class="col-lg-4">
-                            <div class="d-flex p-3">
-                                <div class="flex-shrink-0 me-3">
-                                    <div class="avatar-sm icon-effect">
-                                        <div class="avatar-title bg-transparent text-success rounded-circle">
-                                            <i class="ri-slideshow-line fs-36"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h5 class="fs-18">Responsive & Clean Design</h5>
-                                    <p class="text-muted my-3 ff-secondary">Responsive design is a graphic user interface
-                                        (GUI) design approach used to create content.</p>
-                                    <div>
-                                        <a href="#" class="fs-13 fw-medium">Learn More <i
-                                                class="ri-arrow-right-s-line align-bottom"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end col -->
-                        <div class="col-lg-4">
-                            <div class="d-flex p-3">
-                                <div class="flex-shrink-0 me-3">
-                                    <div class="avatar-sm icon-effect">
-                                        <div class="avatar-title bg-transparent text-success rounded-circle">
-                                            <i class="ri-google-fill fs-36"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h5 class="fs-18">Google Font Collection</h5>
-                                    <p class="text-muted my-3 ff-secondary">Google Fonts is a collection of 915 fonts, all
-                                        available to use for free on your website.</p>
-                                    <div>
-                                        <a href="#" class="fs-13 fw-medium">Learn More <i
-                                                class="ri-arrow-right-s-line align-bottom"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end col -->
+
                         <div class="col-lg-4">
                             <div class="d-flex p-3">
                                 <div class="flex-shrink-0 me-3">
@@ -404,10 +289,7 @@
                                     <h5 class="fs-18">Top Industry Specialists</h5>
                                     <p class="text-muted my-3 ff-secondary">An industrial specialist works with industrial
                                         operations to ensure that manufacturing facilities work.</p>
-                                    <div>
-                                        <a href="#" class="fs-13 fw-medium">Learn More <i
-                                                class="ri-arrow-right-s-line align-bottom"></i></a>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -436,12 +318,12 @@
                                         <i class="ri-collage-line fs-36"></i>
                                     </div>
                                 </div>
-                                <h3 class="mb-3 fs-20">Huge collection of widgets</h3>
-                                <p class="mb-4 ff-secondary fs-16">Collection widgets specialize in displaying many
-                                    elements of the same type, such as a collection of pictures from a collection of
-                                    articles from a news app or a collection of messages from a communication app.</p>
+                                <h3 class="mb-3 fs-20">Multiple Methods to Open</h3>
+                                <p class="mb-4 ff-secondary fs-16">Lorem ipsum dolor sit amet, consectetuer adipiscing
+                                    elit, sed diam nonummy nibh euismod tincidunt ut laoree dolore magna aliquam erat
+                                    volutpat..</p>
 
-                                <div class="row pt-3">
+                                {{-- <div class="row pt-3">
                                     <div class="col-3">
                                         <div class="text-center">
                                             <h4>5</h4>
@@ -460,7 +342,7 @@
                                             <p>Functional Apps</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <!-- end col -->
@@ -472,7 +354,7 @@
             <!-- end features -->
 
             <!-- start cta -->
-            <section class="py-5 bg-primary position-relative">
+            {{-- <section class="py-5 bg-primary position-relative">
                 <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
                 <div class="container">
                     <div class="row align-items-center gy-4">
@@ -494,7 +376,7 @@
                     <!-- end row -->
                 </div>
                 <!-- end container -->
-            </section>
+            </section> --}}
             <!-- end cta -->
 
             <!-- start features -->
@@ -504,8 +386,8 @@
                         <div class="col-lg-6 order-2 order-lg-1">
                             <div class="text-muted">
                                 <h5 class="fs-12 text-uppercase text-secondary">Design</h5>
-                                <h4 class="mb-3">Well Designed Dashboards</h4>
-                                <p class="mb-4 ff-secondary">Quality Dashboards (QD) is a condition-specific, actionable
+                                <h4 class="mb-3">Well Designed Box</h4>
+                                <p class="mb-4 ff-secondary">Quality Box is a condition-specific, actionable
                                     web-based application for quality reporting and population management that is integrated
                                     into the Electronic Health Record (EHR).</p>
 
@@ -594,7 +476,8 @@
                         <!-- end col -->
                         <div class="col-lg-6 col-sm-7 col-10 ms-auto order-1 order-lg-2">
                             <div>
-                                <img src="{{ URL::asset('build/images/landing/features/img-2.png') }}" alt=""
+                                <img src="{{ URL::asset('build/images/landing/features/img-1.png') }}" alt=""
+                                    style="width: 200px; height: auto;" style="width: 100px; height: auto;"
                                     class="img-fluid">
                             </div>
                         </div>
@@ -1227,7 +1110,7 @@
             <!-- end faqs -->
 
             <!-- start review -->
-            <section class="section bg-primary" id="reviews">
+            {{-- <section class="section bg-primary" id="reviews">
                 <div class="bg-overlay bg-overlay-pattern"></div>
                 <div class="container">
                     <div class="row justify-content-center">
@@ -1309,7 +1192,7 @@
                     <!-- end row -->
                 </div>
                 <!-- end container -->
-            </section>
+            </section> --}}
             <!-- end review -->
 
             <!-- start counter -->
@@ -1360,9 +1243,9 @@
                         <div class="col-lg-8">
                             <div class="text-center mb-5">
                                 <h3 class="mb-3 fw-semibold">Our Work Process</h3>
-                                <p class="text-muted mb-4 ff-secondary">In an ideal world this website wouldnâ€™t exist, a
-                                    client would acknowledge the importance of having web copy before the Proin vitae ipsum
-                                    vel ex finibus semper design starts.</p>
+                                <p class="text-muted mb-4 ff-secondary">Discover the simplicity and efficiency of our
+                                    ordering system. In just three straightforward steps, embark on a seamless journey from
+                                    selection to delivery with RDS Box.</p>
                             </div>
                         </div>
                     </div>
@@ -1381,9 +1264,11 @@
                                     </div>
                                 </div>
 
-                                <h5>Tell us what you need</h5>
-                                <p class="text-muted ff-secondary">The profession and the employer and your desire to make
-                                    your mark.</p>
+                                <h5>Select Box & Buy</h5>
+                                <p class="text-muted ff-secondary">In this step, customers are presented with various
+                                    options to select their desired RDS Box. The selection process is made user-friendly,
+                                    allowing customers to choose based on their specific needs. After selection, customers
+                                    proceed to purchase the box using an easy and secure transaction process.</p>
                             </div>
                         </div>
                         <!-- end col -->
@@ -1399,9 +1284,11 @@
                                     </div>
                                 </div>
 
-                                <h5>Get free quotes</h5>
-                                <p class="text-muted ff-secondary">The most important aspect of beauty was, therefore, an
-                                    inherent part.</p>
+                                <h5>Complete the Process:</h5>
+                                <p class="text-muted ff-secondary">Once the purchase is made, customers are guided through
+                                    any necessary steps to complete the process. This might include filling out delivery
+                                    details, choosing delivery options, or confirming order details to ensure accuracy and
+                                    customer satisfaction..</p>
                             </div>
                         </div>
                         <!-- end col -->
@@ -1413,9 +1300,11 @@
                                     </div>
                                 </div>
 
-                                <h5>Deliver high quality product</h5>
-                                <p class="text-muted ff-secondary">We quickly learn to fear and thus automatically avoid
-                                    potentially.</p>
+                                <h5>Delivery</h5>
+                                <p class="text-muted ff-secondary">The final step involves the efficient delivery of the
+                                    RDS Box to the customer. Emphasis is placed on timely and secure delivery, ensuring that
+                                    the product reaches the customer in perfect condition and within the promised timeframe.
+                                </p>
                             </div>
                         </div>
                         <!-- end col -->
@@ -1427,7 +1316,7 @@
             <!-- end Work Process -->
 
             <!-- start team -->
-            <section class="section bg-light" id="team">
+            {{-- <section class="section bg-light" id="team">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -1620,18 +1509,9 @@
                         <!-- end col -->
                     </div>
                     <!-- end row -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="text-center mt-2">
-                                <a href="pages-team" class="btn btn-primary">View All Members <i
-                                        class="ri-arrow-right-line ms-1 align-bottom"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end row -->
                 </div>
                 <!-- end container -->
-            </section>
+            </section> --}}
             <!-- end team -->
 
             <!-- start contact -->
@@ -1722,7 +1602,7 @@
             <!-- end contact -->
 
             <!-- start cta -->
-            <section class="py-5 bg-primary position-relative">
+            {{-- <section class="py-5 bg-primary position-relative">
                 <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
                 <div class="container">
                     <div class="row align-items-center gy-4">
@@ -1744,7 +1624,7 @@
                     <!-- end row -->
                 </div>
                 <!-- end container -->
-            </section>
+            </section> --}}
             <!-- end cta -->
 
             <!-- Start footer -->
@@ -1755,7 +1635,7 @@
                             <div>
                                 <div>
                                     <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="logo light"
-                                        height="17">
+                                        height="150">
                                 </div>
                                 <div class="mt-4 fs-13">
                                     <p>Premium Multipurpose Admin & Dashboard Template</p>
