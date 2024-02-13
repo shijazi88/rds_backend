@@ -88,7 +88,7 @@ class LoginController extends Controller
                 // Store the OTP in the database or cache for verification
                 // Example: Cache::put('otp_' . $request->mobile, $otp, 300); // Store OTP for 5 minutes
 
-                return response()->json(['message' => 'OTP sent successfully']);
+                return $this->response(true,'OTP sent successfully');
             }
         } catch (Exception $e) {
             return $this->response(false,'system error');

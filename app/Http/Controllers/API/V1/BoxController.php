@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Box;
 use App\Models\ClientAddress;
+use App\Models\Order;
 use App\Models\Client;
 use Hash;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,8 @@ use Illuminate\Support\Facades\Cache;
 use App\Models\SmsOtp;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
-
+use App\Notifications\OrderCreatedNotification;
+use Illuminate\Support\Facades\Notification;
 class BoxController extends Controller
 {
     public function groupByPrice()
@@ -36,7 +38,7 @@ class BoxController extends Controller
         $client = Auth::guard('api')->user();
         return $this->response(true,'success',$client->boxes);
     }
-    public function buyBox(Request $request)
+    public function buyBox2(Request $request)
     {
 
         try {
@@ -69,6 +71,58 @@ class BoxController extends Controller
         }
        
     }
+
+
+    public function buyBox(Request $request)
+    {
+        try {
+            $data = $request->only(['address_id']);
+            $rules = [
+                'address_id' => 'required|numeric',
+            ];
+            $validator = Validator::make($data, $rules);
+            if ($validator->fails()) {
+                return $this->response(false, $this->validationHandle($validator->messages()));
+            } else {
+                $client = Auth::guard('api')->user();
+
+                // Find an available box (assuming 'available' is a valid status)
+                $availableBox = Box::where('status', 'enabled')->first();
+
+                if (!$availableBox) {
+                    return $this->response(false, 'No available boxes found', $availableBox);
+                }
+
+                // Assign the box to the client and update its status
+                $availableBox->client_id = $client->id;
+                $availableBox->status = 'assigned';
+                $availableBox->save();
+
+                // Create an order
+                $order = new Order();
+                $order->client_id = $client->id;
+                $order->box_id = $availableBox->id;
+                $order->amount_before_vat = $request->address_id;
+                $order->address_id = $request->address_id;
+                $order->delivery_date = now(); // Adjust this according to your logic
+                $order->status = 'created';
+
+                $order->amount_before_vat =  $availableBox->price; // Provide a default value for amount_before_vat
+                $order->vat = $availableBox->price * 0.15; // Provide a default value for vat
+                $order->discount = 0; // Provide a default value for discount
+                $order->amount_after_vat = $availableBox->price*1.15; // Provide a default value for amount_after_vat
+                
+                $order->save();
+
+                $client->notify(new OrderCreatedNotification($order));
+
+                return $this->response(true, 'success', $order);
+            }
+        } catch (Exception $e) {
+            return $this->response(false, 'System error');
+        }
+    }
+
 
     public function verify(Request $request)
     {

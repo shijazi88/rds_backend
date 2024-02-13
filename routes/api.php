@@ -20,7 +20,9 @@ use App\Http\Controllers\API\V1\ClientController;
 use App\Http\Controllers\API\V1\TrainerLoginController;
 use App\Http\Controllers\API\V1\AddressController;
 use App\Http\Controllers\API\V1\TamaraController;
+use App\Http\Controllers\API\V1\OrderController;
 use App\Http\Controllers\API\V1\BoxController;
+use App\Http\Controllers\API\V1\NotificationController;
 use App\Http\Controllers\MqttController;
 
 
@@ -56,6 +58,10 @@ Route::middleware('apiauth')->group(function () {
 
     Route::post('member/boxes', [BoxController::class, 'memberBoxes'] )->name('member.boxes');
 
+    Route::get('/orders', [OrderController::class, 'index'] )->name('order.list');
+
+    // Get notifications of the authenticated client
+    Route::get('/notifications', [NotificationController::class, 'index'] )->name('notifications.list');
 
     // Route::post('/member-bookings', [MemberBookingController::class, 'getAllBookings'])->name('member.old-bookings');
     // Route::post('/available-bookings',[MemberBookingController::class, 'getAvailableBookings'])->name('member.available-bookings');
