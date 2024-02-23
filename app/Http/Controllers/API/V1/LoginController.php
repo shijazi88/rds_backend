@@ -172,7 +172,7 @@ class LoginController extends Controller
                 $client->language = $request->language; 
                 $client->fcm_token = $request->fcm_token; 
                 $client->token =  $token;
-                return $this->response(false,'OTP verified successfully',$client);
+                return $this->response(true,'OTP verified successfully',$client);
             }
         } catch (Exception $e) {
             return $this->response(false,'system error');
