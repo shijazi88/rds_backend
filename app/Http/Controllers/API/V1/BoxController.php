@@ -200,7 +200,7 @@ class BoxController extends Controller
                 $availableBox->status = 'assigned';
                 $availableBox->save();
 
-                return $this->response(true, 'success', $order);
+                return $this->response(true, 'success', $availableBox);
             }
         } catch (Exception $e) {
             return $this->response(false, 'System error');
