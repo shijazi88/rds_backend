@@ -187,8 +187,16 @@ class BoxController extends Controller
             } else {
                 $client = Auth::guard('api')->user();
 
+                // Check if the client already has an assigned box
+                $assignedBox = Box::where('client_id', $client->id)
+                                ->where('status', 'assigned')
+                                ->first();
 
-                // Find an available box (assuming 'available' is a valid status)
+                if ($assignedBox) {
+                    return $this->response(true, 'Client already has an assigned box', $assignedBox);
+                }
+
+                // If no assigned box found, find an available box
                 $availableBox = Box::where('status', 'enabled')->first();
 
                 if (!$availableBox) {
@@ -206,6 +214,7 @@ class BoxController extends Controller
             return $this->response(false, 'System error');
         }
     }
+
 
 
     public function verify(Request $request)
