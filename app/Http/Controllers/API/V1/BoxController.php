@@ -231,4 +231,12 @@ class BoxController extends Controller
         }
        
     }
+
+    protected function logOrderHistory($order, $status)
+    {
+        $orderHistory = new OrderHistory();
+        $orderHistory->order_id = $order->id;
+        $orderHistory->status = $status;
+        $orderHistory->save();
+    }
 }
