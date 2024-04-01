@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Box;
 use App\Models\ClientAddress;
+use App\Models\OrderHistory;
 use App\Models\Order;
 use App\Models\Client;
 use Hash;
