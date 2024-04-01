@@ -78,4 +78,9 @@ class Order extends Model
     {
         return $this->belongsTo(ClientAddress::class, 'address_id');
     }
+
+    public function orderHistories()
+    {
+        return $this->hasMany(OrderHistory::class);
+    }
 }

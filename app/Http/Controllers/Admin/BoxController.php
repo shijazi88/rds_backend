@@ -104,7 +104,7 @@ class BoxController extends Controller
             [
                 'slug' => 'unlock',
                 'label' => 'Unlock',
-                'example' => 'RDS000001U',
+                'example' => 'RDS000000U',
                 'explanation' => 'This command unlocks the box.',
             ],
             [
@@ -134,7 +134,7 @@ class BoxController extends Controller
             [
                 'slug' => 'box-unlock',
                 'label' => 'Box Unlock (U)',
-                'example' => 'RDS000001U',
+                'example' => 'RDS000000U',
                 'explanation' => 'This command unlocks the box.',
             ],
             [
@@ -198,9 +198,21 @@ class BoxController extends Controller
     {
         try {
             // Perform the command operation with the provided topic and command
+            \Log::info($topic);
+            \Log::info($command);
             MQTT::publish($topic, $command);
 
-           
+            // $mqtt = MQTT::connection();
+
+            // $mqtt->subscribe('RDS/'.'RDS000000'.'/response', function (string $topic, string $message) {
+            //     \Log::info('Received QoS level 1 message on topic [%s]: %s');
+            //     \Log::info($topic);
+            //     \Log::info( $message);
+            // }, 1);
+
+            // $mqtt->loop(false);
+
+
             // Add a success flash message
             Session::flash('success', $successMessage . ' ',$topic);
         } catch (\Exception $e) {
@@ -213,15 +225,15 @@ class BoxController extends Controller
     public function sendCommand(Box $box, $slug, Request $request)
     {
         $commands = [
-            'unlock' => 'RDS000001U',
-            'lock' => 'RDS000001L',
-            'mode-select' => 'RDS000001W',
+            'unlock' => $box->serial_number.'U',
+            // 'lock' => 'RDS000001L',
+            'mode-select' => 'RDS000001W', // W = wifi, G= GPRS, B= Keypad
             'keypad-mode' => 'RDS000001K0',
-            'reboot' => 'RDS000001R',
+            'reboot' => $box->serial_number.'R',
             'box-unlock' => 'RDS000001U',
-            'box-lock-status' => 'RDS000001T',
-            'image-capture' => 'RDS000001C',
-            'images-retrieve' => 'RDS000001I',
+            'box-lock-status' => $box->serial_number.'T',
+            'image-capture' => $box->serial_number.'C',
+            'images-retrieve' => $box->serial_number.'I',
             'pass-codes-update' => 'RDS000001S123456,643211,345612,125634,145623,345126,129456,128856,125556,124456',
             // 'pass-code-unlock' => 'RDS000001P643211',
             'pass-code-unlock' => 'RDS000001P'.$request->pass_code,

@@ -54,6 +54,7 @@ Route::middleware('apiauth')->group(function () {
     Route::post('client/address/list', [AddressController::class, 'index'] )->name('client.address.list');
     Route::post('boxes/list', [BoxController::class, 'groupByPrice'] )->name('boxes.list');
     Route::post('boxes/buy', [BoxController::class, 'buyBox'] )->name('boxes.buy');
+    Route::post('boxes/assign', [BoxController::class, 'assignBoxToClient'] )->name('boxes.assign');
     Route::post('boxes/buy/verify', [BoxController::class, 'verify'] )->name('boxes.verify');
 
     Route::post('member/boxes', [BoxController::class, 'memberBoxes'] )->name('member.boxes');

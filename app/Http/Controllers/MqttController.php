@@ -37,12 +37,12 @@ class MqttController extends Controller
         // Perform actions based on the received command
         try {
             $commands = [
-                'unlock' => 'RDS000001U',
+                'unlock' => $box->serial_number.'U',
                 'lock' => 'RDS000001L',
                 'mode-select' => 'RDS000001W',
                 'keypad-mode' => 'RDS000001K0',
                 'reboot' => 'RDS000001R',
-                'box-unlock' => 'RDS000001U',
+                'box-unlock' =>  $box->serial_number.'U',
                 'box-lock-status' => 'RDS000001T',
                 'image-capture' => 'RDS000001C',
                 'images-retrieve' => 'RDS000001I',
