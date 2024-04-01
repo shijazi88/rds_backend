@@ -244,6 +244,17 @@ class BoxController extends Controller
 
     protected function logOrderHistory($order, $status)
     {
+        // Check if an order history record already exists for the given order and status
+        $existingHistory = OrderHistory::where('order_id', $order->id)
+                                    ->where('status', $status)
+                                    ->first();
+
+        // If an existing history record is found, do not add a new one
+        if ($existingHistory) {
+            return; // Or you can throw an exception or handle it in any other way you prefer
+        }
+
+        // Create a new order history entry
         $orderHistory = new OrderHistory();
         $orderHistory->order_id = $order->id;
         $orderHistory->status = $status;

@@ -167,6 +167,7 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.order.fields.status_helper') }}</span>
                         </div>
+
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">

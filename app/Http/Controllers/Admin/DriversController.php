@@ -8,6 +8,8 @@ use App\Http\Requests\StoreDriverRequest;
 use App\Http\Requests\UpdateDriverRequest;
 use App\Models\Driver;
 use Gate;
+use Illuminate\Support\Facades\Hash;
+
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
@@ -82,7 +84,10 @@ class DriversController extends Controller
 
     public function store(StoreDriverRequest $request)
     {
-        $driver = Driver::create($request->all());
+        $data = $request->validated();
+    $data['password'] = Hash::make($data['password']);
+    
+    $driver = Driver::create($data);
 
         return redirect()->route('admin.drivers.index');
     }

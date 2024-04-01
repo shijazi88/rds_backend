@@ -81,7 +81,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Client::class,
         ],
-        'driver' => [
+        'drivers' => [
             'driver' => 'eloquent',
             'model' => App\Models\Driver::class,
         ],
@@ -112,6 +112,12 @@ return [
         ],
         'clients' => [
             'provider' => 'clients',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'drivers' => [
+            'provider' => 'drivers',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
