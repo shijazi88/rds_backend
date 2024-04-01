@@ -27,7 +27,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $client = Auth::guard('api')->user();
-        $orders = $client->orders()->with('box')->latest()->get();
+        $orders = $client->orders()->with('box','orderHistories')->latest()->get();
         return $this->response(true,'success',$orders);
     }
 }
