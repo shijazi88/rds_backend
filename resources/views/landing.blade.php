@@ -1,7 +1,8 @@
-@extends('layouts.master-without-nav')
+@extends('layouts.master-without-nav-ar')
 @section('title')
     Landing
 @endsection
+
 @section('css')
     <link href="{{ URL::asset('build/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
@@ -29,33 +30,30 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#hero">Home</a>
+                                <a class="nav-link active" href="#home">الصفحة الرئيسية</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#services">About Us</a>
+                                <a class="nav-link" href="#services">خدماتنا</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#features">Features</a>
+                                <a class="nav-link" href="#boxwork">كيف يعمل صندوقنا الذكي؟</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#plans">Find Us</a>
-                            </li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link" href="#reviews">Reviews</a>
+                                <a class="nav-link" href="#boxbox">طلب صندوقك</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#team">Team</a>
+                                <a class="nav-link" href="#services"> عن ردس بوكس</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#faqs">الاسئلة الشائعة</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#contact">Contact</a>
-                            </li> --}}
+                                <a class="nav-link" href="#contactus">تواصل معنا</a>
+                            </li>
                         </ul>
 
-                        <div class="">
-                            <a href="auth-signin-basic" class="btn btn-link fw-medium text-decoration-none text-dark">Sign
-                                in</a>
-                            <a href="auth-signup-basic" class="btn btn-primary">Sign Up</a>
-                        </div>
+
                     </div>
 
                 </div>
@@ -63,146 +61,87 @@
             <!-- end navbar -->
             <div class="vertical-overlay" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent.show"></div>
 
+            <section class="section" id="empty">
+            </section>
             <!-- start hero section -->
-            <section class="section pb-0 hero-section" id="hero">
-                <div class="bg-overlay bg-overlay-pattern"></div>
+            <section class="section" id="home">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-lg-8 col-sm-10">
-                            <div class="text-center mt-lg-5 pt-5">
-                                <h1 class="display-6 fw-semibold mb-3 lh-base">Keep Your Shipments Safe with
-                                    <span class="text-secondary">RDS </span>Box
-                                </h1>
-                                <p class="lead text-muted lh-base">The best Selling Product.</p>
-
-                                <div class="d-flex gap-2 justify-content-center mt-4">
-                                    <a href="auth-signup-basic" class="btn btn-primary">Get Started <i
-                                            class="ri-arrow-right-line align-middle ms-1"></i></a>
-                                    <a href="pages-pricing" class="btn btn-soft-secondary">View Plans <i
-                                            class="ri-eye-line align-middle ms-1"></i></a>
-                                </div>
+                        <div class="col-lg-8">
+                            <div class="text-center mb-5">
+                                <h1 class="display-6 fw-semibold mb-3 lh-base">استلم شحناتك دون رنة</h1>
+                                <p class="text-muted mb-4 ff-secondary">صندوق استلامك الذكي والحل الأمثل لكل مشاكل التسليم
+                                </p>
                             </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
 
-                            {{-- <div class="mt-4 mt-sm-5 pt-sm-5 mb-sm-n5 demo-carousel">
-                                <div class="demo-img-patten-top d-none d-sm-block">
-                                    <img src="{{ URL::asset('build/images/landing/img-pattern.png') }}"
-                                        class="d-block img-fluid" alt="...">
-                                </div>
-                                <div class="demo-img-patten-bottom d-none d-sm-block">
-                                    <img src="{{ URL::asset('build/images/landing/img-pattern.png') }}"
-                                        class="d-block img-fluid" alt="...">
-                                </div>
-                                <div class="carousel slide carousel-fade" data-bs-ride="carousel">
-                                    <div class="carousel-inner shadow-lg p-2 bg-white rounded">
-                                        <div class="carousel-item active" data-bs-interval="2000">
-                                            <img src="{{ URL::asset('build/images/demos/default.png') }}"
-                                                class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="2000">
-                                            <img src="{{ URL::asset('build/images/demos/saas.png') }}" class="d-block w-100"
-                                                alt="...">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="2000">
-                                            <img src="{{ URL::asset('build/images/demos/material.png') }}"
-                                                class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="2000">
-                                            <img src="{{ URL::asset('build/images/demos/minimal.png') }}"
-                                                class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="2000">
-                                            <img src="{{ URL::asset('build/images/demos/creative.png') }}"
-                                                class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="2000">
-                                            <img src="{{ URL::asset('build/images/demos/modern.png') }}"
-                                                class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="2000">
-                                            <img src="{{ URL::asset('build/images/demos/interactive.png') }}"
-                                                class="d-block w-100" alt="...">
+                    <div class="row g-3">
+                        <div class="col-lg-4">
+                            <div class="d-flex p-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-sm icon-effect" style="margin-right: 20px;">
+                                        <div class="avatar-title bg-transparent text-success rounded-circle">
+                                            <i class="ri-shield-check-line fs-36"></i> <!-- Updated icon for durability -->
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                                <div class="flex-grow-1">
+                                    <p class="text-muted my-3 ff-secondary">انتهت المشاكل المتعلقة باستلام الشحنات وطلبات
+                                        التوصيل. بكل فخر، نقدم لكم ردس بوكس؛ الحل الأمثل لاستلام شحناتكم بكل سهولة من
+                                        المندوب دون الحاجة إلى تحديد موقعكم أو تلقي أي اتصالات، مما يضمن تجربة خالية من
+                                        الإزعاج.</p>
+                                </div>
+
+                            </div>
                         </div>
+                        <!-- end col -->
+                        <div class="col-lg-4">
+                            <div class="d-flex p-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-sm icon-effect" style="margin-right: 20px;">
+                                        <div class="avatar-title bg-transparent text-success rounded-circle">
+                                            <i class="ri-lock-2-line fs-36"></i> <!-- Updated icon for security -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted my-3 ff-secondary">إن صندوق ردس بوكس يعمل بنظام تقني ذكي مربوط مع
+                                        شركات التوصيل؛ ليكون بديلك الموثوق لاستلام شحناتك وطلباتك من المندوب. إنه صندوق
+                                        يُثبَّت عند باب المنزل، بتصاميم حديثة ومتطورة.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-4">
+                            <div class="d-flex p-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-sm icon-effect" style="margin-right: 20px;">
+                                        <div class="avatar-title bg-transparent text-success rounded-circle">
+                                            <i class="ri-tools-line fs-36"></i>
+                                            <!-- Updated icon for ease of installation -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted my-3 ff-secondary">ردس بوكس يمثل بصمة ناجحة لرفع كفاءة الخدمات
+                                        اللوجستية. أكبر المشاكل في نقل الشحنات تتمثل في مرحلة الميل الأخير من التوصيل، وهي
+                                        تمثل نقطة مكلفة تشكل 40% من إجمالي تكاليف سلسلة الإمداد. ردس بوكس يقدم الحل الأمثل
+                                        لهذه المعوقات بتقنية سلسة وكفاءة عالية.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- end col -->
                     </div>
                     <!-- end row -->
                 </div>
                 <!-- end container -->
-                {{-- <div class="position-absolute start-0 end-0 bottom-0 hero-shape-svg">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        viewBox="0 0 1440 120">
-                        <g mask="url(&quot;#SvgjsMask1003&quot;)" fill="none">
-                            <path d="M 0,118 C 288,98.6 1152,40.4 1440,21L1440 140L0 140z">
-                            </path>
-                        </g>
-                    </svg>
-                </div> --}}
-                <!-- end shape -->
             </section>
-            <!-- end hero section -->
 
-            <!-- start client section -->
-            {{-- <div class="pt-5 mt-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
 
-                            <div class="text-center mt-5">
-                                <h5 class="fs-20">Trusted <span class="text-primary text-decoration-underline">by</span>
-                                    the world's best</h5>
-
-                                <!-- Swiper -->
-                                <div class="swiper trusted-client-slider mt-sm-5 mt-4 mb-sm-5 mb-4" dir="ltr">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="client-images">
-                                                <img src="{{ URL::asset('build/images/clients/amazon.svg') }}"
-                                                    alt="client-img" class="mx-auto img-fluid d-block">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="client-images">
-                                                <img src="{{ URL::asset('build/images/clients/walmart.svg') }}"
-                                                    alt="client-img" class="mx-auto img-fluid d-block">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="client-images">
-                                                <img src="{{ URL::asset('build/images/clients/lenovo.svg') }}"
-                                                    alt="client-img" class="mx-auto img-fluid d-block">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="client-images">
-                                                <img src="{{ URL::asset('build/images/clients/paypal.svg') }}"
-                                                    alt="client-img" class="mx-auto img-fluid d-block">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="client-images">
-                                                <img src="{{ URL::asset('build/images/clients/shopify.svg') }}"
-                                                    alt="client-img" class="mx-auto img-fluid d-block">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="client-images">
-                                                <img src="{{ URL::asset('build/images/clients/verizon.svg') }}"
-                                                    alt="client-img" class="mx-auto img-fluid d-block">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- end row -->
-                </div>
-                <!-- end container -->
-            </div> --}}
-            <!-- end client section -->
 
             <!-- start services -->
             <section class="section" id="services">
@@ -210,14 +149,169 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="text-center mb-5">
-                                <h1 class="mb-3 ff-secondary fw-semibold lh-base">A Digital web design studio creating
-                                    modern & engaging online</h1>
-                                <p class="text-muted">To achieve this, it would be necessary to have uniform grammar,
-                                    pronunciation and more common words. If several languages coalesce the grammar</p>
+                                <h1 class="mb-3 ff-secondary fw-semibold lh-base">خدماتنا
+                                </h1>
                             </div>
                         </div>
                         <!-- end col -->
                     </div>
+                    <!-- end row -->
+
+                    <div class="row g-3">
+                        <div class="col-lg-4">
+                            <div class="d-flex p-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-sm icon-effect">
+                                        <div class="avatar-title bg-transparent text-success rounded-circle">
+                                            <i class="ri-home-line fs-36"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted my-3 ff-secondary">صندوق منزلي</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-4">
+                            <div class="d-flex p-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-sm icon-effect">
+                                        <div class="avatar-title bg-transparent text-success rounded-circle">
+                                            <i class="ri-time-line fs-36"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted my-3 ff-secondary">اتاحة استلام على مدار اليوم 24/7</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-4">
+                            <div class="d-flex p-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-sm icon-effect">
+                                        <div class="avatar-title bg-transparent text-success rounded-circle">
+                                            <i class="ri-wifi-line fs-36"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted my-3 ff-secondary">الاتصال الدائم بالإنترنت</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+
+                        <div class="col-lg-4">
+                            <div class="d-flex p-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-sm icon-effect">
+                                        <div class="avatar-title bg-transparent text-success rounded-circle">
+                                            <i class="ri-remote-control-line fs-36"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted my-3 ff-secondary">التحكم عن بعد</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="d-flex p-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-sm icon-effect">
+                                        <div class="avatar-title bg-transparent text-success rounded-circle">
+                                            <i class="ri-check-line fs-36"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted my-3 ff-secondary">نظام التأكد من استلام الشحنات</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="d-flex p-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-sm icon-effect">
+                                        <div class="avatar-title bg-transparent text-success rounded-circle">
+                                            <i class="ri-notification-line fs-36"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted my-3 ff-secondary">نظام اشعارات بفتح وإغلاق الصندوق استلام الشحنات
+                                        بدون تدخل العميل</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="d-flex p-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-sm icon-effect">
+                                        <div class="avatar-title bg-transparent text-success rounded-circle">
+                                            <i class="ri-robot-line fs-36"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted my-3 ff-secondary">استقبال الشحنات الآلي</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container -->
+            </section>
+            <!-- end services -->
+
+            <section class="py-5 bg-primary position-relative">
+                <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
+                <div class="container">
+                    <div class="row align-items-center gy-4">
+                        <div class="col-sm">
+                            <div>
+                                <h4 class="text-white mb-0 fw-semibold">سارع بالطلب وانضم معنا لتصل شحنتك بسرعة ودون
+                                    رنة.
+                            </div>
+                        </div>
+                        <!-- end col -->
+                        <div class="col-sm-auto">
+                            <div>
+                                <a href="https://1.envato.market/RDS-admin" target="_blank"
+                                    class="btn bg-gradient btn-secondary"><i
+                                        class="ri-shopping-cart-2-line align-middle me-1"></i> اطلب الان</a>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container -->
+            </section>
+
+
+            <section class="section" id="boxwork">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="text-center mb-5">
+                                <h1 class="display-6 fw-semibold mb-3 lh-base">كيف يعمل صندوقنا الذكي؟
+                                    {{-- <span class="text-secondary">RDS </span>Box --}}
+                                </h1>
+                                <p class="text-muted mb-4 ff-secondary">لاتشيل هم؛ ماعليك إلا تطلب، وازهل الباقي علينا!
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- end row -->
 
                     <div class="row g-3">
@@ -231,9 +325,12 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h5 class="fs-18">Product's Durability</h5>
-                                    <p class="text-muted my-3 ff-secondary">Details about the robustness and longevity of
-                                        the RDS Box, emphasizing its quality and reliability</p>
+                                    {{-- <h5 class="fs-18">Product's Durability</h5> --}}
+                                    <p class="text-muted my-3 ff-secondary">بعد طلبك من الموقع وإرسال شحنتك لشركات التوصيل
+                                        يستلم نظام ردس طلب التسليم، المربوط مع شركات الشحن فيستلمها المندوب ويوصلها مباشرة
+                                        دون الحاجة للتواصل وطلب الموقع، ويسلم الشحنة بشكل ذاتي للصندوق الذي يُفتح عن طريق
+                                        صلاحيات خاصة بنظام ردس المربوط بين
+                                        العميل وشركة الشحن، ويغلق بشكل ذاتي من أجل الحماية والأمان لل ُشحن.</p>
 
                                 </div>
                             </div>
@@ -249,9 +346,12 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h5 class="fs-18">Security Aspects</h5>
-                                    <p class="text-muted my-3 ff-secondary">Information on how the product ensures safety
-                                        and security, possibly highlighting any advanced security features.</p>
+                                    {{-- <h5 class="fs-18">Security Aspects</h5> --}}
+                                    <p class="text-muted my-3 ff-secondary">صندوق ردس بوكس مواكب للذكاء الاصطناعي فهو
+                                        الجندي
+                                        الموثوق لاستلام وتسليم
+                                        شحناتك، إنه خاص لك ومبرمج لخدمتك وتسريع عملية الاستلام والتسليم بسلامة، صندوقنا
+                                        الذكي يخدم الافراد والشركات، ويستخدم في جميع أنواع السكن والمنازل.</p>
                                 </div>
                             </div>
                         </div>
@@ -266,1012 +366,88 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h5 class="fs-18">Ease of Installation</h5>
-                                    <p class="text-muted my-3 ff-secondary">BDescription of how the RDS Box can be easily
-                                        set up and used, emphasizing user-friendliness.</p>
+                                    {{-- <h5 class="fs-18">Ease of Installation</h5> --}}
+                                    <p class="text-muted my-3 ff-secondary">صندوق ردس بوكس مصمم بطريقة يتناسب استخدامه في
+                                        جميع المساكن للأفراد
+                                        والشركات(فلل، شقق، أمامكن عمل.....إل. </p>
 
                                 </div>
                             </div>
                         </div>
-                        <!-- end col -->
-
-
                         <div class="col-lg-4">
                             <div class="d-flex p-3">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar-sm icon-effect">
                                         <div class="avatar-title bg-transparent text-success rounded-circle">
-                                            <i class="ri-briefcase-5-line fs-36"></i>
+                                            <i class="ri-lightbulb-flash-line fs-36"></i>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h5 class="fs-18">Top Industry Specialists</h5>
-                                    <p class="text-muted my-3 ff-secondary">An industrial specialist works with industrial
-                                        operations to ensure that manufacturing facilities work.</p>
+                                    {{-- <h5 class="fs-18">Ease of Installation</h5> --}}
+                                    <p class="text-muted my-3 ff-secondary">نحن مميزون بخدمات مابعد البيع؛ فريق ردس يقومون
+                                        بتركيب الصندوق في المكان المطلوب
+                                        ومتاحين للمتابعة والصيانة بشكل دائم، وهم على اتم الاستعداد للرد علىكل الاستفسارات
+                                        والتساؤلات. </p>
 
                                 </div>
                             </div>
                         </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end row -->
-                </div>
-                <!-- end container -->
-            </section>
-            <!-- end services -->
-
-            <!-- start features -->
-            <section class="section bg-light py-5" id="features">
-                <div class="container">
-                    <div class="row align-items-center gy-4">
-                        <div class="col-lg-6 col-sm-7 mx-auto">
-                            <div>
-                                <img src="{{ URL::asset('build/images/landing/features/img-1.png') }}" alt=""
-                                    class="img-fluid mx-auto">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="text-muted">
-                                <div class="avatar-sm icon-effect mb-4">
-                                    <div class="avatar-title bg-transparent rounded-circle text-success h1">
-                                        <i class="ri-collage-line fs-36"></i>
-                                    </div>
-                                </div>
-                                <h3 class="mb-3 fs-20">Multiple Methods to Open</h3>
-                                <p class="mb-4 ff-secondary fs-16">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                    elit, sed diam nonummy nibh euismod tincidunt ut laoree dolore magna aliquam erat
-                                    volutpat..</p>
-
-                                {{-- <div class="row pt-3">
-                                    <div class="col-3">
-                                        <div class="text-center">
-                                            <h4>5</h4>
-                                            <p>Dashboards</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="text-center">
-                                            <h4>150+</h4>
-                                            <p>Pages</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="text-center">
-                                            <h4>7+</h4>
-                                            <p>Functional Apps</p>
-                                        </div>
-                                    </div>
-                                </div> --}}
-                            </div>
-                        </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end row -->
-                </div>
-                <!-- end container -->
-            </section>
-            <!-- end features -->
-
-            <!-- start cta -->
-            {{-- <section class="py-5 bg-primary position-relative">
-                <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
-                <div class="container">
-                    <div class="row align-items-center gy-4">
-                        <div class="col-sm">
-                            <div>
-                                <h4 class="text-white mb-0 fw-semibold">Build your web App/SaaS with RDS dashboard</h4>
-                            </div>
-                        </div>
-                        <!-- end col -->
-                        <div class="col-sm-auto">
-                            <div>
-                                <a href="https://1.envato.market/RDS-admin" target="_blank"
-                                    class="btn bg-gradient btn-secondary"><i
-                                        class="ri-shopping-cart-2-line align-middle me-1"></i> Buy Now</a>
-                            </div>
-                        </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end row -->
-                </div>
-                <!-- end container -->
-            </section> --}}
-            <!-- end cta -->
-
-            <!-- start features -->
-            <section class="section">
-                <div class="container">
-                    <div class="row align-items-center gy-4">
-                        <div class="col-lg-6 order-2 order-lg-1">
-                            <div class="text-muted">
-                                <h5 class="fs-12 text-uppercase text-secondary">Design</h5>
-                                <h4 class="mb-3">Well Designed Box</h4>
-                                <p class="mb-4 ff-secondary">Quality Box is a condition-specific, actionable
-                                    web-based application for quality reporting and population management that is integrated
-                                    into the Electronic Health Record (EHR).</p>
-
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="vstack gap-2">
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-shrink-0 me-2">
-                                                    <div class="avatar-xs icon-effect">
-                                                        <div
-                                                            class="avatar-title bg-transparent text-success rounded-circle h2">
-                                                            <i class="ri-check-fill"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h5 class="fs-14 mb-0">Ecommerce</h5>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-shrink-0 me-2">
-                                                    <div class="avatar-xs icon-effect">
-                                                        <div
-                                                            class="avatar-title bg-transparent text-success rounded-circle h2">
-                                                            <i class="ri-check-fill"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h5 class="fs-14 mb-0">Analytics</h5>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-shrink-0 me-2">
-                                                    <div class="avatar-xs icon-effect">
-                                                        <div
-                                                            class="avatar-title bg-transparent text-success rounded-circle h2">
-                                                            <i class="ri-check-fill"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h5 class="fs-14 mb-0">CRM</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <div class="vstack gap-2">
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-shrink-0 me-2">
-                                                    <div class="avatar-xs icon-effect">
-                                                        <div
-                                                            class="avatar-title bg-transparent text-success rounded-circle h2">
-                                                            <i class="ri-check-fill"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h5 class="fs-14 mb-0">Crypto</h5>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-shrink-0 me-2">
-                                                    <div class="avatar-xs icon-effect">
-                                                        <div
-                                                            class="avatar-title bg-transparent text-success rounded-circle h2">
-                                                            <i class="ri-check-fill"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h5 class="fs-14 mb-0">Projects</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-4">
-                                    <a href="index" class="btn btn-primary">Learn More <i
-                                            class="ri-arrow-right-line align-middle ms-1"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end col -->
-                        <div class="col-lg-6 col-sm-7 col-10 ms-auto order-1 order-lg-2">
-                            <div>
-                                <img src="{{ URL::asset('build/images/landing/features/img-1.png') }}" alt=""
-                                    style="width: 200px; height: auto;" style="width: 100px; height: auto;"
-                                    class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end row -->
-
-                    <div class="row align-items-center mt-5 pt-lg-5 gy-4">
-                        <div class="col-lg-6 col-sm-7 col-10 mx-auto">
-                            <div>
-                                <img src="{{ URL::asset('build/images/landing/features/img-3.png') }}" alt=""
-                                    class="img-fluid">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="text-muted ps-lg-5">
-                                <h5 class="fs-12 text-uppercase text-secondary">structure</h5>
-                                <h4 class="mb-3">Well Documented</h4>
-                                <p class="mb-4">used to describe something that is known about or known to be true
-                                    because there are many documents that describe it, prove it, etc.</p>
-
-                                <div class="vstack gap-2">
-                                    <div class="d-flex align-items-center">
-                                        <div class="flex-shrink-0 me-2">
-                                            <div class="avatar-xs icon-effect">
-                                                <div class="avatar-title bg-transparent text-success rounded-circle h2">
-                                                    <i class="ri-check-fill"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="mb-0">Dynamic Conetnt</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div class="flex-shrink-0 me-2">
-                                            <div class="avatar-xs icon-effect">
-                                                <div class="avatar-title bg-transparent text-success rounded-circle h2">
-                                                    <i class="ri-check-fill"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="mb-0">Setup plugin's information.</p>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div class="flex-shrink-0 me-2">
-                                            <div class="avatar-xs icon-effect">
-                                                <div class="avatar-title bg-transparent text-success rounded-circle h2">
-                                                    <i class="ri-check-fill"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <p class="mb-0">Themes customization information</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end row -->
-                </div>
-                <!-- end container -->
-            </section>
-            <!-- end features -->
-
-            <!-- start plan -->
-            <section class="section bg-light" id="plans">
-                <div class="bg-overlay bg-overlay-pattern"></div>
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="text-center mb-5">
-                                <h3 class="mb-3 fw-semibold">Choose the plan that's right for you</h3>
-                                <p class="text-muted mb-4">Simple pricing. No hidden fees. Advanced features for you
-                                    business.</p>
-
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div>
-                                        <h5 class="fs-14 mb-0">Month</h5>
-                                    </div>
-                                    <div class="form-check form-switch fs-20 ms-3 " onclick="check()">
-                                        <input class="form-check-input" type="checkbox" id="plan-switch">
-                                        <label class="form-check-label" for="plan-switch"></label>
-                                    </div>
-                                    <div>
-                                        <h5 class="fs-14 mb-0">Annual <span class="badge badge-soft-success">Save
-                                                20%</span></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end row -->
-
-                    <div class="row gy-4">
                         <div class="col-lg-4">
-                            <div class="card plan-box mb-0">
-                                <div class="card-body p-4 m-2">
-                                    <div class="d-flex align-items-center">
-                                        <div class="flex-grow-1">
-                                            <h5 class="mb-1 fw-semibold">Basic Plan</h5>
-                                            <p class="text-muted mb-0">For Startup</p>
-                                        </div>
-                                        <div class="avatar-sm">
-                                            <div class="avatar-title bg-light rounded-circle text-secondary">
-                                                <i class="ri-book-mark-line fs-20"></i>
-                                            </div>
+                            <div class="d-flex p-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-sm icon-effect">
+                                        <div class="avatar-title bg-transparent text-success rounded-circle">
+                                            <i class="ri-lightbulb-flash-line fs-36"></i>
                                         </div>
                                     </div>
-                                    <div class="py-4 text-center">
-                                        <h1 class="month"><sup><small>$</small></sup><span
-                                                class="ff-secondary fw-bold">19</span> <span
-                                                class="fs-13 text-muted">/Month</span></h1>
-                                        <h1 class="annual"><sup><small>$</small></sup><span
-                                                class="ff-secondary fw-bold">171</span> <span
-                                                class="fs-13 text-muted">/Year</span></h1>
-                                    </div>
-
-                                    <div>
-                                        <ul class="list-unstyled text-muted vstack gap-3 ff-secondary">
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        Upto <b>3</b> Projects
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        Upto <b>299</b> Customers
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        Scalable Bandwidth
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <b>5</b> FTP Login
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-danger me-1">
-                                                        <i class="ri-close-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <b>24/7</b> Support
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-danger me-1">
-                                                        <i class="ri-close-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <b>Unlimited</b> Storage
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-danger me-1">
-                                                        <i class="ri-close-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        Domain
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="mt-4">
-                                            <a href="javascript:void(0);" class="btn btn-soft-primary w-100">Get
-                                                Started</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end col-->
-                        <div class="col-lg-4">
-                            <div class="card plan-box mb-0 ribbon-box right">
-                                <div class="card-body p-4 m-2">
-                                    <div class="ribbon-two ribbon-two-danger"><span>Popular</span></div>
-                                    <div class="d-flex align-items-center">
-                                        <div class="flex-grow-1">
-                                            <h5 class="mb-1 fw-semibold">Pro Business</h5>
-                                            <p class="text-muted mb-0">Professional plans</p>
-                                        </div>
-                                        <div class="avatar-sm">
-                                            <div class="avatar-title bg-light rounded-circle text-secondary">
-                                                <i class="ri-medal-fill fs-20"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="py-4 text-center">
-                                        <h1 class="month"><sup><small>$</small></sup><span
-                                                class="ff-secondary fw-bold">29</span> <span
-                                                class="fs-13 text-muted">/Month</span></h1>
-                                        <h1 class="annual"><sup><small>$</small></sup><span
-                                                class="ff-secondary fw-bold">261</span> <span
-                                                class="fs-13 text-muted">/Year</span></h1>
-                                    </div>
-
-                                    <div>
-                                        <ul class="list-unstyled text-muted vstack gap-3 ff-secondary">
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        Upto <b>15</b> Projects
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <b>Unlimited</b> Customers
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        Scalable Bandwidth
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <b>12</b> FTP Login
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <b>24/7</b> Support
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-danger me-1">
-                                                        <i class="ri-close-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <b>Unlimited</b> Storage
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-danger me-1">
-                                                        <i class="ri-close-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        Domain
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="mt-4">
-                                            <a href="javascript:void(0);" class="btn btn-soft-primary w-100">Get
-                                                Started</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end col-->
-                        <div class="col-lg-4">
-                            <div class="card plan-box mb-0">
-                                <div class="card-body p-4 m-2">
-                                    <div class="d-flex align-items-center">
-                                        <div class="flex-grow-1">
-                                            <h5 class="mb-1 fw-semibold">Platinum Plan</h5>
-                                            <p class="text-muted mb-0">Enterprise Businesses</p>
-                                        </div>
-                                        <div class="avatar-sm">
-                                            <div class="avatar-title bg-light rounded-circle text-secondary">
-                                                <i class="ri-stack-fill fs-20"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="py-4 text-center">
-                                        <h1 class="month"><sup><small>$</small></sup><span
-                                                class="ff-secondary fw-bold">39</span> <span
-                                                class="fs-13 text-muted">/Month</span></h1>
-                                        <h1 class="annual"><sup><small>$</small></sup><span
-                                                class="ff-secondary fw-bold">351</span> <span
-                                                class="fs-13 text-muted">/Year</span></h1>
-                                    </div>
-
-                                    <div>
-                                        <ul class="list-unstyled text-muted vstack gap-3 ff-secondary">
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <b>Unlimited</b> Projects
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <b>Unlimited</b> Customers
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        Scalable Bandwidth
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <b>Unlimited</b> FTP Login
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <b>24/7</b> Support
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        <b>Unlimited</b> Storage
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="d-flex">
-                                                    <div class="flex-shrink-0 text-success me-1">
-                                                        <i class="ri-checkbox-circle-fill fs-15 align-middle"></i>
-                                                    </div>
-                                                    <div class="flex-grow-1">
-                                                        Domain
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="mt-4">
-                                            <a href="javascript:void(0);" class="btn btn-soft-primary w-100">Get
-                                                Started</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end col-->
-                    </div>
-                    <!--end row-->
-                </div>
-                <!-- end container -->
-            </section>
-            <!-- end plan -->
-
-            <!-- start faqs -->
-            <section class="section">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="text-center mb-5">
-                                <h3 class="mb-3 fw-semibold">Frequently Asked Questions</h3>
-                                <p class="text-muted mb-4 ff-secondary">If you can not find answer to your question in our
-                                    FAQ, you can always contact us or email us. We will answer you shortly!</p>
-
-                                <div class="hstack gap-2 justify-content-center">
-                                    <button type="button" class="btn btn-primary btn-label rounded-pill"><i
-                                            class="ri-mail-line label-icon align-middle rounded-pill fs-16 me-2"></i> Email
-                                        Us</button>
-                                    <button type="button" class="btn btn-secondary btn-label rounded-pill"><i
-                                            class="ri-twitter-line label-icon align-middle rounded-pill fs-16 me-2"></i>
-                                        Send Us Tweet</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end row -->
-
-                    <div class="row g-lg-5 g-4">
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center mb-2">
-                                <div class="flex-shrink-0 me-1">
-                                    <i class="ri-question-line fs-24 align-middle text-success me-1"></i>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h5 class="mb-0 fw-semibold">General Questions</h5>
-                                </div>
-                            </div>
-                            <div class="accordion custom-accordionwithicon custom-accordion-border accordion-border-box"
-                                id="genques-accordion">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="genques-headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#genques-collapseOne" aria-expanded="true"
-                                            aria-controls="genques-collapseOne">
-                                            What is the purpose of using themes ?
-                                        </button>
-                                    </h2>
-                                    <div id="genques-collapseOne" class="accordion-collapse collapse show"
-                                        aria-labelledby="genques-headingOne" data-bs-parent="#genques-accordion">
-                                        <div class="accordion-body ff-secondary">
-                                            A theme is a set of colors, fonts, effects, and more that can be applied to your
-                                            entire presentation to give it a
-                                            consistent, professional look. You've already been using a theme, even if you
-                                            didn't know it: the default Office theme, which consists.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="genques-headingTwo">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#genques-collapseTwo"
-                                            aria-expanded="false" aria-controls="genques-collapseTwo">
-                                            Can a theme have more than one theme?
-                                        </button>
-                                    </h2>
-                                    <div id="genques-collapseTwo" class="accordion-collapse collapse"
-                                        aria-labelledby="genques-headingTwo" data-bs-parent="#genques-accordion">
-                                        <div class="accordion-body ff-secondary">
-                                            A story can have as many themes as the reader can identify based on recurring
-                                            patterns and parallels within the story
-                                            itself. In looking at ways to separate themes into a hierarchy, we might find it
-                                            useful to follow the example of a single book.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="genques-headingThree">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#genques-collapseThree"
-                                            aria-expanded="false" aria-controls="genques-collapseThree">
-                                            What are theme features?
-                                        </button>
-                                    </h2>
-                                    <div id="genques-collapseThree" class="accordion-collapse collapse"
-                                        aria-labelledby="genques-headingThree" data-bs-parent="#genques-accordion">
-                                        <div class="accordion-body ff-secondary">
-                                            Theme features is a set of specific functionality that may be enabled by theme
-                                            authors. Themes must register each
-                                            individual Theme Feature that the author wishes to support. Theme support
-                                            functions should be called in the theme's functions.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="genques-headingFour">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#genques-collapseFour"
-                                            aria-expanded="false" aria-controls="genques-collapseFour">
-                                            What is simple theme?
-                                        </button>
-                                    </h2>
-                                    <div id="genques-collapseFour" class="accordion-collapse collapse"
-                                        aria-labelledby="genques-headingFour" data-bs-parent="#genques-accordion">
-                                        <div class="accordion-body ff-secondary">
-                                            Simple is a free WordPress theme, by Themify, built exactly what it is named
-                                            for: simplicity. Immediately upgrade the
-                                            quality of your WordPress site with the simple theme To use the built-in Chrome
-                                            theme editor.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end accordion-->
+                                    {{-- <h5 class="fs-18">Ease of Installation</h5> --}}
+                                    <p class="text-muted my-3 ff-secondary"> نظام ردس هو الحل لمشاكل التوصيل واستلام
+                                        الشحنات</p>
 
+                                </div>
+                            </div>
                         </div>
                         <!-- end col -->
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center mb-2">
-                                <div class="flex-shrink-0 me-1">
-                                    <i class="ri-shield-keyhole-line fs-24 align-middle text-success me-1"></i>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <h5 class="mb-0 fw-semibold">Privacy &amp; Security</h5>
-                                </div>
-                            </div>
 
-                            <div class="accordion custom-accordionwithicon custom-accordion-border accordion-border-box"
-                                id="privacy-accordion">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="privacy-headingOne">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#privacy-collapseOne"
-                                            aria-expanded="false" aria-controls="privacy-collapseOne">
-                                            Does Word have night mode?
-                                        </button>
-                                    </h2>
-                                    <div id="privacy-collapseOne" class="accordion-collapse collapse"
-                                        aria-labelledby="privacy-headingOne" data-bs-parent="#privacy-accordion">
-                                        <div class="accordion-body ff-secondary">
-                                            You can run Microsoft Word in dark mode, which uses a dark color palette to help
-                                            reduce eye strain in low light
-                                            settings. You can choose to make the document white or black using the Switch
-                                            Modes button in the ribbon's View tab.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="privacy-headingTwo">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#privacy-collapseTwo" aria-expanded="true"
-                                            aria-controls="privacy-collapseTwo">
-                                            Is theme an opinion?
-                                        </button>
-                                    </h2>
-                                    <div id="privacy-collapseTwo" class="accordion-collapse collapse show"
-                                        aria-labelledby="privacy-headingTwo" data-bs-parent="#privacy-accordion">
-                                        <div class="accordion-body ff-secondary">
-                                            A theme is an opinion the author expresses on the subject, for instance, the
-                                            author's dissatisfaction with the narrow
-                                            confines of French bourgeois marriage during that period theme is an idea that a
-                                            writer repeats.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="privacy-headingThree">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#privacy-collapseThree"
-                                            aria-expanded="false" aria-controls="privacy-collapseThree">
-                                            How do you develop a theme?
-                                        </button>
-                                    </h2>
-                                    <div id="privacy-collapseThree" class="accordion-collapse collapse"
-                                        aria-labelledby="privacy-headingThree" data-bs-parent="#privacy-accordion">
-                                        <div class="accordion-body ff-secondary">
-                                            A short story, novella, or novel presents a narrative to its reader. Perhaps
-                                            that narrative involves mystery, terror,
-                                            romance, comedy, or all of the above. These works of fiction may also contain
-                                            memorable characters, vivid
-                                            world-building, literary devices.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="privacy-headingFour">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#privacy-collapseFour"
-                                            aria-expanded="false" aria-controls="privacy-collapseFour">
-                                            Do stories need themes?
-                                        </button>
-                                    </h2>
-                                    <div id="privacy-collapseFour" class="accordion-collapse collapse"
-                                        aria-labelledby="privacy-headingFour" data-bs-parent="#privacy-accordion">
-                                        <div class="accordion-body ff-secondary">
-                                            A story can have as many themes as the reader can identify based on recurring
-                                            patterns and parallels within the story
-                                            itself. In looking at ways to separate themes into a hierarchy, we might find it
-                                            useful to follow the example of a
-                                            single book.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end accordion-->
-                        </div>
-                        <!-- end col -->
                     </div>
                     <!-- end row -->
                 </div>
                 <!-- end container -->
             </section>
-            <!-- end faqs -->
 
-            <!-- start review -->
-            {{-- <section class="section bg-primary" id="reviews">
-                <div class="bg-overlay bg-overlay-pattern"></div>
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-10">
-                            <div class="text-center">
-                                <div>
-                                    <i class="ri-double-quotes-l text-secondary display-3"></i>
-                                </div>
-                                <h4 class="text-white mb-5"><span class="text-secondary">19k</span>+ Satisfied clients
-                                </h4>
 
-                                <!-- Swiper -->
-                                <div class="swiper client-review-swiper rounded" dir="ltr">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="row justify-content-center">
-                                                <div class="col-10">
-                                                    <div class="text-white-50">
-                                                        <p class="fs-20 ff-secondary mb-4">" I am givng 5 stars. Theme is
-                                                            great and everyone one stuff everything in theme. Future request
-                                                            should not affect current state of theme. "</p>
-
-                                                        <div>
-                                                            <h5 class="text-white">gregoriusus</h5>
-                                                            <p>- Skote User</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end slide -->
-                                        <div class="swiper-slide">
-                                            <div class="row justify-content-center">
-                                                <div class="col-10">
-                                                    <div class="text-white-50">
-                                                        <p class="fs-20 ff-secondary mb-4">" Awesome support. Had few
-                                                            issues while setting up because of my device, the support team
-                                                            helped me fix them up in a day. Everything looks clean and good.
-                                                            Highly recommended! "</p>
-
-                                                        <div>
-                                                            <h5 class="text-white">GeekyGreenOwl</h5>
-                                                            <p>- Skote User</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end slide -->
-                                        <div class="swiper-slide">
-                                            <div class="row justify-content-center">
-                                                <div class="col-10">
-                                                    <div class="text-white-50">
-                                                        <p class="fs-20 ff-secondary mb-4">" Amazing template, Redux store
-                                                            and components is nicely designed. It's a great start point for
-                                                            an admin based project. Clean Code and good documentation.
-                                                            Template is completely in React and absolutely no usage of
-                                                            jQuery "</p>
-
-                                                        <div>
-                                                            <h5 class="text-white">sreeks456</h5>
-                                                            <p>- Veltrix User</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end slide -->
-                                    </div>
-                                    <div class="swiper-button-next bg-white rounded-circle"></div>
-                                    <div class="swiper-button-prev bg-white rounded-circle"></div>
-                                    <div class="swiper-pagination position-relative mt-2"></div>
-                                </div>
-                                <!-- end slider -->
-                            </div>
-                        </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end row -->
-                </div>
-                <!-- end container -->
-            </section> --}}
-            <!-- end review -->
-
-            <!-- start counter -->
-            <section class="py-5 position-relative bg-light">
-                <div class="container">
-                    <div class="row text-center gy-4">
-                        <div class="col-lg-3 col-6">
-                            <div>
-                                <h2 class="mb-2"><span class="counter-value" data-target="100">0</span>+</h2>
-                                <div class="text-muted">Projects Completed</div>
-                            </div>
-                        </div>
-                        <!-- end col -->
-
-                        <div class="col-lg-3 col-6">
-                            <div>
-                                <h2 class="mb-2"><span class="counter-value" data-target="24">0</span></h2>
-                                <div class="text-muted">Win Awards</div>
-                            </div>
-                        </div>
-                        <!-- end col -->
-
-                        <div class="col-lg-3 col-6">
-                            <div>
-                                <h2 class="mb-2"><span class="counter-value" data-target="20.3">0</span>k</h2>
-                                <div class="text-muted">Satisfied Clients</div>
-                            </div>
-                        </div>
-                        <!-- end col -->
-                        <div class="col-lg-3 col-6">
-                            <div>
-                                <h2 class="mb-2"><span class="counter-value" data-target="50">0</span></h2>
-                                <div class="text-muted">Employees</div>
-                            </div>
-                        </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end row -->
-                </div>
-                <!-- end container -->
-            </section>
-            <!-- end counter -->
-
-            <!-- start Work Process -->
-            <section class="section">
+            <section class="section" id="boxbox">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="text-center mb-5">
-                                <h3 class="mb-3 fw-semibold">Our Work Process</h3>
-                                <p class="text-muted mb-4 ff-secondary">Discover the simplicity and efficiency of our
-                                    ordering system. In just three straightforward steps, embark on a seamless journey from
-                                    selection to delivery with RDS Box.</p>
+                                <h3 class="mb-3 fw-semibold">طريقة عملنا</h3>
+                                <p class="text-muted mb-4 ff-secondary">اكتشف بساطة وكفاءة نظام طلباتنا. في ثلاث خطوات
+                                    واضحة، انطلق في رحلة سلسة من الاختيار إلى التوصيل مع ردس بوكس.</p>
                             </div>
                         </div>
                     </div>
                     <!-- end row -->
 
                     <div class="row text-center">
+
                         <div class="col-lg-4">
                             <div class="process-card mt-4">
-                                <div class="process-arrow-img d-none d-lg-block">
-                                    <img src="{{ URL::asset('build/images/landing/process-arrow-img.png') }}"
-                                        alt="" class="img-fluid">
-                                </div>
                                 <div class="avatar-sm icon-effect mx-auto mb-4">
                                     <div class="avatar-title bg-transparent text-success rounded-circle h1">
-                                        <i class="ri-quill-pen-line"></i>
+                                        <i class="ri-book-mark-line"></i>
                                     </div>
                                 </div>
 
-                                <h5>Select Box & Buy</h5>
-                                <p class="text-muted ff-secondary">In this step, customers are presented with various
-                                    options to select their desired RDS Box. The selection process is made user-friendly,
-                                    allowing customers to choose based on their specific needs. After selection, customers
-                                    proceed to purchase the box using an easy and secure transaction process.</p>
+                                <h5>التوصيل</h5>
+                                <p class="text-muted ff-secondary">الخطوة النهائية تشمل توصيل صندوق ردس بكفاءة إلى العميل.
+                                    يتم التركيز على التوصيل الآمن والموثوق به في الوقت المحدد، لضمان وصول المنتج إلى العميل
+                                    في حالة مثالية وضمن الإطار الزمني الموعود.</p>
                             </div>
                         </div>
-                        <!-- end col -->
                         <div class="col-lg-4">
                             <div class="process-card mt-4">
                                 <div class="process-arrow-img d-none d-lg-block">
@@ -1284,28 +460,208 @@
                                     </div>
                                 </div>
 
-                                <h5>Complete the Process:</h5>
-                                <p class="text-muted ff-secondary">Once the purchase is made, customers are guided through
-                                    any necessary steps to complete the process. This might include filling out delivery
-                                    details, choosing delivery options, or confirming order details to ensure accuracy and
-                                    customer satisfaction..</p>
+                                <h5>إتمام العملية:</h5>
+                                <p class="text-muted ff-secondary">بمجرد إتمام الشراء، يتم توجيه العملاء خلال الخطوات
+                                    اللازمة لإكمال العملية. قد يشمل ذلك تعبئة تفاصيل التوصيل، اختيار خيارات التوصيل، أو
+                                    تأكيد تفاصيل الطلب لضمان الدقة ورضا العملاء.</p>
                             </div>
                         </div>
-                        <!-- end col -->
+
                         <div class="col-lg-4">
                             <div class="process-card mt-4">
+                                <div class="process-arrow-img d-none d-lg-block">
+                                    <img src="{{ URL::asset('build/images/landing/process-arrow-img.png') }}"
+                                        alt="" class="img-fluid">
+                                </div>
                                 <div class="avatar-sm icon-effect mx-auto mb-4">
                                     <div class="avatar-title bg-transparent text-success rounded-circle h1">
-                                        <i class="ri-book-mark-line"></i>
+                                        <i class="ri-quill-pen-line"></i>
                                     </div>
                                 </div>
 
-                                <h5>Delivery</h5>
-                                <p class="text-muted ff-secondary">The final step involves the efficient delivery of the
-                                    RDS Box to the customer. Emphasis is placed on timely and secure delivery, ensuring that
-                                    the product reaches the customer in perfect condition and within the promised timeframe.
-                                </p>
+                                <h5>اختر صندوق واشترِ</h5>
+                                <p class="text-muted ff-secondary">في هذه الخطوة، يُعرض على العملاء خيارات متعددة لاختيار
+                                    صندوق ردس المطلوب. يتم تصميم عملية الاختيار لتكون سهلة الاستخدام، مما يتيح للعملاء
+                                    الاختيار بناءً على احتياجاتهم الخاصة. بعد الاختيار، يتابع العملاء عملية الشراء من خلال
+                                    عملية معاملة آمنة وسهلة.</p>
                             </div>
+                        </div>
+                        <!-- end col -->
+
+                        <!-- end col -->
+
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container -->
+            </section>
+
+            <!-- start faqs -->
+            <section class="section" id="faqs">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="text-center mb-5">
+                                <h3 class="mb-3 fw-semibold">الأسئلة الشائعة</h3>
+                                <p class="text-muted mb-4 ff-secondary">إذا لم تتمكن من العثور على إجابة على سؤالك في
+                                    الأسئلة الشائعة لدينا، يمكنك دائمًا الاتصال بنا أو إرسال بريد إلكتروني لنا. سنقوم بالرد
+                                    عليك في أقرب وقت ممكن!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+
+                    <div class="row g-lg-5 g-4">
+                        <div class="col-lg-6">
+                            <div class="accordion custom-accordionwithicon custom-accordion-border accordion-border-box"
+                                id="genques-accordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="genques-headingOne">
+                                        <button class="accordion-button " type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#genques-collapseOne" aria-expanded="false"
+                                            aria-controls="genques-collapseOne">
+                                            كيف أطلب من الموقع؟? </button>
+                                    </h2>
+                                    <div id="genques-collapseOne" class="accordion-collapse collapse show"
+                                        aria-labelledby="genques-headingOne" data-bs-parent="#genques-accordion">
+                                        <div class="accordion-body ff-secondary">
+                                            أيقونة الطلب تنقل العميل لصفحة المتجر لطلب الصندوق، أما انظمام مواقع البيع
+                                            والتوصيل عن طريق الأيقونة الخاصة بهم بخطوات سهلة ويسيرة.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="genques-headingTwo">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#genques-collapseTwo"
+                                            aria-expanded="false" aria-controls="genques-collapseTwo">
+                                            كيف طريقة الدفع؟
+                                        </button>
+                                    </h2>
+                                    <div id="genques-collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="genques-headingTwo" data-bs-parent="#genques-accordion">
+                                        <div class="accordion-body ff-secondary">
+                                            نوفر جميع طرق الدفع.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="genques-headingThree">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#genques-collapseThree"
+                                            aria-expanded="false" aria-controls="genques-collapseThree">
+                                            كيف طريقة تجديد الاشتراك بخدمات الصندوق؟
+                                        </button>
+                                    </h2>
+                                    <div id="genques-collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="genques-headingThree" data-bs-parent="#genques-accordion">
+                                        <div class="accordion-body ff-secondary">
+                                            تجديد الاشتراك بالتطبيق الخاص بالنظام بخطوات سهلة ويسيرة.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="genques-headingFour">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#genques-collapseFour"
+                                            aria-expanded="false" aria-controls="genques-collapseFour">
+                                            كيف طريقة نقل الصندوق؟
+                                        </button>
+                                    </h2>
+                                    <div id="genques-collapseFour" class="accordion-collapse collapse"
+                                        aria-labelledby="genques-headingFour" data-bs-parent="#genques-accordion">
+                                        <div class="accordion-body ff-secondary">
+                                            فريق خاص يوصل الصندوق ويثبته لكم.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end accordion-->
+
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-6">
+                            <div class="accordion custom-accordionwithicon custom-accordion-border accordion-border-box"
+                                id="privacy-accordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="privacy-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#privacy-collapseOne"
+                                            aria-expanded="false" aria-controls="privacy-collapseOne">
+                                            طريقة الاستبدال والترجيع؟
+                                        </button>
+                                    </h2>
+                                    <div id="privacy-collapseOne" class="accordion-collapse collapse"
+                                        aria-labelledby="privacy-headingOne" data-bs-parent="#privacy-accordion">
+                                        <div class="accordion-body ff-secondary">
+                                            لدينا خدمة الاستبدال والترجيع لمدة معينة بعد استلام الصندوق، وذلك عن طريق
+                                            التواصل مع أرقام خدمة العملاء.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="privacy-headingTwo">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#privacy-collapseTwo" aria-expanded="false"
+                                            aria-controls="privacy-collapseTwo">
+                                            طريقة صيانة الصدوق؟
+                                        </button>
+                                    </h2>
+                                    <div id="privacy-collapseTwo" class="accordion-collapse collapse show"
+                                        aria-labelledby="privacy-headingTwo" data-bs-parent="#privacy-accordion">
+                                        <div class="accordion-body ff-secondary">
+                                            فريق ردس متاحين للمتابعة والصيانة بشكل دائم.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="privacy-headingThree">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#privacy-collapseThree"
+                                            aria-expanded="false" aria-controls="privacy-collapseThree">
+                                            سرية معلومات العميل؟
+                                        </button>
+                                    </h2>
+                                    <div id="privacy-collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="privacy-headingThree" data-bs-parent="#privacy-accordion">
+                                        <div class="accordion-body ff-secondary">
+                                            البرنامج محمي بنظام آمان عالي من قبل المتخصصين.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="privacy-headingFour">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#privacy-collapseFour"
+                                            aria-expanded="false" aria-controls="privacy-collapseFour">
+                                            مدة وصول الصندوق للعميل؟
+                                        </button>
+                                    </h2>
+                                    <div id="privacy-collapseFour" class="accordion-collapse collapse"
+                                        aria-labelledby="privacy-headingFour" data-bs-parent="#privacy-accordion">
+                                        <div class="accordion-body ff-secondary">
+                                            من أول طلب الصندوق يتم العمل على خدمتكم بشكل مباشر.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="privacy-headingFour">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#privacy-collapseFour"
+                                            aria-expanded="false" aria-controls="privacy-collapseFour">
+                                            الضمان على الصندوق؟
+                                        </button>
+                                    </h2>
+                                    <div id="privacy-collapseFour" class="accordion-collapse collapse"
+                                        aria-labelledby="privacy-headingFour" data-bs-parent="#privacy-accordion">
+                                        <div class="accordion-body ff-secondary">
+                                            نحن نتميز بخدمات مابعد البيع ونضمن لكم جودة ردس بوكس.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end accordion-->
                         </div>
                         <!-- end col -->
                     </div>
@@ -1313,217 +669,17 @@
                 </div>
                 <!-- end container -->
             </section>
-            <!-- end Work Process -->
-
-            <!-- start team -->
-            {{-- <section class="section bg-light" id="team">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <div class="text-center mb-5">
-                                <h3 class="mb-3 fw-semibold">Our <span class="text-danger">Team</span></h3>
-                                <p class="text-muted mb-4 ff-secondary">To achieve this, it would be necessary to have
-                                    uniform grammar, pronunciation and more common words. If several languages coalesce the
-                                    grammar.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end row -->
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card">
-                                <div class="card-body text-center p-4">
-                                    <div class="avatar-xl mx-auto mb-4 position-relative">
-                                        <img src="{{ URL::asset('build/images/users/avatar-2.jpg') }}" alt=""
-                                            class="img-fluid rounded-circle">
-                                        <a href="apps-mailbox"
-                                            class="btn btn-secondary btn-sm position-absolute bottom-0 end-0 rounded-circle avatar-xs">
-                                            <div class="avatar-title bg-transparent">
-                                                <i class="ri-mail-fill align-bottom"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- end card body -->
-                                    <h5 class="mb-1"><a href="pages-profile" class="text-body">Nancy Martino</a>
-                                    </h5>
-                                    <p class="text-muted mb-0 ff-secondary">Team Leader</p>
-                                </div>
-                            </div>
-                            <!-- end card -->
-                        </div>
-                        <!-- end col -->
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card">
-                                <div class="card-body text-center p-4">
-                                    <div class="avatar-xl mx-auto mb-4 position-relative">
-                                        <img src="{{ URL::asset('build/images/users/avatar-10.jpg') }}" alt=""
-                                            class="img-fluid rounded-circle">
-                                        <a href="apps-mailbox"
-                                            class="btn btn-secondary btn-sm position-absolute bottom-0 end-0 rounded-circle avatar-xs">
-                                            <div class="avatar-title bg-transparent">
-                                                <i class="ri-mail-fill align-bottom"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- end card body -->
-                                    <h5 class="mb-1"><a href="pages-profile" class="text-body">Henry Baird</a>
-                                    </h5>
-                                    <p class="text-muted mb-0 ff-secondary">Full Stack Developer</p>
-                                </div>
-                            </div>
-                            <!-- end card -->
-                        </div>
-                        <!-- end col -->
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card">
-                                <div class="card-body text-center p-4">
-                                    <div class="avatar-xl mx-auto mb-4 position-relative">
-                                        <img src="{{ URL::asset('build/images/users/avatar-3.jpg') }}" alt=""
-                                            class="img-fluid rounded-circle">
-                                        <a href="apps-mailbox"
-                                            class="btn btn-secondary btn-sm position-absolute bottom-0 end-0 rounded-circle avatar-xs">
-                                            <div class="avatar-title bg-transparent">
-                                                <i class="ri-mail-fill align-bottom"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- end card body -->
-                                    <h5 class="mb-1"><a href="pages-profile" class="text-body">Frank Hook</a></h5>
-                                    <p class="text-muted mb-0 ff-secondary">Project Manager</p>
-                                </div>
-                            </div>
-                            <!-- end card -->
-                        </div>
-                        <!-- end col -->
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card">
-                                <div class="card-body text-center p-4">
-                                    <div class="avatar-xl mx-auto mb-4 position-relative">
-                                        <img src="{{ URL::asset('build/images/users/avatar-8.jpg') }}" alt=""
-                                            class="img-fluid rounded-circle">
-                                        <a href="apps-mailbox"
-                                            class="btn btn-secondary btn-sm position-absolute bottom-0 end-0 rounded-circle avatar-xs">
-                                            <div class="avatar-title bg-transparent">
-                                                <i class="ri-mail-fill align-bottom"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- end card body -->
-                                    <h5 class="mb-1"><a href="pages-profile" class="text-body">Donald Palmer</a>
-                                    </h5>
-                                    <p class="text-muted mb-0 ff-secondary">UI/UX Designer</p>
-                                </div>
-                            </div>
-                            <!-- end card -->
-                        </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end row -->
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card">
-                                <div class="card-body text-center p-4">
-                                    <div class="avatar-xl mx-auto mb-4 position-relative">
-                                        <img src="{{ URL::asset('build/images/users/avatar-5.jpg') }}" alt=""
-                                            class="img-fluid rounded-circle">
-                                        <a href="apps-mailbox"
-                                            class="btn btn-secondary btn-sm position-absolute bottom-0 end-0 rounded-circle avatar-xs">
-                                            <div class="avatar-title bg-transparent">
-                                                <i class="ri-mail-fill align-bottom"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- end card body -->
-                                    <h5 class="mb-1"><a href="pages-profile" class="text-body">Erica Kernan</a>
-                                    </h5>
-                                    <p class="text-muted mb-0 ff-secondary">Web Designer</p>
-                                </div>
-                            </div>
-                            <!-- end card -->
-                        </div>
-                        <!-- end col -->
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card">
-                                <div class="card-body text-center p-4">
-                                    <div class="avatar-xl mx-auto mb-4 position-relative">
-                                        <img src="{{ URL::asset('build/images/users/avatar-4.jpg') }}" alt=""
-                                            class="img-fluid rounded-circle">
-                                        <a href="apps-mailbox"
-                                            class="btn btn-secondary btn-sm position-absolute bottom-0 end-0 rounded-circle avatar-xs">
-                                            <div class="avatar-title bg-transparent">
-                                                <i class="ri-mail-fill align-bottom"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- end card body -->
-                                    <h5 class="mb-1"><a href="pages-profile" class="text-body">Alexis Clarke</a>
-                                    </h5>
-                                    <p class="text-muted mb-0 ff-secondary">Backend Developer</p>
-                                </div>
-                            </div>
-                            <!-- end card -->
-                        </div>
-                        <!-- end col -->
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card">
-                                <div class="card-body text-center p-4">
-                                    <div class="avatar-xl mx-auto mb-4 position-relative">
-                                        <img src="{{ URL::asset('build/images/users/avatar-6.jpg') }}" alt=""
-                                            class="img-fluid rounded-circle">
-                                        <a href="apps-mailbox"
-                                            class="btn btn-secondary btn-sm position-absolute bottom-0 end-0 rounded-circle avatar-xs">
-                                            <div class="avatar-title bg-transparent">
-                                                <i class="ri-mail-fill align-bottom"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- end card body -->
-                                    <h5 class="mb-1"><a href="pages-profile" class="text-body">Marie Ward</a></h5>
-                                    <p class="text-muted mb-0 ff-secondary">Full Stack Developer</p>
-                                </div>
-                            </div>
-                            <!-- end card -->
-                        </div>
-                        <!-- end col -->
-
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="card">
-                                <div class="card-body text-center p-4">
-                                    <div class="avatar-xl mx-auto mb-4 position-relative">
-                                        <img src="{{ URL::asset('build/images/users/avatar-7.jpg') }}" alt=""
-                                            class="img-fluid rounded-circle">
-                                        <a href="apps-mailbox"
-                                            class="btn btn-secondary btn-sm position-absolute bottom-0 end-0 rounded-circle avatar-xs">
-                                            <div class="avatar-title bg-transparent">
-                                                <i class="ri-mail-fill align-bottom"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!-- end card body -->
-                                    <h5 class="mb-1"><a href="pages-profile" class="text-body">Jack Gough</a></h5>
-                                    <p class="text-muted mb-0 ff-secondary">React Js Developer</p>
-                                </div>
-                            </div>
-                            <!-- end card -->
-                        </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end row -->
-                </div>
-                <!-- end container -->
-            </section> --}}
-            <!-- end team -->
 
             <!-- start contact -->
-            <section class="section" id="contact">
+            <section class="section" id="contactus">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="text-center mb-5">
-                                <h3 class="mb-3 fw-semibold">Get In Touch</h3>
-                                <p class="text-muted mb-4 ff-secondary">We thrive when coming up with innovative ideas but
-                                    also understand that a smart concept should be supported with faucibus sapien odio
-                                    measurable results.</p>
+                                <h3 class="mb-3 fw-semibold">تواصل معنا</h3>
+                                <p class="text-muted mb-4 ff-secondary">نزدهر عندما نأتي بأفكار مبتكرة ولكننا نفهم أيضًا أن
+                                    الفكرة
+                                    الذكية يجب أن تدعم بنتائج قابلة للقياس.</p>
                             </div>
                         </div>
                     </div>
@@ -1533,17 +689,17 @@
                         <div class="col-lg-4">
                             <div>
                                 <div class="mt-4">
-                                    <h5 class="fs-13 text-muted text-uppercase">Office Address 1:</h5>
-                                    <div class="ff-secondary fw-semibold">4461 Cedar Street Moro, <br />AR 72368</div>
+                                    <h5 class="fs-13 text-muted text-uppercase">عنوان المكتب 1:</h5>
+                                    <div class="ff-secondary fw-semibold">4461 شارع سيدار، مورو، <br />أركنساس 72368</div>
                                 </div>
                                 <div class="mt-4">
-                                    <h5 class="fs-13 text-muted text-uppercase">Office Address 2:</h5>
-                                    <div class="ff-secondary fw-semibold">2467 Swick Hill Street <br />New Orleans, LA
+                                    <h5 class="fs-13 text-muted text-uppercase">عنوان المكتب 2:</h5>
+                                    <div class="ff-secondary fw-semibold">2467 شارع سويك هيل، <br />نيو أورليانز، لويزيانا
                                     </div>
                                 </div>
                                 <div class="mt-4">
-                                    <h5 class="fs-13 text-muted text-uppercase">Working Hours:</h5>
-                                    <div class="ff-secondary fw-semibold">9:00am to 6:00pm</div>
+                                    <h5 class="fs-13 text-muted text-uppercase">ساعات العمل:</h5>
+                                    <div class="ff-secondary fw-semibold">9:00 صباحًا إلى 6:00 مساءً</div>
                                 </div>
                             </div>
                         </div>
@@ -1554,41 +710,42 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="mb-4">
-                                                <label for="name" class="form-label fs-13">Name</label>
+                                                <label for="name" class="form-label fs-13">الاسم</label>
                                                 <input name="name" id="name" type="text"
-                                                    class="form-control bg-light border-light" placeholder="Your name*">
+                                                    class="form-control bg-light border-light" placeholder="اسمك*">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-4">
-                                                <label for="email" class="form-label fs-13">Email</label>
+                                                <label for="email" class="form-label fs-13">البريد الإلكتروني</label>
                                                 <input name="email" id="email" type="email"
-                                                    class="form-control bg-light border-light" placeholder="Your email*">
+                                                    class="form-control bg-light border-light"
+                                                    placeholder="بريدك الإلكتروني*">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-4">
-                                                <label for="subject" class="form-label fs-13">Subject</label>
+                                                <label for="subject" class="form-label fs-13">الموضوع</label>
                                                 <input type="text" class="form-control bg-light border-light"
-                                                    id="subject" name="subject" placeholder="Your Subject.." />
+                                                    id="subject" name="subject" placeholder="موضوعك.." />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
-                                                <label for="comments" class="form-label fs-13">Message</label>
+                                                <label for="comments" class="form-label fs-13">الرسالة</label>
                                                 <textarea name="comments" id="comments" rows="3" class="form-control bg-light border-light"
-                                                    placeholder="Your message..."></textarea>
+                                                    placeholder="رسالتك..."></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12 text-end">
                                             <input type="submit" id="submit" name="send"
-                                                class="submitBnt btn btn-primary" value="Send Message">
+                                                class="submitBnt btn btn-primary" value="إرسال الرسالة">
                                         </div>
                                     </div>
                                 </form>
@@ -1599,24 +756,28 @@
                 </div>
                 <!-- end container -->
             </section>
+
             <!-- end contact -->
 
-            <!-- start cta -->
-            {{-- <section class="py-5 bg-primary position-relative">
+            <section class="py-5 bg-primary position-relative">
                 <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
                 <div class="container">
                     <div class="row align-items-center gy-4">
                         <div class="col-sm">
                             <div>
-                                <h4 class="text-white mb-0 fw-semibold">Build your web App/SaaS with RDS dashboard</h4>
+                                <h4 class="text-white mb-0 fw-semibold">
+                                    نراهن على ارتفاع نسبة عمليات التوصيل الناجحة في وقت قياسي
+                                    وزيادة الطلبات لسلعكم ومنتجاتكم؛
+                                    سارعوا بالاشتراك
+                                    معنا.
                             </div>
                         </div>
                         <!-- end col -->
                         <div class="col-sm-auto">
                             <div>
                                 <a href="https://1.envato.market/RDS-admin" target="_blank"
-                                    class="btn bg-gradient btn-danger"><i
-                                        class="ri-shopping-cart-2-line align-middle me-1"></i> Buy Now</a>
+                                    class="btn bg-gradient btn-secondary"><i
+                                        class="ri-shopping-cart-2-line align-middle me-1"></i> اشترك الان</a>
                             </div>
                         </div>
                         <!-- end col -->
@@ -1624,10 +785,8 @@
                     <!-- end row -->
                 </div>
                 <!-- end container -->
-            </section> --}}
-            <!-- end cta -->
+            </section>
 
-            <!-- Start footer -->
             <footer class="custom-footer bg-dark py-5 position-relative">
                 <div class="container">
                     <div class="row">
@@ -1640,7 +799,7 @@
                                 <div class="mt-4 fs-13">
                                     <p>Premium Multipurpose Admin & Dashboard Template</p>
                                     <p class="ff-secondary">You can build any type of web application like eCommerce, CRM,
-                                        CMS, Project management apps, Admin Panels, etc using RDS.</p>
+                                        CMS, Project management apps, Admin Panels, etc using ردس .</p>
                                 </div>
                             </div>
                         </div>
@@ -1691,7 +850,7 @@
                                 <p class="copy-rights mb-0">
                                     <script>
                                         document.write(new Date().getFullYear())
-                                    </script> Â© RDS - Themesbrand
+                                    </script>ردس
                                 </p>
                             </div>
                         </div>
