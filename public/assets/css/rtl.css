@@ -1,0 +1,38 @@
+
+:root{
+	--default-font		: "GE SS Two", sans-serif;
+}
+
+
+.header-contact-us a img {
+    margin-right: unset;
+    margin-left: 10px;
+}
+
+.section-title h1, .section-title h2 {
+    text-align: right;
+}
+
+.transportation-footer-btn {
+    margin-right: unset;
+    margin-left: 40px;
+}
+
+.text-anime-style-3 {
+    text-align: center !important;
+}
+
+.footer-info-box {
+    padding-left: unset;
+    padding-right: 30px;
+}
+
+.footer-info-box .icon-box {
+    left: unset;
+    right: 0;
+}
+
+.footer-social-link ul li {
+    margin-right: unset;
+    margin-left: 5px;
+}

@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\QRCodeScannerController;
 use App\Http\Controllers\Admin\ClassSessionsController;
+use App\Http\Controllers\InquiryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +22,15 @@ use App\Http\Controllers\Admin\ClassSessionsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
+
+Route::post('/submit-inquiry', [InquiryController::class, 'store'])->name('inquiry.store');
 // Auth::routes();
 //Language Translation
-Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
+Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'])->name('change.locale');
 Route::get('/landing', [App\Http\Controllers\LandingPageController::class, 'index'] );
 Route::post('/submit-contact-form',  'App\Http\Controllers\Admin\ContactController@submitForm' )->name('submit.contact.form');
 
