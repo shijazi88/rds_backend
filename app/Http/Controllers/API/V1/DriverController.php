@@ -63,10 +63,22 @@ class DriverController extends Controller
         }
     }
 
-    public function orders()
+    public function orders(Request $request)
     {
         $driver = Auth::guard('driver')->user();
-        $orders = $driver->orders()->get();
+        if($request->status) {
+            switch ($request->status) {
+                case 'active':
+                    $status = ["created","inprogress"];
+                    break;
+                case 'completed':
+                    $status = ["completed"];
+                    break;
+            }
+            $orders = $driver->orders()->whereIn('orders.status', $status)->with(['client','box','driver'])->get();
+        } else {
+            $orders = $driver->orders()->get();
+        }
         return $this->response(true,'success',$orders);
     }
 
