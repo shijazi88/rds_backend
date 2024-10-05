@@ -31,7 +31,7 @@ Route::post('/submit-inquiry', [InquiryController::class, 'store'])->name('inqui
 // Auth::routes();
 //Language Translation
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'])->name('change.locale');
-Route::get('/landing', [App\Http\Controllers\LandingPageController::class, 'index'] );
+Route::get('/', [App\Http\Controllers\LandingPageController::class, 'index'] );
 Route::post('/submit-contact-form',  'App\Http\Controllers\Admin\ContactController@submitForm' )->name('submit.contact.form');
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
@@ -48,7 +48,8 @@ Auth::routes(['register' => false]);
 Route::get('products/product-terms/{product}', 'App\Http\Controllers\Admin\ProductsController@showTerms' )->name('product.terms');
 
 
-Route::redirect('/', '/login');
+// Route::redirect('/', '/login');
+Route::redirect('/dashboard', '/login');
 // Route::redirect('/login', '/login');
 Route::get('/home', function () {
     if (session('status')) {
