@@ -24,6 +24,23 @@ use App\Notifications\OrderCreatedNotification;
 use Illuminate\Support\Facades\Notification;
 class BoxController extends Controller
 {
+    public function getBoxes()
+    {
+        $boxesList = [
+            [
+                "title" => "Basic",
+                "descrption" => "Lorem ipsum text",
+                "price" => 200,
+            ],
+            [
+                "title" => "Premium",
+                "descrption" => "Lorem ipsum text",
+                "price" => 650,
+            ],
+        ];
+        return $this->response(true,'success',$boxesList);
+    }
+
     public function groupByPrice()
     {
         $boxesGroupedByPrice = Box::select('price', \DB::raw('count(*) as count'))

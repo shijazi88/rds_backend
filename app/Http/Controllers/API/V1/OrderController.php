@@ -27,7 +27,19 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $client = Auth::guard('api')->user();
-        $orders = $client->orders()->with('box','orderHistories')->latest()->get();
+        if($request->status) {
+            switch ($request->status) {
+                case 'active':
+                    $status = ["created","inprogress"];
+                    break;
+                case 'completed':
+                    $status = ["completed"];
+                    break;
+            }
+            $orders = $client->orders()->whereIn('orders.status', $status)->with('driver','box','orderHistories')->latest()->get();
+        } else {
+            $orders = $client->orders()->with('driver','box','orderHistories')->latest()->get();
+        }
         return $this->response(true,'success',$orders);
     }
 }
