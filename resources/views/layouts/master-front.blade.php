@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ session()->get('locale') }}" @if(session()->get('locale') == 'ar') dir="rtl" @endif>
+<html lang="{{ app()->getLocale() }}" @if(app()->getLocale() == 'ae') dir="rtl" @endif>
 
 <head>
     <title>{{ env('APP_NAME') }} | @yield('title')</title>
@@ -32,7 +32,7 @@
     <script>
         let isArabic = false;
     </script>
-    @if(session()->get('locale') == 'ar')
+    @if(app()->getLocale() == 'ae')
     <link href="{{ asset('assets/css/rtl.css') }}" rel="stylesheet" type="text/css">
     <script>
         isArabic = true;
@@ -96,12 +96,12 @@
                             <li class="nav-item"><a class="nav-link" href="/#how-we-work">{{ __('front.how_we_work') }}</a></li>
                             <li class="nav-item"><a class="nav-link" href="/#faq">{{ __('front.faq') }}</a></li>
                             <li class="nav-item" <?php if(app()->getLocale() === 'en') echo 'style="display:none"'?>>
-                                <a class="nav-link" href="{{ route('change.locale', ['locale' => app()->getLocale() === 'en' ? 'ae' : 'en']) }}">
+                                <a class="nav-link" href="{{ route('change.locale.landing', ['locale' => app()->getLocale() === 'en' ? 'ae' : 'en']) }}">
                                     {{ app()->getLocale() === 'en' ? 'العربية' : 'English' }}
                                 </a>
                             </li>
                             <li class="nav-item" <?php if(app()->getLocale() === 'ae') echo 'style="display:none"'?>>
-                                <a class="nav-link" href="{{ route('change.locale', ['locale' => app()->getLocale() === 'en' ? 'ae' : 'en']) }}" style="font-family:'GE SS Two', sans-serif;">
+                                <a class="nav-link" href="{{ route('change.locale.landing', ['locale' => app()->getLocale() === 'en' ? 'ae' : 'en']) }}" style="font-family:'GE SS Two', sans-serif;">
                                     {{ app()->getLocale() === 'en' ? 'العربية' : 'English' }}
                                 </a>
                             </li>

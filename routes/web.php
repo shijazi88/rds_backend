@@ -27,9 +27,11 @@ Route::get('/contact', function () {
 })->name('contact');
 
 
+
 Route::post('/submit-inquiry', [InquiryController::class, 'store'])->name('inquiry.store');
 // Auth::routes();
 //Language Translation
+Route::get('locale/{locale}', [App\Http\Controllers\LandingPageController::class, 'lang'])->name('change.locale.landing');
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'])->name('change.locale');
 Route::get('/', [App\Http\Controllers\LandingPageController::class, 'index'] );
 Route::post('/submit-contact-form',  'App\Http\Controllers\Admin\ContactController@submitForm' )->name('submit.contact.form');
