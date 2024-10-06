@@ -44,6 +44,7 @@ class Client extends Authenticatable
         'created_at',
         'updated_at',
         'deleted_at',
+        'parent_id'
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -62,5 +63,15 @@ class Client extends Authenticatable
     public function boxes()
     {
         return $this->hasMany(Box::class);
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Client::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(Client::class, 'parent_id');
     }
 }

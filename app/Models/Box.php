@@ -15,6 +15,27 @@ class Box extends Model
 
     public $table = 'boxes';
 
+    public static $boxType = [
+        [
+            "id" => 1,
+            "title" => "Basic",
+            "descrption" => "Lorem ipsum text",
+            "price" => 200,
+        ],
+        [
+            "id" => 2,
+            "title" => "Premium",
+            "descrption" => "Lorem ipsum text",
+            "price" => 650,
+        ],
+    ];
+
+    public static function getPackageById($boxId)
+    {
+        $box = collect(self::$boxType)->firstWhere('id', $boxId);
+        return $box;
+    }
+
     public const STATUS_SELECT = [
         'available'  => 'available',
         'enabled'  => 'enabled',

@@ -66,6 +66,9 @@ Route::middleware('apiauth')->group(function () {
     // Get notifications of the authenticated client
     Route::get('/notifications', [NotificationController::class, 'index'] )->name('notifications.list');
 
+    Route::post('client/create-user', [LoginController::class, 'createChildClient']);
+    Route::get('client/users', [LoginController::class, 'getClientChildren']);
+
 });
 
 

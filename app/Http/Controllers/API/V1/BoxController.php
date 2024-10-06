@@ -26,18 +26,7 @@ class BoxController extends Controller
 {
     public function getBoxes()
     {
-        $boxesList = [
-            [
-                "title" => "Basic",
-                "descrption" => "Lorem ipsum text",
-                "price" => 200,
-            ],
-            [
-                "title" => "Premium",
-                "descrption" => "Lorem ipsum text",
-                "price" => 650,
-            ],
-        ];
+        $boxesList = Box::$boxType;
         return $this->response(true,'success',$boxesList);
     }
 
@@ -94,23 +83,23 @@ class BoxController extends Controller
     public function buyBox(Request $request)
     {
         try {
-            $data = $request->only(['address_id']);
+            $data = $request->only(['box_id', 'address_id']);
             $rules = [
+                'box_id' => 'required|numeric',
                 'address_id' => 'required|numeric',
             ];
             $validator = Validator::make($data, $rules);
             if ($validator->fails()) {
                 return $this->response(false, $this->validationHandle($validator->messages()));
-            } else {
-                $client = Auth::guard('api')->user();
-
-                // Check if there's a box assigned to the client with status 'assigned'
-                $assignedBox = Box::where('client_id', $client->id)
-                ->where('status', 'assigned')
-                ->first();
-
-                if ($assignedBox) {
-                // If a box is assigned, change its status to 'paid'
+            }
+            $box = Box::getPackageById($data['box_id']);
+            $client = Auth::guard('api')->user();
+            // Check if there's a box assigned to the client with status 'assigned'
+            $assignedBox = Box::where('client_id', $client->id)
+            ->where('status', 'assigned')
+            ->where('price', $box['price'])
+            ->first();
+            if ($assignedBox) {
                 $assignedBox->status = 'paid';
                 $assignedBox->save();
 
@@ -120,58 +109,20 @@ class BoxController extends Controller
                 $order->box_id = $assignedBox->id;
                 $order->amount_before_vat = $assignedBox->price;
                 $order->address_id = $request->address_id;
-                $order->delivery_date = now(); // Adjust this according to your logic
+                $order->delivery_date = now();
                 $order->status = 'created';
-
-                $order->vat = $assignedBox->price * 0.15; // Calculate vat
-                $order->discount = 0; // Provide a default value for discount
-                $order->amount_after_vat = $assignedBox->price * 1.15; // Calculate amount_after_vat
+                $order->vat = $assignedBox->price * 0.15;
+                $order->discount = 0;
+                $order->amount_after_vat = $assignedBox->price * 1.15;
 
                 $order->save();
-
                 $client->notify(new OrderCreatedNotification($order));
 
                 // Save order history
                 $this->logOrderHistory($order, $order->status);
-
-
                 return $this->response(true, 'success', $order);
             } else {
                 return $this->response(false, 'No box assigned to the client, please try again');
-            }
-
-
-                // Find an available box (assuming 'available' is a valid status)
-                // $availableBox = Box::where('status', 'enabled')->first();
-
-                // if (!$availableBox) {
-                //     return $this->response(false, 'No available boxes found', $availableBox);
-                // }
-
-                // // Assign the box to the client and update its status
-                // $availableBox->client_id = $client->id;
-                // $availableBox->status = 'paid';
-                // $availableBox->save();
-
-                // // Create an order
-                // $order = new Order();
-                // $order->client_id = $client->id;
-                // $order->box_id = $availableBox->id;
-                // $order->amount_before_vat = $request->address_id;
-                // $order->address_id = $request->address_id;
-                // $order->delivery_date = now(); // Adjust this according to your logic
-                // $order->status = 'created';
-
-                // $order->amount_before_vat =  $availableBox->price; // Provide a default value for amount_before_vat
-                // $order->vat = $availableBox->price * 0.15; // Provide a default value for vat
-                // $order->discount = 0; // Provide a default value for discount
-                // $order->amount_after_vat = $availableBox->price*1.15; // Provide a default value for amount_after_vat
-                
-                // $order->save();
-
-                // $client->notify(new OrderCreatedNotification($order));
-
-                // return $this->response(true, 'success', $order);
             }
         } catch (Exception $e) {
             return $this->response(false, 'System error');

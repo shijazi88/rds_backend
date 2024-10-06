@@ -97,6 +97,54 @@ class LoginController extends Controller
        
     }
 
+    /**
+     * Create a new client related to a parent user.
+     */
+    public function createChildClient(Request $request)
+    {
+        $validatedData = $request->validate([
+            'parent_id' => 'required|exists:clients,id',
+            'name'      => 'required|string|max:255',
+            'email'     => 'nullable|email|unique:clients,email',
+            'mobile'    => 'required|string|unique:clients,mobile',
+            'language'  => 'nullable|string|in:ar,en',
+            'status'    => 'nullable|string|in:enabled,not_enabled',
+        ]);
+
+        $childClient = Client::create([
+            'parent_id' => $validatedData['parent_id'],
+            'name'      => $validatedData['name'],
+            'email'     => $validatedData['email'],
+            'mobile'    => $validatedData['mobile'],
+            'language'  => $validatedData['language'] ?? 'en',
+            'status'    => $validatedData['status'] ?? 'enabled',
+        ]);
+
+        return response()->json([
+            'message' => 'Child client created successfully.',
+            'data'    => $childClient,
+        ], 201);
+    }
+
+        /**
+     * Get all children of a given parent client.
+     */
+    public function getClientChildren()
+    {
+        $parentClient = Auth::guard('api')->user();
+
+        if (!$parentClient) {
+            return response()->json(['message' => 'Parent client not found.'], 404);
+        }
+
+        $children = $parentClient->children;
+
+        return response()->json([
+            'message'  => 'Children retrieved successfully.',
+            'children' => $children,
+        ]);
+    }
+
     public function registerClient(Request $request)
     {
 
