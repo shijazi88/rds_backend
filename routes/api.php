@@ -68,6 +68,7 @@ Route::middleware('apiauth')->group(function () {
 
     Route::post('client/create-user', [LoginController::class, 'createChildClient']);
     Route::get('client/users', [LoginController::class, 'getClientChildren']);
+    Route::delete('client/users/{id}', [LoginController::class, 'deleteChildClient']);
 
 });
 

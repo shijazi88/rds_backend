@@ -126,7 +126,7 @@ class LoginController extends Controller
         ], 201);
     }
 
-        /**
+    /**
      * Get all children of a given parent client.
      */
     public function getClientChildren()
@@ -143,6 +143,28 @@ class LoginController extends Controller
             'message'  => 'Children retrieved successfully.',
             'children' => $children,
         ]);
+    }
+
+    /**
+     * delete a client related to a parent user.
+     */
+    public function deleteChildClient($id)
+    {
+        $parentClient = Auth::guard('api')->user();
+    
+        if (!$parentClient) {
+            return response()->json(['message' => 'Parent client not found.'], 404);
+        }
+    
+        $childClient = $parentClient->children()->find($id);
+    
+        if (!$childClient) {
+            return response()->json(['message' => 'Child client not found or does not belong to this parent.'], 404);
+        }
+    
+        $childClient->delete();
+    
+        return response()->json(['message' => 'Child client deleted successfully.']);
     }
 
     public function registerClient(Request $request)
