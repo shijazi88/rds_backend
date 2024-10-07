@@ -39,7 +39,7 @@ class BoxSeeder extends Seeder
             'deleted_at' => null,
             'serial_number' => '000000000',
             'color' => '#212121',
-            'size' => '10m',,
+            'size' => '10m',
             'client_id' => 16
         ]);
         
