@@ -95,25 +95,25 @@ class BoxController extends Controller
             $box = Box::getPackageById($data['box_id']);
             $client = Auth::guard('api')->user();
             // Check if there's a box assigned to the client with status 'assigned'
-            $assignedBox = Box::where('client_id', $client->id)
-            ->where('status', 'assigned')
+            $availableBox = Box::where('client_id', $client->id)
+            ->where('status', 'available')
             ->where('price', $box['price'])
             ->first();
-            if ($assignedBox) {
-                $assignedBox->status = 'paid';
-                $assignedBox->save();
+            if ($availableBox) {
+                $availableBox->status = 'paid';
+                $availableBox->save();
 
                 // Create an order
                 $order = new Order();
                 $order->client_id = $client->id;
-                $order->box_id = $assignedBox->id;
-                $order->amount_before_vat = $assignedBox->price;
+                $order->box_id = $availableBox->id;
+                $order->amount_before_vat = $availableBox->price;
                 $order->address_id = $request->address_id;
                 $order->delivery_date = now();
                 $order->status = 'created';
-                $order->vat = $assignedBox->price * 0.15;
+                $order->vat = $availableBox->price * 0.15;
                 $order->discount = 0;
-                $order->amount_after_vat = $assignedBox->price * 1.15;
+                $order->amount_after_vat = $availableBox->price * 1.15;
 
                 $order->save();
                 $client->notify(new OrderCreatedNotification($order));
