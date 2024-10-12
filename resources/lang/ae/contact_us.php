@@ -7,6 +7,7 @@ return [
     'form_instructions' => 'يرجى ملء النموذج أدناه للتواصل معنا. سنقوم بالرد عليك في أقرب وقت ممكن.',
     'placeholder_name' => 'أدخل اسمك الكامل',
     'placeholder_email' => 'أدخل بريدك الإلكتروني',
+    'placeholder_phone' => 'أدخل رقم الهاتف',
     'placeholder_message' => 'اكتب رسالتك',
     'submit_button' => 'إرسال',
 ];

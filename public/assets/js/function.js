@@ -157,24 +157,34 @@
 	});
 
 	function submitForm(){
-		/* Initiate Variables With Form Content*/
+		/* Initiate Variables With Form Content */
 		var name = $("#name").val();
-		var email = $("#email").val();
+		var phone = $("#phone").val();
 		var message = $("#msg").val();
-
+	
 		$.ajax({
 			type: "POST",
-			url: "form-process.php",
-			data: "name=" + name + "&email=" + email + "&message=" + message,
-			success : function(text){
-				if (text == "success"){
+			url: "/contact-form",
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
+			data: {
+				name: name,
+				phone: phone,
+				message: message
+			},
+			success: function(response) {
+				if (response.success) {
 					formSuccess();
 				} else {
-					submitMSG(false,text);
+					submitMSG(false, response.message);
 				}
+			},
+			error: function(xhr) {
+				submitMSG(false, "An error occurred. Please try again.");
 			}
 		});
-	}
+	}	
 
 	function formSuccess(){
 		$contactform[0].reset();

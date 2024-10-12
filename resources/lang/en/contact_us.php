@@ -7,6 +7,7 @@ return [
     'form_instructions' => 'Please fill out the form below to get in touch with us. We\'ll get back to you as soon as possible.',
     'placeholder_name' => 'Enter Your Full Name',
     'placeholder_email' => 'Enter Your Email',
+    'placeholder_phone' => 'Enter Your Phone',
     'placeholder_message' => 'Write Your Message',
     'submit_button' => 'Submit',
 ];

@@ -40,29 +40,31 @@
                             <p class="wow fadeInUp" data-wow-delay="0.5s">{{ __('contact_us.form_instructions') }}</p>
                         </div>
                         <div class="get-quote-form wow fadeInUp" data-wow-delay="0.75s">
-                            <form id="contactForm" action="" method="post" data-toggle="validator">
-                                <div class="row">
-                                    <div class="form-group col-md-12 mb-3">
-                                        <input type="text" class="form-control" id="name" placeholder="{{ __('contact_us.placeholder_name') }}" required>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-
-                                    <div class="form-group col-md-12 mb-3">
-                                        <input type="email" class="form-control" id="email" placeholder="{{ __('contact_us.placeholder_email') }}" required>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-
-                                    <div class="form-group col-md-12 mb-3">
-                                        <textarea name="msg" class="form-control" id="msg" rows="3" placeholder="{{ __('contact_us.placeholder_message') }}" required></textarea>
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn-default">{{ __('contact_us.submit_button') }}</button>
-                                        <div id="msgSubmit" class="h3 hidden"></div>
-                                    </div>
+                        <form id="contactForm" action="" method="post" data-toggle="validator">
+                            @csrf 
+                            <div class="row">
+                                <div class="form-group col-md-12 mb-3">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('contact_us.placeholder_name') }}" required>
+                                    <div class="help-block with-errors"></div>
                                 </div>
-                            </form>
+
+                                <div class="form-group col-md-12 mb-3">
+                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="{{ __('contact_us.placeholder_phone') }}" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-12 mb-3">
+                                    <textarea name="msg" class="form-control" id="msg" rows="3" placeholder="{{ __('contact_us.placeholder_message') }}" required></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn-default">{{ __('contact_us.submit_button') }}</button>
+                                    <div id="msgSubmit" class="h3 hidden"></div>
+                                </div>
+                            </div>
+                        </form>
+
                         </div>
                     </div>
                     <!-- Get Quote End -->

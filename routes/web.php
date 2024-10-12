@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\BranchesController;
 use App\Http\Controllers\Admin\SalesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\FirebaseNotificationsController;
-use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\QRCodeScannerController;
 use App\Http\Controllers\Admin\ClassSessionsController;
@@ -34,7 +34,7 @@ Route::post('/submit-inquiry', [InquiryController::class, 'store'])->name('inqui
 Route::get('locale/{locale}', [App\Http\Controllers\LandingPageController::class, 'lang'])->name('change.locale.landing');
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'])->name('change.locale');
 Route::get('/', [App\Http\Controllers\LandingPageController::class, 'index'] );
-Route::post('/submit-contact-form',  'App\Http\Controllers\Admin\ContactController@submitForm' )->name('submit.contact.form');
+Route::post('/contact-form', [ContactController::class, 'store'])->name('contact.store');
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 
