@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Validator;
 use Laravel\Passport\Passport;
 use Illuminate\Support\Facades\Cache;
 use App\Models\SmsOtp;
+use App\Notifications\OrderCanceledNotification;
+use App\Notifications\OrderCompletedNotification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use App\Notifications\OrderCreatedNotification;
@@ -94,16 +96,14 @@ class BoxController extends Controller
             }
             $box = Box::getPackageById($data['box_id']);
             $client = Auth::guard('api')->user();
-            // Check if there's a box assigned to the client with status 'assigned'
-            $availableBox = Box::where('client_id', $client->id)
+            $availableBox = Box::whereNull('client_id')
             ->where('status', 'available')
             ->where('price', $box['price'])
             ->first();
             if ($availableBox) {
-                $availableBox->status = 'paid';
+                $availableBox->status = 'assigned';
                 $availableBox->save();
 
-                // Create an order
                 $order = new Order();
                 $order->client_id = $client->id;
                 $order->box_id = $availableBox->id;
@@ -118,7 +118,6 @@ class BoxController extends Controller
                 $order->save();
                 $client->notify(new OrderCreatedNotification($order));
 
-                // Save order history
                 $this->logOrderHistory($order, $order->status);
                 return $this->response(true, 'success', $order);
             } else {
@@ -127,6 +126,380 @@ class BoxController extends Controller
         } catch (Exception $e) {
             return $this->response(false, 'System error');
         }
+    }
+
+    public function checkOutBox(Request $request) {
+        try {
+            $client = Auth::guard('api')->user();
+            $data = $request->only(['order_id', 'status']);
+            $rules = [
+                'order_id' => 'required',
+                'status' => 'required',
+            ];
+            $validator = Validator::make($data, $rules);
+            if ($validator->fails()) {
+                return $this->response(false, $this->validationHandle($validator->messages()));
+            }
+            $order = Order::findOrFail($request->order_id);
+            if($request->status == 'success') {
+                $order->status = 'completed';
+                $order->save();
+                $box = Box::findOrFail($order->box_id);
+                $box->status = 'paid';
+                $box->save();
+                $client->notify(new OrderCompletedNotification($order));
+            } else {
+                $order->status = 'cancelled';
+                $order->save();
+                $box = Box::findOrFail($order->box_id);
+                $box->status = 'available';
+                $box->save();
+                $client->notify(new OrderCanceledNotification($order));
+            }
+            return $this->response(true, 'success', $order);
+        } catch (Exception $e) {
+            return $this->response(false, 'System error');
+        }
+    }
+
+    public function initData() {
+        DB::table('boxes')->truncate();
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '200.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '650.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '200.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '650.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '200.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '650.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '200.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '650.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '200.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '650.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '200.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '650.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '200.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '650.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '200.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '650.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '200.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '650.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '200.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '650.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '200.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '650.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '200.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
+        DB::table('boxes')->insert([
+            'status' => 'available',
+            'price' => '650.00',
+            'lat' => '32.52',
+            'lng' => '32.52',
+            'expiry_date' => '2025-10-31',
+            'created_at' => '2024-09-03 15:04:26',
+            'updated_at' => '2024-09-03 15:04:26',
+            'deleted_at' => null,
+            'serial_number' => '000000000',
+            'color' => '#212121',
+            'size' => '10m',
+            'client_id' => null
+        ]);
     }
 
     public function getOrderHistory($orderId)

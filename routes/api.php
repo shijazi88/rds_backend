@@ -56,6 +56,7 @@ Route::middleware('apiauth')->group(function () {
     Route::get('boxes', [BoxController::class, 'getBoxes'])->name('boxes.forSale');
     Route::post('boxes/list', [BoxController::class, 'groupByPrice'] )->name('boxes.list');
     Route::post('boxes/buy', [BoxController::class, 'buyBox'] )->name('boxes.buy');
+    Route::post('boxes/checkout', [BoxController::class, 'checkOutBox'] )->name('boxes.checkout');
     Route::post('boxes/assign', [BoxController::class, 'assignBoxToClient'] )->name('boxes.assign');
     Route::post('boxes/buy/verify', [BoxController::class, 'verify'] )->name('boxes.verify');
 
@@ -69,6 +70,8 @@ Route::middleware('apiauth')->group(function () {
     Route::post('client/create-user', [LoginController::class, 'createChildClient']);
     Route::get('client/users', [LoginController::class, 'getClientChildren']);
     Route::delete('client/users/{id}', [LoginController::class, 'deleteChildClient']);
+
+    Route::get('init-data', [BoxController::class, 'initData']);
 
 });
 
