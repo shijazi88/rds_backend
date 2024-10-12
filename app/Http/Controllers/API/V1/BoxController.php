@@ -163,7 +163,7 @@ class BoxController extends Controller
     }
 
     public function initData() {
-        DB::table('boxes')->truncate();
+        Box::query()->delete();
         DB::table('boxes')->insert([
             'status' => 'available',
             'price' => '200.00',
