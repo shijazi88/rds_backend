@@ -82,6 +82,20 @@ class DriverController extends Controller
         return $this->response(true,'success',$orders);
     }
 
+    public function markAssign(Request $request, $orderId)
+    {
+
+        try {
+            $order = Order::findOrFail($orderId);
+            $order->driver_id = Auth::guard('driver')->user()->id;
+            $order->save();
+            return $this->response(true,'Order assigned to driver',$order);
+        } catch (ModelNotFoundException $exception) {
+            return $this->response(false,'Order not found');
+        }
+
+    }
+
     public function markInProgress(Request $request, $orderId)
     {
 

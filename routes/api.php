@@ -77,7 +77,7 @@ Route::middleware('apiauth')->group(function () {
 
 
 Route::middleware('auth.driver')->group(function () {
-
+    Route::any('/orders/{orderId}/mark-assign', [DriverController::class, 'markAssign']);
     Route::any('/orders/{orderId}/mark-in-progress', [DriverController::class, 'markInProgress']);
     Route::any('/orders/{orderId}/mark-delivered', [DriverController::class, 'markDelivered'] );
     Route::any('/driver/orders', [DriverController::class, 'orders'] )->name('driver.orders');
