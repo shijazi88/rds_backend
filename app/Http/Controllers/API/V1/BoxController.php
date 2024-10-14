@@ -102,6 +102,7 @@ class BoxController extends Controller
             ->first();
             if ($availableBox) {
                 $availableBox->status = 'assigned';
+                $availableBox->client_id = $client->id;
                 $availableBox->save();
 
                 $order = new Order();
@@ -142,8 +143,6 @@ class BoxController extends Controller
             }
             $order = Order::findOrFail($request->order_id);
             if($request->status == 'success') {
-                $order->status = 'completed';
-                $order->save();
                 $box = Box::findOrFail($order->box_id);
                 $box->status = 'paid';
                 $box->save();
@@ -153,6 +152,7 @@ class BoxController extends Controller
                 $order->save();
                 $box = Box::findOrFail($order->box_id);
                 $box->status = 'available';
+                $box->client_id = null;
                 $box->save();
                 $client->notify(new OrderCanceledNotification($order));
             }
@@ -163,7 +163,7 @@ class BoxController extends Controller
     }
 
     public function initData() {
-        Box::query()->delete();
+        Box::where('id', '>=', 0)->delete();
         DB::table('boxes')->insert([
             'status' => 'available',
             'price' => '200.00',

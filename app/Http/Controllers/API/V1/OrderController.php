@@ -22,8 +22,6 @@ use Illuminate\Support\Facades\Storage;
 
 class OrderController extends Controller
 {
-    //
-
     public function index(Request $request)
     {
         $client = Auth::guard('api')->user();

@@ -86,7 +86,6 @@ class DriverController extends Controller
     {
 
         try {
-            
             $order = Order::findOrFail($orderId);
             $order->status = 'inprogress';
             $order->save();
