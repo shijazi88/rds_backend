@@ -307,7 +307,7 @@ class LoginController extends Controller
                
                 $client = Auth::guard('api')->user();
                 if ($client) {
-                    $client->update(['fcm_token' => $data['otp']]); 
+                    $client->update(['fcm_token' => $data['fcm_token']]); 
                 }
 
                 return $this->response(true,'FCM Token upgraded successfully',$client);
