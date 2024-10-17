@@ -171,7 +171,7 @@ class LoginController extends Controller
     {
 
         try {
-            $data = $request->only(['mobile','email','name','fcm_token','language']);
+            $data = $request->only(['mobile','email','name','fcm_token','language', 'customer_id']);
             $rules = [
                 'name' => 'required|string',
                 'email' => 'required|email|unique:clients',
