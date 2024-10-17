@@ -293,6 +293,29 @@ class LoginController extends Controller
 
     }
 
+    public function updateFCM(Request $request)
+    {
+        try {
+            $data = $request->only(['fcm_token']);
+            $rules = [
+                'fcm_token' => 'required'
+            ];
+            $validator = Validator::make($data, $rules);
+            if ($validator->fails()) {
+                return $this->response(false,$this->validationHandle($validator->messages()));
+            } else{
+               
+                $client = Auth::guard('api')->user();
+                if ($client) {
+                    $client->update(['fcm_token' => $data['otp']]); 
+                }
+
+                return $this->response(true,'FCM Token upgraded successfully',$client);
+            }
+        } catch (Exception $e) {
+            return $this->response(false,'system error');
+        }
+    }
 
     function generateOTP()
     {

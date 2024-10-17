@@ -50,7 +50,7 @@ Route::post('mobile/verify', [LoginController::class, 'verifyMobile'] )->name('c
 
 
 Route::middleware('apiauth')->group(function () {
-
+    Route::post('update-fcm', [LoginController::class, 'updateFCM']);
     Route::post('client/address/create', [AddressController::class, 'store'] )->name('client.address.create');
     Route::post('client/address/list', [AddressController::class, 'index'] )->name('client.address.list');
     Route::get('boxes', [BoxController::class, 'getBoxes'])->name('boxes.forSale');
