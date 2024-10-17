@@ -176,6 +176,7 @@ class LoginController extends Controller
                 'name' => 'required|string',
                 'email' => 'required|email|unique:clients',
                 'mobile' => 'required|numeric|digits:10|unique:clients',
+                'customer_id' => 'required',
             ];
             $validator = Validator::make($data, $rules);
             if ($validator->fails()) {
@@ -191,6 +192,7 @@ class LoginController extends Controller
                     'fcm_token' => $data['fcm_token'],
                     'status' => 'not_enabled', // Set the initial status
                     'language' => $data['language'],
+                    'customer_id' => $data['customer_id'],
                 ]);
 
                 // Store the OTP in the sms_otp table with status 'not_used'

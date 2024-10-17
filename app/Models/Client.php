@@ -44,7 +44,8 @@ class Client extends Authenticatable
         'created_at',
         'updated_at',
         'deleted_at',
-        'parent_id'
+        'parent_id',
+        'customer_id'
     ];
 
     protected function serializeDate(DateTimeInterface $date)
