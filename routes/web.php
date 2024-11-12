@@ -36,6 +36,8 @@ Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'
 Route::get('/', [App\Http\Controllers\LandingPageController::class, 'index'] );
 Route::post('/contact-form', [ContactController::class, 'store'])->name('contact.store');
 
+Route::view('/privacy-policy', 'privacy');
+
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 
 //Update User Details

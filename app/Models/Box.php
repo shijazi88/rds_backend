@@ -19,13 +19,13 @@ class Box extends Model
         [
             "id" => 1,
             "title" => "Basic",
-            "descrption" => "Lorem ipsum text",
+            "descrption" => "الباقة العادية",
             "price" => 200,
         ],
         [
             "id" => 2,
             "title" => "Premium",
-            "descrption" => "Lorem ipsum text",
+            "descrption" => "الباقة المميزة",
             "price" => 650,
         ],
     ];
