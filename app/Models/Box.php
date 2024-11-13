@@ -19,13 +19,28 @@ class Box extends Model
         [
             "id" => 1,
             "title" => "Basic",
-            "descrption" => "الباقة العادية",
+            "descrption" => "Get Basic Features",
             "price" => 200,
         ],
         [
             "id" => 2,
             "title" => "Premium",
-            "descrption" => "الباقة المميزة",
+            "descrption" => "Get Premium Features",
+            "price" => 650,
+        ],
+    ];
+
+    public static $boxTypeAR = [
+        [
+            "id" => 1,
+            "title" => "الباقة العادية",
+            "descrption" => "احصل على الميزات العادية",
+            "price" => 200,
+        ],
+        [
+            "id" => 2,
+            "title" => "الباقة المميزة",
+            "descrption" => "احصل على الميزات المميزة",
             "price" => 650,
         ],
     ];

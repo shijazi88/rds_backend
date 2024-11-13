@@ -26,9 +26,13 @@ use App\Notifications\OrderCreatedNotification;
 use Illuminate\Support\Facades\Notification;
 class BoxController extends Controller
 {
-    public function getBoxes()
+    public function getBoxes(Request $request)
     {
-        $boxesList = Box::$boxType;
+        if($request->header('lang') == 'ar') {
+            $boxesList = Box::$boxTypeAR;
+        } else {
+            $boxesList = Box::$boxType;
+        }
         return $this->response(true,'success',$boxesList);
     }
 
