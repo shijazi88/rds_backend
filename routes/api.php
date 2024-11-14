@@ -71,10 +71,10 @@ Route::middleware('apiauth')->group(function () {
     Route::get('client/users', [LoginController::class, 'getClientChildren']);
     Route::delete('client/users/{id}', [LoginController::class, 'deleteChildClient']);
 
-    Route::get('init-data', [BoxController::class, 'initData']);
 
 });
 
+Route::get('init-data', [BoxController::class, 'initData']);
 
 Route::middleware('auth.driver')->group(function () {
     Route::any('/orders/{orderId}/mark-assign', [DriverController::class, 'markAssign']);
