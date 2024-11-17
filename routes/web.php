@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\QRCodeScannerController;
 use App\Http\Controllers\Admin\ClassSessionsController;
+use App\Http\Controllers\DeleteAccountController;
 use App\Http\Controllers\InquiryController;
 
 /*
@@ -27,6 +28,8 @@ Route::get('/contact', function () {
 })->name('contact');
 
 
+Route::get('/delete-account', [DeleteAccountController::class, 'index'])->name('delete-account.index');
+Route::post('/delete-account', [DeleteAccountController::class, 'store'])->name('delete-account.store');
 
 Route::post('/submit-inquiry', [InquiryController::class, 'store'])->name('inquiry.store');
 // Auth::routes();
