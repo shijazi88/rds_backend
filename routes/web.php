@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\QRCodeScannerController;
 use App\Http\Controllers\Admin\ClassSessionsController;
 use App\Http\Controllers\DeleteAccountController;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+Route::get('/create-payment', [PaymentController::class, 'createPayment']);
+Route::get('/payment-callback', [PaymentController::class, 'callback'])->name('payment.callback');
 
 Route::get('/delete-account', [DeleteAccountController::class, 'index'])->name('delete-account.index');
 Route::post('/delete-account', [DeleteAccountController::class, 'store'])->name('delete-account.store');

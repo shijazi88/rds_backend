@@ -167,6 +167,46 @@ class LoginController extends Controller
         return response()->json(['message' => 'Child client deleted successfully.']);
     }
 
+    public function registerClientWeb(Request $request)
+    {
+
+        try {
+            $data = $request->only(['mobile','email','name']);
+            $rules = [
+                'name' => 'required|string',
+                'email' => 'required|email|unique:clients',
+                'mobile' => 'required|numeric|digits:10|unique:clients'
+            ];
+            $validator = Validator::make($data, $rules);
+            if ($validator->fails()) {
+                return $this->response(false,$this->validationHandle($validator->messages()));
+            } else{
+                $otp = $this->generateOTP(); // Generate a random 4-digit OTP
+                
+                // Create a new client with the provided data
+                $client = Client::create([
+                    'mobile' => $data['mobile'],
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'status' => 'not_enabled'
+                ]);
+
+                // Store the OTP in the sms_otp table with status 'not_used'
+                SmsOtp::create([
+                    'mobile' => $data['mobile'],
+                    'otp' => $otp,
+                    'status' => 'not_used',
+                ]);
+
+
+                $response['message'] = 'Registration OTP sent successfully';
+                return response($response, 200)->header('Content-Type', 'application/json');
+            }
+        } catch (Exception $e) {
+            return $this->response(false,'system error');
+        }
+    }
+
     public function registerClient(Request $request)
     {
 

@@ -3,7 +3,7 @@
 @section('title', 'Home Page')
 
 @section('addon_css')
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 @endsection
 @section('content')
     <!-- Hero Section Start -->
@@ -20,7 +20,12 @@
                             <p>{{ __('hero_section.body') }}</p>
                         </div>
                         <div class="hero-content-footer wow fadeInUp" data-wow-delay="0.5s">
-                            <a href="#" class="btn-default">{{ __('hero_section.explore_more') }}</a>
+                            <a href="#" class="btn-default" data-bs-toggle="modal" data-bs-target="#registerModal" id="btnOrderBox">
+                                {{ __('hero_section.explore_more') }}
+                            </a>
+                            <a href="#" class="btn-default" id="getBox" style="display: none;">
+                                {{ __('hero_section.explore_more_2') }}
+                            </a>
                             <a href="#" class="btn-default">{{ __('hero_section.ordercompany') }}</a>
                             <a href="#" class="btn-default">{{ __('hero_section.becomepartner') }}</a>
                         </div>
@@ -31,6 +36,97 @@
         </div>
     </div>
     <!-- Hero Section End -->
+    <!-- Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Step 1: Registration -->
+                    <form id="registerForm" style="display: block;">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mobile" class="form-label">Mobile</label>
+                            <input type="text" class="form-control" id="mobile" name="mobile" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+
+                    <!-- Step 2: OTP Verification -->
+                    <form id="otpForm" style="display: none;">
+                        <div class="mb-3">
+                            <label for="otp" class="form-label">Enter OTP</label>
+                            <input type="text" class="form-control" id="otp" name="otp" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Verify OTP</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <!-- Modal -->
+    <div id="boxModal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Step 1: Choose a Box -->
+                <div id="step1" class="modal-step">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Choose a Box</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul id="boxList"></ul>
+                    </div>
+                </div>
+
+                <!-- Step 2: Create Address -->
+                <div id="step2" class="modal-step d-none">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Enter Delivery Address</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="createAddressForm">
+                            <div class="mb-3">
+                                <label for="address_name" class="form-label">Address Name</label>
+                                <input type="text" id="address_name" name="name" class="form-control" required>
+                            </div>
+                            <div id="map" style="height: 400px; margin-bottom: 15px;"></div>
+                            <input type="hidden" id="address_lat" name="lat">
+                            <input type="hidden" id="address_lng" name="lng">
+                            <button type="submit" class="btn btn-primary">Create Address</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Step 3: Buy Box -->
+                <div id="step3" class="modal-step d-none">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirm Purchase</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="buyBoxForm">
+                            <input type="hidden" id="selectedBoxId" name="box_id">
+                            <input type="hidden" id="selectedAddressId" name="address_id">
+                            <button type="submit" class="btn btn-primary">Buy Box</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Features Section Start -->
     <div class="cargo-shipment">
@@ -466,5 +562,225 @@
 @endsection
 
 @section('addon_js')
-<script></script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    document.getElementById('registerForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        try {
+            const response = await fetch('{{ route('client.register.web') }}', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: formData
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert('Registration successful. Please enter the OTP sent to your mobile.');
+                document.getElementById('registerForm').style.display = 'none';
+                document.getElementById('otpForm').style.display = 'block';
+                // Store the mobile for OTP verification
+                document.getElementById('otpForm').dataset.mobile = formData.get('mobile');
+            } else {
+                alert('Error during registration.');
+            }
+        } catch (error) {
+            alert('An unexpected error occurred. Please try again.');
+        }
+    });
+
+    document.getElementById('otpForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const mobile = this.dataset.mobile; // Retrieve the mobile from the first step
+        formData.append('mobile', mobile);
+
+        try {
+            const response = await fetch('{{ route('client.verifyRegistrationOTP') }}', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: formData
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert('OTP verified successfully!');
+                this.reset();
+                $('#registerModal').modal('hide');
+                window.localStorage.setItem('token',result.data.token);
+                $('#btnOrderBox').hide();
+                $('#getBox').show();
+            } else {
+                alert('Invalid OTP. Please try again.');
+            }
+        } catch (error) {
+            alert('An unexpected error occurred. Please try again.');
+        }
+    });
+
+    $( document ).ready(function() {
+        if(window.localStorage.getItem('token') != undefined) {
+            $('#btnOrderBox').hide();
+            $('#getBox').show();
+        }
+    });
+
+    $(document).ready(function () {
+
+        let map, marker;
+
+        // Open modal and load boxes
+        $('#getBox').on('click', function (e) {
+            e.preventDefault();
+            $('#boxModal').modal('show');
+            loadBoxes();
+        });
+
+        // Initialize map when entering Step 2
+        function initializeMap() {
+            if (!map) {
+                // Initialize map centered on a default location
+                map = L.map('map').setView([25.276987, 55.296249], 10); // Example: Dubai
+
+                // Add OpenStreetMap tiles
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                }).addTo(map);
+
+                // Add a marker on the map
+                marker = L.marker([25.276987, 55.296249], { draggable: true }).addTo(map);
+
+                // Update hidden fields when marker is moved
+                marker.on('move', function (event) {
+                    const latlng = event.target.getLatLng();
+                    $('#address_lat').val(latlng.lat);
+                    $('#address_lng').val(latlng.lng);
+                });
+
+                // Set initial coordinates in hidden fields
+                $('#address_lat').val(marker.getLatLng().lat);
+                $('#address_lng').val(marker.getLatLng().lng);
+
+                // Update marker position on map click
+                map.on('click', function (e) {
+                    marker.setLatLng(e.latlng);
+                    $('#address_lat').val(e.latlng.lat);
+                    $('#address_lng').val(e.latlng.lng);
+                });
+            }
+        }
+
+        // Load boxes from API
+        function loadBoxes() {
+            $.ajax({
+                url: "{{ route('boxes.forSale') }}",
+                method: "GET",
+                headers: {
+                    'Authorization': `Bearer ${window.localStorage.getItem('token')}`,
+                },
+                success: function (response) {
+                    if (response.status) {
+                        const boxes = response.data;
+                        const boxList = $('#boxList');
+                        boxList.empty();
+                        boxes.forEach(box => {
+                            boxList.append(`
+                                <li>
+                                    <div>
+                                        <h6>${box.title} - $${box.price}</h6>
+                                        <p>${box.descrption}</p>
+                                        <button class="btn btn-primary select-box" data-box-id="${box.id}">
+                                            Select
+                                        </button>
+                                    </div>
+                                </li>
+                            `);
+                        });
+
+                        // Attach click handler for box selection
+                        $('.select-box').on('click', function () {
+                            const boxId = $(this).data('box-id');
+                            $('#selectedBoxId').val(boxId);
+                            $('#step1').addClass('d-none');
+                            $('#step2').removeClass('d-none');
+                            initializeMap();
+                        });
+                    } else {
+                        alert('Failed to load boxes');
+                    }
+                },
+                error: function () {
+                    alert('Error loading boxes');
+                }
+            });
+        }
+
+        // Create address
+        $('#createAddressForm').on('submit', function (e) {
+            e.preventDefault();
+            const formData = $(this).serialize();
+
+            $.ajax({
+                url: "{{ route('client.address.create') }}",
+                method: "POST",
+                data: formData,
+                headers: {
+                    'Authorization': `Bearer ${window.localStorage.getItem('token')}`,
+                },
+                success: function (response) {
+                    if (response.status) {
+                        const addressId = response.data.id;
+                        $('#selectedAddressId').val(addressId);
+                        $('#step2').addClass('d-none');
+                        $('#step3').removeClass('d-none');
+                    } else {
+                        alert(response.message || 'Failed to create address');
+                    }
+                },
+                error: function () {
+                    alert('Error creating address');
+                }
+            });
+        });
+
+        // Buy box
+        $('#buyBoxForm').on('submit', function (e) {
+            e.preventDefault();
+            const formData = $(this).serialize();
+
+            $.ajax({
+                url: "{{ route('boxes.buy.web') }}",
+                method: "POST",
+                data: formData,
+                headers: {
+                    'Authorization': `Bearer ${window.localStorage.getItem('token')}`,
+                },
+                success: function (response) {
+                    if (response.status) {
+                        window.location.href = response.data;
+                        $('#boxModal').modal('hide');
+                    } else {
+                        alert(response.message || 'Failed to purchase box');
+                    }
+                },
+                error: function () {
+                    alert('Error processing your request');
+                }
+            });
+        });
+    });
+
+
+
+</script>
 @endsection

@@ -11,7 +11,7 @@
         "php": "^8.1",
         "barryvdh/laravel-dompdf": "^2.0",
         "dompdf/dompdf": "^2.0",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^7.7",
         "indeev/laravel-schedule-calendar": "^1.2",
         "laravel/framework": "^10.0",
         "laravel/passport": "^11.8",

@@ -44,6 +44,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('send-command', [MqttController::class, 'receiveCommands'] )->name('mqtt.receiveCommands');
 Route::post('client/register', [LoginController::class, 'registerClient'] )->name('client.register');
+Route::post('client/register/web', [LoginController::class, 'registerClientWeb'] )->name('client.register.web');
 Route::post('otp/verify', [LoginController::class, 'verifyRegistrationOTP'] )->name('client.verifyRegistrationOTP');
 Route::post('mobile/verify', [LoginController::class, 'verifyMobile'] )->name('client.verifyMobile');
 
@@ -56,6 +57,7 @@ Route::middleware('apiauth')->group(function () {
     Route::get('boxes', [BoxController::class, 'getBoxes'])->name('boxes.forSale');
     Route::post('boxes/list', [BoxController::class, 'groupByPrice'] )->name('boxes.list');
     Route::post('boxes/buy', [BoxController::class, 'buyBox'] )->name('boxes.buy');
+    Route::post('boxes/buy/web', [BoxController::class, 'buyBoxWeb'] )->name('boxes.buy.web');
     Route::post('boxes/checkout', [BoxController::class, 'checkOutBox'] )->name('boxes.checkout');
     Route::post('boxes/assign', [BoxController::class, 'assignBoxToClient'] )->name('boxes.assign');
     Route::post('boxes/buy/verify', [BoxController::class, 'verify'] )->name('boxes.verify');

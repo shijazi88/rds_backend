@@ -23,9 +23,17 @@ use App\Notifications\OrderCompletedNotification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use App\Notifications\OrderCreatedNotification;
+use App\Services\TapPaymentService;
 use Illuminate\Support\Facades\Notification;
 class BoxController extends Controller
 {
+    protected $tapPaymentService;
+
+    public function __construct(TapPaymentService $tapPaymentService)
+    {
+        $this->tapPaymentService = $tapPaymentService;
+    }
+
     public function getBoxes(Request $request)
     {
         if($request->header('lang') == 'ar') {
@@ -51,6 +59,7 @@ class BoxController extends Controller
         $client = Auth::guard('api')->user();
         return $this->response(true,'success',$client->boxes);
     }
+
     public function buyBox2(Request $request)
     {
 
@@ -84,7 +93,6 @@ class BoxController extends Controller
         }
        
     }
-
 
     public function buyBox(Request $request)
     {
@@ -125,6 +133,73 @@ class BoxController extends Controller
 
                 $this->logOrderHistory($order, $order->status);
                 return $this->response(true, 'success', $order);
+            } else {
+                return $this->response(false, 'No box assigned to the client, please try again');
+            }
+        } catch (Exception $e) {
+            return $this->response(false, 'System error');
+        }
+    }
+    
+    public function buyBoxWeb(Request $request)
+    {
+        try {
+            $data = $request->only(['box_id', 'address_id']);
+            $rules = [
+                'box_id' => 'required|numeric',
+                'address_id' => 'required|numeric',
+            ];
+            $validator = Validator::make($data, $rules);
+            if ($validator->fails()) {
+                return $this->response(false, $this->validationHandle($validator->messages()));
+            }
+            $box = Box::getPackageById($data['box_id']);
+            $client = Auth::guard('api')->user();
+            $availableBox = Box::whereNull('client_id')
+            ->where('status', 'available')
+            ->where('price', $box['price'])
+            ->first();
+            if ($availableBox) {
+                $availableBox->status = 'assigned';
+                $availableBox->client_id = $client->id;
+                $availableBox->save();
+
+
+                $order = new Order();
+                $order->client_id = $client->id;
+                $order->box_id = $availableBox->id;
+                $order->amount_before_vat = $availableBox->price;
+                $order->address_id = $request->address_id;
+                $order->delivery_date = now();
+                $order->status = 'created';
+                $order->vat = $availableBox->price * 0.15;
+                $order->discount = 0;
+                $order->amount_after_vat = $availableBox->price * 1.15;
+
+                $order->save();
+                
+                Cache::put('available_box_id', $availableBox->id, now()->addMinutes(20));
+                Cache::put('order_id', $order->id, now()->addMinutes(20));
+                $client->notify(new OrderCreatedNotification($order));
+                
+                $this->logOrderHistory($order, $order->status);
+                $paymentData = [
+                    'amount' => $order->amount_after_vat,
+                    'currency' => 'USD',
+                    'customer' => [
+                        'first_name' => $client->name,
+                        'email' => $client->email
+                    ],
+                    'source' => ['id' => 'src_all'],
+                    'redirect' => ['url' => route('payment.callback')],
+                ];
+
+                $response = $this->tapPaymentService->createPayment($paymentData);
+                if(isset($response['transaction']['url'])) {
+                    return $this->response(true, 'success', $response['transaction']['url']);
+                } else {
+                    return $this->response(false, 'System error');
+                }
             } else {
                 return $this->response(false, 'No box assigned to the client, please try again');
             }
