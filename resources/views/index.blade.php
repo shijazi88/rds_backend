@@ -582,16 +582,31 @@
 
             const result = await response.json();
             if (response.ok) {
-                alert('Registration successful. Please enter the OTP sent to your mobile.');
+                Swal.fire({
+                    icon: "success",
+                    title: "Registration successful. Please enter the OTP sent to your mobile.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 document.getElementById('registerForm').style.display = 'none';
                 document.getElementById('otpForm').style.display = 'block';
                 // Store the mobile for OTP verification
                 document.getElementById('otpForm').dataset.mobile = formData.get('mobile');
             } else {
-                alert('Error during registration.');
+                Swal.fire({
+                    icon: "error",
+                    title: "Error during registration.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         } catch (error) {
-            alert('An unexpected error occurred. Please try again.');
+            Swal.fire({
+                icon: "error",
+                title: "An unexpected error occurred. Please try again.",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     });
 
@@ -614,17 +629,32 @@
 
             const result = await response.json();
             if (response.ok) {
-                alert('OTP verified successfully!');
+                Swal.fire({
+                    icon: "success",
+                    title: "OTP verified successfully!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 this.reset();
                 $('#registerModal').modal('hide');
                 window.localStorage.setItem('token',result.data.token);
                 $('#btnOrderBox').hide();
                 $('#getBox').show();
             } else {
-                alert('Invalid OTP. Please try again.');
+                Swal.fire({
+                    icon: "error",
+                    title: "Invalid OTP. Please try again.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         } catch (error) {
-            alert('An unexpected error occurred. Please try again.');
+            Swal.fire({
+                icon: "error",
+                title: "An unexpected error occurred. Please try again.",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     });
 
@@ -716,11 +746,21 @@
                             initializeMap();
                         });
                     } else {
-                        alert('Failed to load boxes');
+                        Swal.fire({
+                            icon: "error",
+                            title: "Failed to load boxes",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                     }
                 },
                 error: function () {
-                    alert('Error loading boxes');
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error loading boxes",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
             });
         }
@@ -744,11 +784,21 @@
                         $('#step2').addClass('d-none');
                         $('#step3').removeClass('d-none');
                     } else {
-                        alert(response.message || 'Failed to create address');
+                        Swal.fire({
+                            icon: "error",
+                            title: "Failed to create address",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                     }
                 },
                 error: function () {
-                    alert('Error creating address');
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error creating address",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
             });
         });
@@ -770,11 +820,22 @@
                         window.location.href = response.data;
                         $('#boxModal').modal('hide');
                     } else {
-                        alert(response.message || 'Failed to purchase box');
+                        Swal.fire({
+                            icon: "error",
+                            title: "Failed to purchase box",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                     }
                 },
                 error: function () {
-                    alert('Error processing your request');
+                    
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error processing your request",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
             });
         });

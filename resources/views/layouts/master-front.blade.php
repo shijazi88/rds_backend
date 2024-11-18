@@ -269,6 +269,7 @@
     <script src="{{ asset('assets/js/wow.js') }}"></script>
     <!-- Main Custom js File -->
     <script src="{{ asset('assets/js/function.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('addon_js')
 </body>
 
