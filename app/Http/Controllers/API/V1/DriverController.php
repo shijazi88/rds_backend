@@ -75,7 +75,16 @@ class DriverController extends Controller
                     $status = ["completed"];
                     break;
             }
-            $orders = $driver->orders()->whereIn('orders.status', $status)->with(['client','box','driver'])->get();
+            $orders = $driver->orders()->whereIn('orders.status', $status)->with(['client','box','driver','address'])->get()->map(function ($order) {
+                if ($order->box) {
+                    if($order->address) {
+                        $order->box->lat = $order->address->lat;
+                        $order->box->lng = $order->address->lng;
+                    }
+                }
+                return $order;
+            });
+            
         } else {
             $orders = $driver->orders()->get();
         }
