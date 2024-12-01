@@ -26,8 +26,8 @@
                             <a href="#" class="btn-default" id="getBox" style="display: none;">
                                 {{ __('hero_section.explore_more_2') }}
                             </a>
-                            <a href="#" class="btn-default">{{ __('hero_section.ordercompany') }}</a>
-                            <a href="#" class="btn-default">{{ __('hero_section.becomepartner') }}</a>
+                            <a href="{{ route('contact') }}" class="btn-default">{{ __('hero_section.ordercompany') }}</a>
+                            <a href="{{ route('contact') }}" class="btn-default">{{ __('hero_section.becomepartner') }}</a>
                         </div>
                     </div>
                     <!-- Hero Left Content End -->
@@ -41,34 +41,34 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="registerModalLabel">Register</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="registerModalLabel">{{ __('messages.Register') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('messages.Close') }}"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Step 1: Registration -->
                     <form id="registerForm" style="display: block;">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
+                            <label for="name" class="form-label">{{ __('messages.Name') }}</label>
                             <input type="text" class="form-control" id="name" name="name" required>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
+                            <label for="email" class="form-label">{{ __('messages.Email') }}</label>
                             <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="mb-3">
-                            <label for="mobile" class="form-label">Mobile</label>
+                            <label for="mobile" class="form-label">{{ __('messages.Mobile') }}</label>
                             <input type="text" class="form-control" id="mobile" name="mobile" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Register</button>
+                        <button type="submit" class="btn btn-primary">{{ __('messages.Register') }}</button>
                     </form>
 
                     <!-- Step 2: OTP Verification -->
                     <form id="otpForm" style="display: none;">
                         <div class="mb-3">
-                            <label for="otp" class="form-label">Enter OTP</label>
+                            <label for="otp" class="form-label">{{ __('messages.Enter OTP') }}</label>
                             <input type="text" class="form-control" id="otp" name="otp" required>
                         </div>
-                        <button type="submit" class="btn btn-success">Verify OTP</button>
+                        <button type="submit" class="btn btn-success">{{ __('messages.Verify OTP') }}</button>
                     </form>
                 </div>
             </div>
@@ -82,8 +82,8 @@
                 <!-- Step 1: Choose a Box -->
                 <div id="step1" class="modal-step">
                     <div class="modal-header">
-                        <h5 class="modal-title">Choose a Box</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        <h5 class="modal-title">{{ __('messages.Choose a Box') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('messages.Close') }}"></button>
                     </div>
                     <div class="modal-body">
                         <ul id="boxList"></ul>
@@ -93,19 +93,19 @@
                 <!-- Step 2: Create Address -->
                 <div id="step2" class="modal-step d-none">
                     <div class="modal-header">
-                        <h5 class="modal-title">Enter Delivery Address</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        <h5 class="modal-title">{{ __('messages.Enter Delivery Address') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('messages.Close') }}"></button>
                     </div>
                     <div class="modal-body">
                         <form id="createAddressForm">
                             <div class="mb-3">
-                                <label for="address_name" class="form-label">Address Name</label>
+                                <label for="address_name" class="form-label">{{ __('messages.Address Name') }}</label>
                                 <input type="text" id="address_name" name="name" class="form-control" required>
                             </div>
                             <div id="map" style="height: 400px; margin-bottom: 15px;"></div>
                             <input type="hidden" id="address_lat" name="lat">
                             <input type="hidden" id="address_lng" name="lng">
-                            <button type="submit" class="btn btn-primary">Create Address</button>
+                            <button type="submit" class="btn btn-primary">{{ __('messages.Create Address') }}</button>
                         </form>
                     </div>
                 </div>
@@ -113,21 +113,20 @@
                 <!-- Step 3: Buy Box -->
                 <div id="step3" class="modal-step d-none">
                     <div class="modal-header">
-                        <h5 class="modal-title">Confirm Purchase</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        <h5 class="modal-title">{{ __('messages.Confirm Purchase') }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('messages.Close') }}"></button>
                     </div>
                     <div class="modal-body">
                         <form id="buyBoxForm">
                             <input type="hidden" id="selectedBoxId" name="box_id">
                             <input type="hidden" id="selectedAddressId" name="address_id">
-                            <button type="submit" class="btn btn-primary">Buy Box</button>
+                            <button type="submit" class="btn btn-primary">{{ __('messages.Buy Box') }}</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Features Section Start -->
     <div class="cargo-shipment">
         <div class="container">
@@ -465,7 +464,7 @@
                         </div>
                         <div class="our-contract-body">
                             <p class="wow fadeInUp" data-wow-delay="0.25s">{{ __('our_contract_section.description') }}</p>
-                            <a style="display:inline-block;" class="image_apple" href="https://www.apple.com/app-store/">
+                            <a style="display:inline-block;" class="image_apple" href="https://apps.apple.com/us/app/rds-box-app/id6738136465">
                                 <figure class="mb-0 available-apple">
                                     <img class="img-fluid" src="{{ asset('assets/images/bannerapple-img1.png') }}" alt="{{ __('our_contract_section.apple_store_alt') }}">
                                 </figure>
@@ -717,6 +716,7 @@
                 method: "GET",
                 headers: {
                     'Authorization': `Bearer ${window.localStorage.getItem('token')}`,
+                    'lang': `{{app()->getLocale()}}`
                 },
                 success: function (response) {
                     if (response.status) {
@@ -730,7 +730,7 @@
                                         <h6>${box.title} - $${box.price}</h6>
                                         <p>${box.descrption}</p>
                                         <button class="btn btn-primary select-box" data-box-id="${box.id}">
-                                            Select
+                                            {{__('messages.Select')}}
                                         </button>
                                     </div>
                                 </li>

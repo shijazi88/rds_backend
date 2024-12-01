@@ -7,7 +7,7 @@ return [
     'discover_more' => 'Discover More',
     'contact_phone_alt' => 'Contact Phone Icon',
     'contact_phone_title' => 'Call Anytime',
-    'contact_phone_number' => '808 707 6060',
+    'contact_phone_number' => '+966559923621',
     'image_1_alt' => 'Transportation Image 1',
     'image_2_alt' => 'Transportation Image 2',
     'experience_years' => 'Years of Experience',

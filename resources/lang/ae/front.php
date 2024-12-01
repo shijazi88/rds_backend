@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'address' => '121 King Street, Melbourne',
+    'address' => 'Saudi Arabia, Riyadh',
     'email' => 'Info@rdsbox.sa',
     'home' => 'الصفحة الرئيسية',
     'about_us' => 'من نحن',
@@ -14,7 +14,7 @@ return [
     'quick_links' => 'روابط سريعة',
     'request_box_now' => 'اطلب صندوقك الآن',
     'contact_us' => 'اتصل بنا',
-    'phone' => '055 619 1169',
+    'phone' => '+966559923621',
     'copyright' => 'حقوق الطبع والنشر 2024',
     'all_rights_reserved' => 'جميع الحقوق محفوظة',
     'download_app' => 'حمل تطبيقنا الآن'

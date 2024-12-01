@@ -20,6 +20,8 @@ class Localization
         /* Set new lang with the use of session */
         if (session()->has('lang')) {
             App::setLocale(session()->get('lang'));
+        } else {
+            App::setLocale('ae'); // Default to Arabic
         }
         return $next($request);
     }

@@ -36,7 +36,7 @@ class BoxController extends Controller
 
     public function getBoxes(Request $request)
     {
-        if($request->header('lang') == 'ar') {
+        if($request->header('lang') == 'ar' || $request->header('lang') == 'ae') {
             $boxesList = Box::$boxTypeAR;
         } else {
             $boxesList = Box::$boxType;

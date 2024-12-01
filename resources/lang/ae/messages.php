@@ -228,6 +228,21 @@ return [
     'The mobile must be 10 digits.' => 'يجب أن يكون رقم الهاتف المحمول 10 أرقام',
     'The email must be a valid email address.' => 'يجب أن يكون البريد الإلكتروني عنوان بريد إلكتروني صالح',
     'The start date must be a date after today.' => 'يجب أن تكون تاريخ البداية بعد اليوم.',
-    'The start date must be at least 2 days after the subscription start date.' => 'يجب أن يكون تاريخ البداية بعد مضي ما لا يقل عن يومين من تاريخ بداية الاشتراك.'
+    'The start date must be at least 2 days after the subscription start date.' => 'يجب أن يكون تاريخ البداية بعد مضي ما لا يقل عن يومين من تاريخ بداية الاشتراك.',
+    'Register' => 'تسجيل حساب جديد',
+    'Close' => 'إغلاق',
+    'Name' => 'الاسم',
+    'Email' => 'البريد الإلكتروني',
+    'Mobile' => 'رقم',
+    'Enter OTP' => 'ادخل رمز التحقق',
+    'Verify OTP' => 'تحقق من الرمز',
 
+    'Choose a Box' => 'اختر صندوق',
+    'Close' => 'إغلاق',
+    'Enter Delivery Address' => 'أدخل عنوان التسليم',
+    'Address Name' => 'اسم العنوان',
+    'Create Address' => 'إنشاء عنوان',
+    'Confirm Purchase' => 'تأكيد الشراء',
+    'Buy Box' => 'شراء الصندوق',
+    'Select' => 'اختيار',
 ];
