@@ -18,5 +18,7 @@ class ContactRequest extends Model
         'name',
         'phone',
         'message',
+        'email',
+        'quantity',
     ];
 }

@@ -14,7 +14,7 @@ return [
     'quick_links' => 'روابط سريعة',
     'request_box_now' => 'اطلب صندوقك الآن',
     'contact_us' => 'اتصل بنا',
-    'phone' => '+966559923621',
+    'phone' => '966559923621+',
     'copyright' => 'حقوق الطبع والنشر 2024',
     'all_rights_reserved' => 'جميع الحقوق محفوظة',
     'download_app' => 'حمل تطبيقنا الآن'

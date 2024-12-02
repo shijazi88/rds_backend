@@ -184,10 +184,53 @@
 				submitMSG(false, "An error occurred. Please try again.");
 			}
 		});
-	}	
+	}
+
+	var $contactCompanyform=$("#contactCompanyForm");
+	$contactCompanyform.validator({focus: false}).on("submit", function (event) {
+		if (!event.isDefaultPrevented()) {
+			event.preventDefault();
+			submitForm2();
+		}
+	});
+
+	function submitForm2(){
+		/* Initiate Variables With Form Content */
+		var name = $("#name").val();
+		var phone = $("#phone").val();
+		var email = $("#email").val();
+		var quantity = $("#quantity").val();
+	
+		$.ajax({
+			type: "POST",
+			url: "/contact-company-form",
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
+			data: {
+				name: name,
+				phone: phone,
+				email: email,
+				quantity: quantity,
+			},
+			success: function(response) {
+				if (response.success) {
+					formSuccess();
+				} else {
+					submitMSG(false, response.message);
+				}
+			},
+			error: function(xhr) {
+				submitMSG(false, "An error occurred. Please try again.");
+			}
+		});
+	}
+
+
+
 
 	function formSuccess(){
-		$contactform[0].reset();
+		$contactCompanyform[0].reset();
 		submitMSG(true, "Message Sent Successfully!")
 	}
 

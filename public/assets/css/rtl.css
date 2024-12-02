@@ -45,3 +45,13 @@
     margin-right: 0 !important;
     margin-left: 0 !important;
 }
+
+.get-quote-form .form-control {
+    text-align: right;
+}
+
+.page-header-box ol.breadcrumb li:after {
+    content: '\f060';
+    margin-left: unset;
+    margin-right: 12px;
+}

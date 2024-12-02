@@ -28,6 +28,10 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+Route::get('/contact-company', function () {
+    return view('contact-company');
+})->name('contact-company');
+
 Route::get('/create-payment', [PaymentController::class, 'createPayment']);
 Route::get('/payment-callback', [PaymentController::class, 'callback'])->name('payment.callback');
 
@@ -41,6 +45,7 @@ Route::get('locale/{locale}', [App\Http\Controllers\LandingPageController::class
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'])->name('change.locale');
 Route::get('/', [App\Http\Controllers\LandingPageController::class, 'index'] );
 Route::post('/contact-form', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/contact-company-form', [ContactController::class, 'store2'])->name('contact.company.store');
 
 Route::view('/privacy-policy', 'privacy');
 

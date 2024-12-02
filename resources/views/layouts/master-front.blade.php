@@ -60,6 +60,7 @@
     <!-- Magic Cursor End -->
 
     <!-- Topbar Section Start -->
+    <?php /*
     <div class="topbar">
         <div class="container">
             <div class="row align-items-center">
@@ -76,6 +77,7 @@
             </div>
         </div>
     </div>
+    */ ?>
     <!-- Topbar Section End -->
 
     <!-- Header Start -->
@@ -207,7 +209,7 @@
                                         <i class="fa-solid fa-phone"></i>
                                     </div>
 
-                                    <p>{{ __('front.phone') }}</p>
+                                    <p><a href="https://wa.me/{{ __('about_section.contact_phone_number2') }}">{{ __('front.phone') }}</a></p>
                                 </div>
                             </div>
                             <!-- Footer Contact Info Box End -->

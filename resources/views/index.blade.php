@@ -26,8 +26,8 @@
                             <a href="#" class="btn-default" id="getBox" style="display: none;">
                                 {{ __('hero_section.explore_more_2') }}
                             </a>
-                            <a href="{{ route('contact') }}" class="btn-default">{{ __('hero_section.ordercompany') }}</a>
-                            <a href="{{ route('contact') }}" class="btn-default">{{ __('hero_section.becomepartner') }}</a>
+                            <a href="{{ route('contact-company') }}" class="btn-default">{{ __('hero_section.ordercompany') }}</a>
+                            <!-- <a href="{{ route('contact') }}" class="btn-default">{{ __('hero_section.becomepartner') }}</a> -->
                         </div>
                     </div>
                     <!-- Hero Left Content End -->
@@ -353,7 +353,7 @@
                                     <div class="project-item">
                                         <div class="project-image">
                                             <figure class="image-anime">
-                                                <img src="{{ asset('assets/images/pro1.png') }}" alt="{{ __('recent_project_section.project_1_alt') }}">
+                                                <img src="{{ asset('assets/images/pro4.png') }}" alt="{{ __('recent_project_section.project_1_alt') }}">
                                             </figure>
                                         </div>
                                     </div>
@@ -365,7 +365,7 @@
                                     <div class="project-item">
                                         <div class="project-image">
                                             <figure class="image-anime">
-                                                <img src="{{ asset('assets/images/pro2.png') }}" alt="{{ __('recent_project_section.project_2_alt') }}">
+                                                <img src="{{ asset('assets/images/pro5.png') }}" alt="{{ __('recent_project_section.project_1_alt') }}">
                                             </figure>
                                         </div>
                                     </div>
@@ -377,7 +377,31 @@
                                     <div class="project-item">
                                         <div class="project-image">
                                             <figure class="image-anime">
-                                                <img src="{{ asset('assets/images/pro3.png') }}" alt="{{ __('recent_project_section.project_3_alt') }}">
+                                                <img src="{{ asset('assets/images/pro6.png') }}" alt="{{ __('recent_project_section.project_2_alt') }}">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Recent Projects Slide End -->
+
+                                <!-- Recent Projects Slide Start -->
+                                <div class="swiper-slide">
+                                    <div class="project-item">
+                                        <div class="project-image">
+                                            <figure class="image-anime">
+                                                <img src="{{ asset('assets/images/pro7.png') }}" alt="{{ __('recent_project_section.project_3_alt') }}">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Recent Projects Slide End -->
+                                 
+                                <!-- Recent Projects Slide Start -->
+                                <div class="swiper-slide">
+                                    <div class="project-item">
+                                        <div class="project-image">
+                                            <figure class="image-anime">
+                                                <img src="{{ asset('assets/images/pro8.png') }}" alt="{{ __('recent_project_section.project_3_alt') }}">
                                             </figure>
                                         </div>
                                     </div>
@@ -402,7 +426,7 @@
                 <div class="col-lg-6">
                     <div class="Featured-Content-Box">
                     <figure class="reveal image-anime">
-                        <img src="{{ asset('assets/images/box-banner.png') }}" alt="{{ __('providing_service_section.banner_image_alt') }}">
+                        <img style="height: 680px;" src="{{ asset('assets/images/box-banner-2.png') }}" alt="{{ __('providing_service_section.banner_image_alt') }}">
                     </figure>
                     </div>
                 </div>
@@ -464,12 +488,12 @@
                         </div>
                         <div class="our-contract-body">
                             <p class="wow fadeInUp" data-wow-delay="0.25s">{{ __('our_contract_section.description') }}</p>
-                            <a style="display:inline-block;" class="image_apple" href="https://apps.apple.com/us/app/rds-box-app/id6738136465">
+                            <a style="display:inline-block;padding-bottom: 10px;" class="image_apple" href="https://apps.apple.com/us/app/rds-box-app/id6738136465">
                                 <figure class="mb-0 available-apple">
                                     <img class="img-fluid" src="{{ asset('assets/images/bannerapple-img1.png') }}" alt="{{ __('our_contract_section.apple_store_alt') }}">
                                 </figure>
                             </a>
-                            <a style="display:inline-block;" class="image_google" href="https://play.google.com/store/games">
+                            <a style="display:inline-block;padding-bottom: 10px;" class="image_google" href="https://play.google.com/store/games">
                                 <figure class="mb-0 available-google">
                                     <img class="img-fluid" src="{{ asset('assets/images/bannergoogle-img2.png') }}" alt="{{ __('our_contract_section.google_play_store_alt') }}">
                                 </figure>
@@ -510,7 +534,7 @@
                                 <a href="#features" class="btn-default">{{ __('about_section.discover_more') }}</a>
                             </div>                            
                             <div class="header-contact-us">
-                                <a href="#"><img src="{{ asset('assets/images/icon-phone.svg') }}" alt="{{ __('about_section.contact_phone_alt') }}"><hل3>{{ __('about_section.contact_phone_title') }} <span>{{ __('about_section.contact_phone_number') }}</span></h3></a>
+                                <a href="https://wa.me/{{ __('about_section.contact_phone_number2') }}"><img src="{{ asset('assets/images/icon-phone.svg') }}" alt="{{ __('about_section.contact_phone_alt') }}"><h3>{{ __('about_section.contact_phone_title') }} <span>{{ __('about_section.contact_phone_number') }}</span></h3></a>
                             </div>    
                         </div>
                         <!-- Home Transportation Footer End -->
