@@ -4,6 +4,14 @@
 
 @section('addon_css')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+    .boxListUL li {
+        padding-bottom: 50px;
+    }
+    .boxListUL li:last-child {
+        padding-bottom: 0px !important;
+    }
+</style>
 @endsection
 @section('content')
     <!-- Hero Section Start -->
@@ -86,7 +94,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('messages.Close') }}"></button>
                     </div>
                     <div class="modal-body">
-                        <ul id="boxList"></ul>
+                        <ul id="boxList" class="boxListUL"></ul>
                     </div>
                 </div>
 
@@ -750,12 +758,17 @@
                         boxes.forEach(box => {
                             boxList.append(`
                                 <li>
-                                    <div>
-                                        <h6>${box.title} - $${box.price}</h6>
-                                        <p>${box.descrption}</p>
-                                        <button class="btn btn-primary select-box" data-box-id="${box.id}">
-                                            {{__('messages.Select')}}
-                                        </button>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="${box.image}">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h6>${box.title} - $${box.price}</h6>
+                                            <p>${box.descrption}</p>
+                                            <button class="btn btn-primary select-box" data-box-id="${box.id}">
+                                                {{__('messages.Select')}}
+                                            </button>
+                                        </div>
                                     </div>
                                 </li>
                             `);
