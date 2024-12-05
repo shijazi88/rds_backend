@@ -18,30 +18,34 @@ class Box extends Model
     public static $boxType = [
         [
             "id" => 1,
-            "title" => "Basic",
-            "descrption" => "Get Basic Features",
-            "price" => 200,
+            "title" => "White Box",
+            "descrption" => "Get White BOX Now",
+            "price" => 1950,
+            "image" => "https://rdsbox.sa/assets/images/pro5.png"
         ],
         [
             "id" => 2,
-            "title" => "Premium",
-            "descrption" => "Get Premium Features",
-            "price" => 650,
+            "title" => "Black Box",
+            "descrption" => "Get Black BOX Now",
+            "price" => 1950,
+            "image" => "https://rdsbox.sa/assets/images/pro6.png"
         ],
     ];
 
     public static $boxTypeAR = [
         [
             "id" => 1,
-            "title" => "الباقة العادية",
-            "descrption" => "احصل على الميزات العادية",
-            "price" => 200,
+            "title" => "صندوق أبيض",
+            "descrption" => "احصل على صندوقك باللون الأبيض",
+            "price" => 1950,
+            "image" => "https://rdsbox.sa/assets/images/pro5.png"
         ],
         [
             "id" => 2,
-            "title" => "الباقة المميزة",
-            "descrption" => "احصل على الميزات المميزة",
-            "price" => 650,
+            "title" => "صندوق أسود",
+            "descrption" => "احصل على صندوقك باللون الأسود",
+            "price" => 1950,
+            "image" => "https://rdsbox.sa/assets/images/pro6.png"
         ],
     ];
 
