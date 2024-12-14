@@ -356,17 +356,6 @@
                     <div class="project-slider">
                         <div class="swiper">
                             <div class="swiper-wrapper">
-                                <!-- Recent Projects Slide Start -->
-                                <div class="swiper-slide">
-                                    <div class="project-item">
-                                        <div class="project-image">
-                                            <figure class="image-anime">
-                                                <img src="{{ asset('assets/images/pro4.png') }}" alt="{{ __('recent_project_section.project_1_alt') }}">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Recent Projects Slide End -->
 
                                 <!-- Recent Projects Slide Start -->
                                 <div class="swiper-slide">
@@ -398,18 +387,6 @@
                                         <div class="project-image">
                                             <figure class="image-anime">
                                                 <img src="{{ asset('assets/images/pro7.png') }}" alt="{{ __('recent_project_section.project_3_alt') }}">
-                                            </figure>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Recent Projects Slide End -->
-                                 
-                                <!-- Recent Projects Slide Start -->
-                                <div class="swiper-slide">
-                                    <div class="project-item">
-                                        <div class="project-image">
-                                            <figure class="image-anime">
-                                                <img src="{{ asset('assets/images/pro8.png') }}" alt="{{ __('recent_project_section.project_3_alt') }}">
                                             </figure>
                                         </div>
                                     </div>
@@ -454,24 +431,43 @@
 
                             <div class="providing-item-box">
                                 <div class="providing-item wow fadeInUp" data-wow-delay="0.25s">
-                                    <div class="icon-box">
-                                        <span>1.</span>
+                                    <div class="row">
+                                        <div class="col-4" style="display: flex;align-items: center;justify-content: flex-end;">
+                                            <img src="{{asset('assets/images/security.png')}}" alt="" style="width: 50px;">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="icon-box">
+                                                <span>1.</span>
+                                            </div>
+                                            <span>{{ __('providing_service_section.security') }}</span>
+                                        </div>
                                     </div>
-                                    <span>{{ __('providing_service_section.security') }}</span>
                                 </div>
-
-                                <div class="providing-item wow fadeInUp" data-wow-delay="0.5s">
-                                    <div class="icon-box">
-                                        <span>2.</span>
+                                <div class="providing-item wow fadeInUp" data-wow-delay="0.25s">
+                                    <div class="row">
+                                        <div class="col-4" style="display: flex;align-items: center;justify-content: flex-end;">
+                                            <img src="{{asset('assets/images/privacy.png')}}" alt="" style="width: 50px;">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="icon-box">
+                                                <span>2.</span>
+                                            </div>
+                                            <span>{{ __('providing_service_section.privacy') }}</span>
+                                        </div>
                                     </div>
-                                    <span>{{ __('providing_service_section.privacy') }}</span>
                                 </div>
-
-                                <div class="providing-item wow fadeInUp" data-wow-delay="0.75s">
-                                    <div class="icon-box">
-                                        <span>3.</span>
+                                <div class="providing-item wow fadeInUp" data-wow-delay="0.25s">
+                                    <div class="row">
+                                        <div class="col-4" style="display: flex;align-items: center;justify-content: flex-end;">
+                                            <img src="{{asset('assets/images/support.png')}}" alt="" style="width: 50px;">
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="icon-box">
+                                                <span>3.</span>
+                                            </div>
+                                            <span>{{ __('providing_service_section.support') }}</span>
+                                        </div>
                                     </div>
-                                    <span>{{ __('providing_service_section.support') }}</span>
                                 </div>
                             </div>
                         </div>  
@@ -702,6 +698,11 @@
 
         // Open modal and load boxes
         $('#getBox').on('click', function (e) {
+            e.preventDefault();
+            $('#boxModal').modal('show');
+            loadBoxes();
+        });
+        $('#getBoxHeader').on('click', function (e) {
             e.preventDefault();
             $('#boxModal').modal('show');
             loadBoxes();

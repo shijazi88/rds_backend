@@ -113,7 +113,11 @@
 
                     <!--Get Contact Us Start-->
                     <div class="header-contact-us">
-                        <a href="{{ route('contact') }}" class="try_free_btn" href="#!"><img src="{{ asset('assets/images/icon-phone.svg') }}" alt=""><h3>{{ __('front.request_box') }}<span> {{ __('front.now') }}</span></h3></a>
+                        @if(Auth::user())
+                        <a data-bs-toggle="modal" data-bs-target="#registerModal" class="try_free_btn" href="#!"><img src="{{ asset('assets/images/icon-select-box.svg') }}" alt="" style="height:40px"><h3>{{ __('front.request_box') }}<span> {{ __('front.now') }}</span></h3></a>
+                        @else
+                        <a id="getBoxHeader" class="try_free_btn" href="#!"><img src="{{ asset('assets/images/icon-select-box.svg') }}" alt="" style="height:40px"><h3>{{ __('front.request_box') }}<span> {{ __('front.now') }}</span></h3></a>
+                        @endif
                     </div>                           
                     <!--Get Contact Us End-->
 

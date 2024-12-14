@@ -1499,9 +1499,10 @@ header.main-header .header-sticky.active{
 }
 
 .post-featured-image img{
-	aspect-ratio: 1 / 0.70;
+    /* aspect-ratio: 1 / 0.70; */
     object-fit: cover;
     transition: all 0.5s ease-in-out;
+    width: 70px;
 }
 
 .post-item:hover .post-featured-image img{
